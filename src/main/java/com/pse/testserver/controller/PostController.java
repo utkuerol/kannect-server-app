@@ -1,19 +1,18 @@
-package com.pse.testserver;
+package com.pse.testserver.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pse.testserver.Post.Post;
-import com.pse.testserver.Post.PostService;
+import com.pse.testserver.entities.Post;
+import com.pse.testserver.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@ComponentScan(basePackages = "com.pse.testserver.Post.Post")
+@ComponentScan(basePackages = "com.pse.testserver.models.Post.Post")
 @RequestMapping
 public class PostController {
 

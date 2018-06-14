@@ -1,10 +1,8 @@
-package com.pse.testserver.Post;
+package com.pse.testserver.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.pse.testserver.entities.Post;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

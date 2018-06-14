@@ -1,4 +1,4 @@
-package com.pse.testserver.Post;
+package com.pse.testserver.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
