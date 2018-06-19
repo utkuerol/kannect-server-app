@@ -3,24 +3,174 @@
   <ID>JAVA</ID>
   <OriginalElement>com.pse.testserver.entities</OriginalElement>
   <nodes>
-    <node x="275.2209763071895" y="2187.0">com.pse.testserver.entities.Event</node>
-    <node x="40.730189479638" y="0.0">com.pse.testserver.entities.Post</node>
-    <node x="62.5625" y="696.0">com.pse.testserver.entities.User</node>
-    <node x="210.0032868275516" y="1387.0">com.pse.testserver.entities.Group</node>
-    <node x="272.62657114127705" y="1838.0">com.pse.testserver.entities.Category</node>
-    <node x="431.7673218325791" y="872.0">com.pse.testserver.entities.Subcategory</node>
-    <node x="0.0" y="397.0">com.pse.testserver.entities.Comment</node>
-    <node x="256.0" y="397.0">com.pse.testserver.entities.Message</node>
+    <node x="193.3677900326798" y="1361.0">com.pse.testserver.entities.Event</node>
+    <node x="18.6875" y="0.0">com.pse.testserver.entities.Post</node>
+    <node x="25.750000000000057" y="432.0">com.pse.testserver.entities.User</node>
+    <node x="145.10815108094528" y="847.0">com.pse.testserver.entities.Group</node>
+    <node x="188.82481774761192" y="1122.0">com.pse.testserver.entities.Category</node>
+    <node x="322.1721389517346" y="520.0">com.pse.testserver.entities.Subcategory</node>
+    <node x="0.0" y="243.0">com.pse.testserver.entities.Comment</node>
+    <node x="183.0" y="243.0">com.pse.testserver.entities.Message</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="0.5440971051655709" x="513.0469418100051" y="618.7591805384764" />
+  <edges>
+    <edge source="com.pse.testserver.entities.Comment" target="com.pse.testserver.entities.Post">
+      <point x="-48.375" y="-69.5" />
+      <point x="16.125" y="223.0" />
+      <point x="32.125" y="223.0" />
+      <point x="-94.0625" y="91.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Subcategory" target="com.pse.testserver.entities.Event">
+      <point x="65.62500000000006" y="69.5" />
+      <point x="475.29713895173467" y="827.0" />
+      <point x="478.3248177476119" y="827.0" />
+      <point x="478.3248177476119" y="1331.0" />
+      <point x="380.02163618652594" y="1331.0" />
+      <point x="81.15384615384613" y="-102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Subcategory" target="com.pse.testserver.entities.Category">
+      <point x="7.291666666666686" y="69.5" />
+      <point x="416.9638056184013" y="827.0" />
+      <point x="413.3804722850679" y="827.0" />
+      <point x="413.3804722850679" y="1102.0" />
+      <point x="397.6373177476119" y="1102.0" />
+      <point x="80.3125" y="-69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Post" target="com.pse.testserver.entities.Comment">
+      <point x="-40.3125" y="91.5" />
+      <point x="85.875" y="223.0" />
+      <point x="80.625" y="223.0" />
+      <point x="16.125" y="-69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Message" target="com.pse.testserver.entities.User">
+      <point x="49.875" y="69.5" />
+      <point x="299.375" y="412.0" />
+      <point x="277.79166666666674" y="412.0" />
+      <point x="120.54166666666669" y="-157.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Group" target="com.pse.testserver.entities.Category">
+      <point x="79.125" y="102.5" />
+      <point x="329.7331510809453" y="1072.0" />
+      <point x="301.2623177476119" y="1072.0" />
+      <point x="-16.0625" y="-69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Category" target="com.pse.testserver.entities.Subcategory">
+      <point x="16.0625" y="-69.5" />
+      <point x="333.3873177476119" y="1082.0" />
+      <point x="378.82083333333344" y="1082.0" />
+      <point x="378.82083333333344" y="827.0" />
+      <point x="387.7971389517346" y="827.0" />
+      <point x="-21.875" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Group" target="com.pse.testserver.entities.User">
+      <point x="-46.888888888888914" y="-102.5" />
+      <point x="203.71926219205636" y="767.0" />
+      <point x="223.0000000000001" y="767.0" />
+      <point x="65.75000000000006" y="157.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Post" target="com.pse.testserver.entities.User">
+      <point x="94.0625" y="91.5" />
+      <point x="220.25" y="223.0" />
+      <point x="172.5" y="223.0" />
+      <point x="172.5" y="402.0" />
+      <point x="190.12500000000006" y="402.0" />
+      <point x="32.875" y="-157.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.User" target="com.pse.testserver.entities.Message">
+      <point x="54.79166666666666" y="-157.5" />
+      <point x="212.0416666666667" y="412.0" />
+      <point x="199.625" y="412.0" />
+      <point x="-49.875" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.User" target="com.pse.testserver.entities.Group">
+      <point x="92.05000000000007" y="157.5" />
+      <point x="249.30000000000013" y="777.0" />
+      <point x="227.16370663650082" y="777.0" />
+      <point x="-23.444444444444457" y="-102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.User" target="com.pse.testserver.entities.Event">
+      <point x="-118.35000000000002" y="157.5" />
+      <point x="38.900000000000034" y="827.0" />
+      <point x="90.60815108094528" y="827.0" />
+      <point x="90.60815108094528" y="1341.0" />
+      <point x="201.48317464806445" y="1341.0" />
+      <point x="-97.38461538461536" y="-102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.User" target="com.pse.testserver.entities.Post">
+      <point x="-10.958333333333371" y="-157.5" />
+      <point x="146.29166666666669" y="412.0" />
+      <point x="150.5" y="412.0" />
+      <point x="150.5" y="203.0" />
+      <point x="166.5" y="203.0" />
+      <point x="40.3125" y="91.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.User" target="com.pse.testserver.entities.Comment">
+      <point x="-98.62500000000011" y="-157.5" />
+      <point x="58.62499999999994" y="412.0" />
+      <point x="48.375" y="412.0" />
+      <point x="-16.125" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Category" target="com.pse.testserver.entities.Event">
+      <point x="32.125" y="69.5" />
+      <point x="349.4498177476119" y="1291.0" />
+      <point x="315.09855926344903" y="1291.0" />
+      <point x="16.230769230769226" y="-102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Category" target="com.pse.testserver.entities.Group">
+      <point x="-112.4375" y="-69.5" />
+      <point x="204.88731774761192" y="1102.0" />
+      <point x="171.48315108094528" y="1102.0" />
+      <point x="-79.125" y="102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Event" target="com.pse.testserver.entities.Subcategory">
+      <point x="64.9230769230769" y="-102.5" />
+      <point x="363.7908669557567" y="1321.0" />
+      <point x="467.3248177476119" y="1321.0" />
+      <point x="467.3248177476119" y="817.0" />
+      <point x="460.71380561840135" y="817.0" />
+      <point x="51.041666666666714" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Subcategory" target="com.pse.testserver.entities.Group">
+      <point x="-51.04166666666667" y="69.5" />
+      <point x="358.6304722850679" y="817.0" />
+      <point x="320.9414844142786" y="817.0" />
+      <point x="70.33333333333331" y="-102.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Group" target="com.pse.testserver.entities.Subcategory">
+      <point x="46.888888888888886" y="-102.5" />
+      <point x="297.4970399698342" y="807.0" />
+      <point x="344.0471389517346" y="807.0" />
+      <point x="-65.625" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Event" target="com.pse.testserver.entities.Category">
+      <point x="0.0" y="-102.5" />
+      <point x="298.8677900326798" y="1281.0" />
+      <point x="285.1998177476119" y="1281.0" />
+      <point x="-32.125" y="69.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Comment" target="com.pse.testserver.entities.User">
+      <point x="48.375" y="69.5" />
+      <point x="112.875" y="412.0" />
+      <point x="102.45833333333331" y="412.0" />
+      <point x="-54.79166666666674" y="-157.5" />
+    </edge>
+    <edge source="com.pse.testserver.entities.Event" target="com.pse.testserver.entities.User">
+      <point x="-32.46153846153845" y="-102.5" />
+      <point x="266.40625157114135" y="1301.0" />
+      <point x="134.60815108094528" y="1301.0" />
+      <point x="134.60815108094528" y="827.0" />
+      <point x="144.10000000000008" y="827.0" />
+      <point x="-13.149999999999977" y="157.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8783620136897121" x="339.5259403438292" y="267.763224673776" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Inner Classes</Category>
     <Category>Constructors</Category>
     <Category>Methods</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>public</VISIBILITY>

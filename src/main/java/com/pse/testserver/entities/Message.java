@@ -28,39 +28,85 @@ public class Message {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public User getSender() {
-        return sender;
-    }
-
-    public void setSender(User sender) {
-        this.sender = sender;
-    }
-
-    public User getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
-    }
-
+    /**
+     * Gets date.
+     *
+     * @return Value of date.
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Sets new date.
+     *
+     * @param date New value of date.
+     */
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * Gets receiver.
+     *
+     * @return Value of receiver.
+     */
+    public User getReceiver() {
+        return receiver;
+    }
+
+    /**
+     * Sets new receiver.
+     *
+     * @param receiver New value of receiver.
+     */
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
+    }
+
+    /**
+     * Gets text.
+     *
+     * @return Value of text.
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * Sets new text.
+     *
+     * @param text New value of text.
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * Sets new id.
+     *
+     * @param id New value of id.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets sender.
+     *
+     * @return Value of sender.
+     */
+    public User getSender() {
+        return sender;
+    }
+
+    /**
+     * Sets new sender.
+     *
+     * @param sender New value of sender.
+     */
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 }

@@ -1,0 +1,5 @@
+com.pse.testserver
+com.pse.testserver.controller
+com.pse.testserver.entities
+com.pse.testserver.repository
+com.pse.testserver.service
