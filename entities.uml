@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.pse.testserver.entities</OriginalElement>
+  <nodes>
+    <node x="275.2209763071895" y="2187.0">com.pse.testserver.entities.Event</node>
+    <node x="40.730189479638" y="0.0">com.pse.testserver.entities.Post</node>
+    <node x="62.5625" y="696.0">com.pse.testserver.entities.User</node>
+    <node x="210.0032868275516" y="1387.0">com.pse.testserver.entities.Group</node>
+    <node x="272.62657114127705" y="1838.0">com.pse.testserver.entities.Category</node>
+    <node x="431.7673218325791" y="872.0">com.pse.testserver.entities.Subcategory</node>
+    <node x="0.0" y="397.0">com.pse.testserver.entities.Comment</node>
+    <node x="256.0" y="397.0">com.pse.testserver.entities.Message</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.5440971051655709" x="513.0469418100051" y="618.7591805384764" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
