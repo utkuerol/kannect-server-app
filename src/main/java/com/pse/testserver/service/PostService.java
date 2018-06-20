@@ -56,6 +56,11 @@ public class PostService {
     public boolean deletePost(Post post) {
         return false;
     }
+    
+    @Transactional
+    public boolean editPost(Post post) {
+        return false;
+    }
 
 
 }
