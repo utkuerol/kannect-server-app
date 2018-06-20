@@ -2,23 +2,29 @@ package com.pse.testserver.service;
 
 import java.util.List;
 
-import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
+import com.pse.testserver.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
-import com.pse.testserver.repository.UserRepository;
 
+import com.pse.testserver.repository.UserRepository;
+import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
+
+@Service
 public class UserService {
     @Autowired
-    UserRepositoryAdvancedImpl userRepositoryADV;
     UserRepository userRepository;
-
+    UserRepositoryAdvancedImpl userRepositoryADV;
 
     @Transactional
-    public List<User> getAllByName(User user) {
-        return userRepositoryADV.findAllByName(user.getName());
+    public List<User> getAllByName(String name) {
+        return userRepositoryADV.findAllByName(name);
+    }
+
+    @Transactional
+    public User getById(long id) {
+        return userRepository.findById(id);
     }
 
     @Transactional
@@ -27,12 +33,7 @@ public class UserService {
     }
 
     @Transactional
-    public User getById(User user) {
-        return userRepository.findById(user.getId());
-    }
-
-    @Transactional
-    public User geByMail(User user) {
-        return  userRepository.findByEmail(user.getEmail());
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
