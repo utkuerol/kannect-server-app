@@ -18,19 +18,19 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getUsers(@RequestParam(value = "name", defaultValue = "") String name) {
-        //userService.getUsersByName(name) ...
+        userService.getAllByName(name);
         return null;
     }
 
     @PostMapping("/subscribe")
     public void subscribeUser(@RequestParam(value = "subscriber") long subscriberId,
                               @RequestParam(value = "subscribed") long subscribedId) {
-        //userService.subscribeUser(subscriber, subscribed)
+        boolean success = userService.subscribeUser(subscriberId, subscribedId);
     }
 
     @PostMapping("/unsubscribe")
     public void unsubscribeUser(@RequestParam(value = "subscriber") long subscriberId,
                                 @RequestParam(value = "subscribed") long subscribedId) {
-        //userService.unsubscribeUser(subscriber, subscribed)
+        userService.unsubscribeUser(subscriberId, subscribedId);
     }
 }

@@ -36,4 +36,15 @@ public class UserService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Transactional
+    public boolean subscribeUser(long subscriber, long subscribed) {
+        return false;
+    }
+
+    @Transactional
+    public boolean unsubscribeUser(long subscriber, long subscribed) {
+        return false;
+    }
+
 }
