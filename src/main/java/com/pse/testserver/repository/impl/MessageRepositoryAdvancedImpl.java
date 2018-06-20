@@ -31,11 +31,11 @@ public class MessageRepositoryAdvancedImpl implements MessageRepositoryAdvanced 
     @Autowired
     private EntityManager entityManager;
 
-    public List<Message> findAllByReceiverSortedByDate(User user, Date date) {
+    public List<Message> findAllByReceiverSortedByDate(User user) {
         return null;
     }
 
-    public List<Message> findAllByReceiverSortedBySender(User user, Date date) {
+    public List<Message> findAllByReceiverSortedBySender(User user) {
         return null;
     }
 }

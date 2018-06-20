@@ -21,6 +21,10 @@ public class EventService {
     @Autowired
     EventRepositoryAdvancedImpl eventRepositoryADV;
 
+    @Transactional
+    public List<Event> getAllByName(String name) {
+        return eventRepositoryADV.findAllByName(name);
+    }
 
     @Transactional
     public List<Event> getAllByDate(Date date) {
@@ -49,14 +53,17 @@ public class EventService {
         return eventRepositoryADV.findAllByNameSortedByCategory(name, category);
     }
 
+    @Transactional
     public Event getById(int id) {
         return eventRepository.findById(id);
     }
 
+    @Transactional
     public Event getByName(String name) {
         return eventRepository.findByName(name);
     }
 
+    @Transactional
     public Event getByDate(Date date) {
         return eventRepository.findByDate(date);
     }

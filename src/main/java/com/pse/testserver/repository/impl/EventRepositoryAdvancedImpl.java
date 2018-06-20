@@ -50,4 +50,8 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     public List<Event> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
+
+    public List<Event> findAllByName(String name) {
+        return null;
+    }
 }

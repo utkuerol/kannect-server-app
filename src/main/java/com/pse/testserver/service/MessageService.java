@@ -41,12 +41,17 @@ public class MessageService {
 
 
     @Transactional
-    public List<Message> getAllByReceiverSortedByDate(User user, Date date) {
-        return messageRepositoryADV.findAllByReceiverSortedByDate(user, date);
+    public List<Message> getAllByReceiverSortedByDate(User user) {
+        return messageRepositoryADV.findAllByReceiverSortedByDate(user);
     }
 
     @Transactional
-    public List<Message> findAllByReceiverSortedBySender(User user, Date date) {
-        return messageRepositoryADV.findAllByReceiverSortedBySender(user, date);
+    public List<Message> findAllByReceiverSortedBySender(User user) {
+        return messageRepositoryADV.findAllByReceiverSortedBySender(user);
+    }
+
+    @Transactional
+    public boolean sendMessage(User sender, User receiver) {
+        return false;
     }
 }

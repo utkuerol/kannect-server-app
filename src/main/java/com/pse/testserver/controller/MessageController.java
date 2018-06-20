@@ -20,19 +20,19 @@ public class MessageController {
     @GetMapping("/receivedMessages")
     @ResponseBody
     public List<Message> getReceivedMessages(@RequestBody User user) {
-        //messageService.getMessagesByReceiver(user);
-        return null;
+
+        return messageService.getAllByReceiverSortedByDate(user);
     }
 
     @GetMapping("/sentMessages")
     @ResponseBody
     public List<Message> getSentMessages(@RequestBody User user) {
-        //messageService.getMessagesBySender(user);
-        return null;
+        return messageService.findAllByReceiverSortedBySender(user);
+
     }
 
     @PostMapping("/sendMessage")
-    public void sendMessage(@RequestBody User sender, @RequestBody User receiver) {
-        //messageService.sendMessage(sender, receiver)
+    public boolean sendMessage(@RequestBody User sender, @RequestBody User receiver) {
+        return messageService.sendMessage(sender, receiver);
     }
 }

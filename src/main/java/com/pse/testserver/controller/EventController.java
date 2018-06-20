@@ -25,8 +25,8 @@ public class EventController {
     
     @GetMapping("/events")
     public List<Event> getEvents(@RequestParam(value = "name", defaultValue = "") String name) {
-        //eventService.getEventsByName(name) ...
-        return null;
+        return eventService.getAllByName(name);
+
     }
     
     
