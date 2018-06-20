@@ -58,4 +58,9 @@ public class EventService {
     public Event getByDate(Date date) {
         return eventRepository.findByDate(date);
     }
+    
+    @Transactional
+    public boolean participateInEvent(Event event) {
+        return false;
+    }
 }
