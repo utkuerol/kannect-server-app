@@ -8,7 +8,6 @@ import com.pse.testserver.repository.impl.EventRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
 import java.util.List;
@@ -85,7 +84,7 @@ public class EventService {
     }
 
     @Transactional
-    public boolean editEvent(Event event) {
+    public boolean editEvent(Event editedEvent, Event eventToEdit) {
         return false;
     }
 }

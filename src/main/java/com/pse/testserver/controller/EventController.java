@@ -1,19 +1,12 @@
 package com.pse.testserver.controller;
 
-import java.util.List;
-
+import com.pse.testserver.entities.Event;
+import com.pse.testserver.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.User;
-import com.pse.testserver.service.EventService;
+import java.util.List;
 
 @RestController
 @ComponentScan(basePackages = "com.pse.testserver.models.Post.Post")
@@ -34,14 +27,14 @@ public class EventController {
         return eventService.createEvent(event);
     }
     
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public boolean deleteEvent(@RequestBody Event event) {
         return eventService.deleteEvent(event);
     }
    
     @PostMapping("/edit")
-    public boolean editEvent(@RequestBody Event event) {
-        return eventService.editEvent(event);
+    public boolean editEvent(@RequestBody Event editedEvent, @RequestBody Event eventToEdit) {
+        return eventService.editEvent(editedEvent, eventToEdit);
     }
     
 

@@ -1,10 +1,6 @@
 package com.pse.testserver.controller;
 
-import com.pse.testserver.entities.Comment;
-import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
+import com.pse.testserver.entities.*;
 import com.pse.testserver.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,14 +40,14 @@ public class PostController {
 
     }
 
-    @PostMapping("/deletePost")
+    @DeleteMapping("/deletePost")
     public boolean deletePost(@RequestBody Post post) {
         return postService.deletePost(post);
     }
     
     @PostMapping("/editPost")
-    public boolean editPost(@RequestBody Post editedPost ,@RequestBody Post PostToEdit) {
-        postService.editPost(PostToEdit);
+    public boolean editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
+        postService.editPost(editedPost, postToEdit);
         return false;
     }
 

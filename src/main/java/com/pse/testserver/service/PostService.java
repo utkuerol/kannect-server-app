@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class PostService {
@@ -58,7 +57,7 @@ public class PostService {
     }
     
     @Transactional
-    public boolean editPost(Post post) {
+    public boolean editPost(Post editedPost, Post postToEdit) {
         return false;
     }
 

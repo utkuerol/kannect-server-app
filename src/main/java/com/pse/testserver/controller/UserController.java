@@ -1,5 +1,6 @@
 package com.pse.testserver.controller;
 
+import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.service.UserService;
@@ -44,6 +45,18 @@ public class UserController {
     @PostMapping("/leaveGroup")
     public boolean leaveGroup(@RequestBody User user, @RequestBody Group group) {
         return userService.leaveGroup(user, group);
+    }
+
+    @PostMapping("/participateInEvent")
+    public boolean participateInEvent(@RequestBody User user, @RequestBody Event event) {
+        //return userService.participateInEvent(user, event);
+        return true;
+    }
+
+    @PostMapping("/leaveEvent")
+    public boolean leaveEvent(@RequestBody User user, @RequestBody Event event) {
+        //return userService.leaveEvent(user, event);
+        return true;
     }
 
 }
