@@ -1,13 +1,12 @@
 package com.pse.testserver.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pse.testserver.entities.Event;
+import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,24 +19,25 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    ObjectMapper mapper = new ObjectMapper();
-
-
-    @GetMapping("/posts")
+    @GetMapping("/personalFeed")
     @ResponseBody
-    public String getPosts() {
+    public List<Post> getPersonalFeed(@RequestBody User user) {
+        //postService.getPersonalFeed(user);
+        return null;
+    }
 
-        List<Post> feed = postService.getAllPosts();
+    @GetMapping("/groupFeed")
+    @ResponseBody
+    public List<Post> getGroupFeed(@RequestBody Group group) {
+        //postService.getGroupFeed(group);
+        return null;
+    }
 
-        try {
-            //Convert object to JSON string
-            String feedJson = mapper.writeValueAsString(feed);
-            return feedJson;
-
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return "failed";
+    @GetMapping("/eventFeed")
+    @ResponseBody
+    public List<Post> getEventFeed(@RequestBody Event event) {
+        //postService.getEventFeed(event);
+        return null;
     }
 
     @PostMapping("/post")
