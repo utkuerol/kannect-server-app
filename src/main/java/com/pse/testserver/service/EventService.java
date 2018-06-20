@@ -1,20 +1,19 @@
 package com.pse.testserver.service;
 
-import java.util.Date;
-import java.util.List;
-
 import com.pse.testserver.entities.Category;
+import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.User;
+import com.pse.testserver.repository.EventRepository;
 import com.pse.testserver.repository.impl.EventRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.repository.EventRepository;
+import java.util.Date;
+import java.util.List;
 
 public class EventService {
-	@Autowired
+
+    @Autowired
     EventRepository eventRepository;
 
     @Autowired
