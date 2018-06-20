@@ -27,32 +27,8 @@ public class UserRepositoryAdvancedImpl implements UserRepositoryAdvanced {
     
 
     @Override
-    public Set<Group> findAllJoinedGroups(User user) {
-        String sql = "select groupId  from group_members where user_id like " + user.getId();
-        List<User> users = (List<User>) entityManager.createNativeQuery(sql);
-        Set<Group> joinedGroups = new HashSet<Group>();
-        for(User u : users) {
-            joinedGroups = u.getJoinedGroups();
-        }
-        return joinedGroups;
-    }
-    @Override
-    public Set<Message> filndAllMessages(User user) {
+    public Set<User> findAllByName(String name) {
         return null;
     }
     
-    @Override
-    public Set<Event> findAllparticipatedEvents(User user) {
-        return null;
-    }
-    
-    @Override
-    public Set<User> findAllSubscriptions(User user) {
-        return null;
-    }
-    
-    @Override
-    public Set<User> findAllSubscribers(User user) {
-        return null;
-    }
 }

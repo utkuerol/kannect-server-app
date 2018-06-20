@@ -1,5 +1,6 @@
 package com.pse.testserver.repository.impl;
 
+import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Message;
@@ -29,12 +30,27 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
     private EntityManager entityManager;
     
     @Override
+    public Set<Group> findAllByName(String name) {
+        return null;
+    }
+    
+    @Override
     public Set<User> findJoinedUsers(Group group) {
         return null;
     }
     
     @Override
     public Set<Post> findPost(Group group) {
+        return null;
+    }
+    
+    @Override
+    public Set<Group> findAllByCategory(Category category) {
+        return null;
+    }
+    
+    @Override
+    public Set<Group> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
 }

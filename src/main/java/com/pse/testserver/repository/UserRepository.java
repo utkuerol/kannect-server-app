@@ -16,9 +16,10 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     User findByName(String name);
     User findByEmail(String email);
     
-    
+/*    
     @Modifying 
     @Query("update User set Email = :email where id = :id")
     int updateUser(int id, String email);
+    */
     
 }
