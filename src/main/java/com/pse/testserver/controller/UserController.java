@@ -17,6 +17,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/users")
+    @ResponseBody
     public List<User> getUsers(@RequestParam(value = "name", defaultValue = "") String name) {
         userService.getAllByName(name);
         return null;
