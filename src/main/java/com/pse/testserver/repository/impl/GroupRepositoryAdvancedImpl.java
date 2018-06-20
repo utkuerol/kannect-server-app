@@ -11,6 +11,7 @@ import com.pse.testserver.repository.GroupRepositoryAdvanced;
 import com.pse.testserver.repository.UserRepositoryAdvanced;
 
 import java.util.List;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,7 +27,6 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
 
     @Autowired
     private EntityManager entityManager;
-
     
     @Override
     public List<Group> findAllByName(String name) {

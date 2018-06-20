@@ -14,12 +14,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EventRepositoryAdvanced{
-
+    
     List<Event> findAllByDate(Date date);
-
     List<Event> findByNmeSortedByDate(String name, Date date);
-
     List<Event> findAllByNameSortedByCategory(String name, Category category);
-
     List<User> findParticipatedUsers(Event event);
 }

@@ -15,6 +15,6 @@ public class CategoryService {
 
     @Transactional
     public List<Category> getAllPosts() {
-        return null;
+        return categoryRepository.findAll();
     }
 }

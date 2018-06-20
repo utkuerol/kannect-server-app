@@ -14,14 +14,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GroupRepositoryAdvanced{
-
+    
     List<Group> findAllByName(String name);
-
     List<Group> findAllByCategory(Category category);
-
     List<Group> findAllByNameSortedByCategory(String name, Category category);
-
     List<User> findJoinedUsers(Group group);
-
     List<Post> findPost(Group group);
 }

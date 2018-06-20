@@ -2,7 +2,6 @@ package com.pse.testserver.service;
 
 import java.util.List;
 
-import com.pse.testserver.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,16 +14,7 @@ public class MessageService {
     MessageRepository messageRepository;
 
     @Transactional
-    public Message getById(int id) {
-        return messageRepository.findById(id);
-    }
-
-    @Transactional
-    Message getBySender(User user) {
-        return messageRepository.findBySender(user);
-    }
-
-    public Message getByReceiver(User user) {
-        return messageRepository.findByReceiver(user);
+    public List<Message> getAllPosts() {
+        return messageRepository.findAll();
     }
 }

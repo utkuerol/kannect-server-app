@@ -42,11 +42,11 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     public List<User> findParticipatedUsers(Event event) {
         return null;
     }
-
+    
     public List<Event> findAllSortedByDate(String name, Date date) {
         return null;
     }
-
+    
     public List<Event> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
