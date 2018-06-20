@@ -7,16 +7,19 @@ import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.User;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EventRepositoryAdvanced{
-    
-    Set<Event> findAllByDate(Date date);
-    Set<Event> findByNmeSortedByDate(String name, Date date);
-    Set<Event> findAllByNameSortedByCategory(String name, Category category);
-    Set<User> findParticipatedUsers(Event event);
+
+    List<Event> findAllByDate(Date date);
+
+    List<Event> findByNmeSortedByDate(String name, Date date);
+
+    List<Event> findAllByNameSortedByCategory(String name, Category category);
+
+    List<User> findParticipatedUsers(Event event);
 }

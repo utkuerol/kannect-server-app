@@ -10,9 +10,7 @@ import com.pse.testserver.repository.EventRepositoryAdvanced;
 import com.pse.testserver.repository.GroupRepositoryAdvanced;
 import com.pse.testserver.repository.UserRepositoryAdvanced;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -28,29 +26,30 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
 
     @Autowired
     private EntityManager entityManager;
+
     
     @Override
-    public Set<Group> findAllByName(String name) {
+    public List<Group> findAllByName(String name) {
         return null;
     }
     
     @Override
-    public Set<User> findJoinedUsers(Group group) {
+    public List<User> findJoinedUsers(Group group) {
         return null;
     }
     
     @Override
-    public Set<Post> findPost(Group group) {
+    public List<Post> findPost(Group group) {
         return null;
     }
     
     @Override
-    public Set<Group> findAllByCategory(Category category) {
+    public List<Group> findAllByCategory(Category category) {
         return null;
     }
     
     @Override
-    public Set<Group> findAllByNameSortedByCategory(String name, Category category) {
+    public List<Group> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
 }

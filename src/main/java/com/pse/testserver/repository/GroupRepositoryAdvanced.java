@@ -7,17 +7,21 @@ import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.Post;
 import com.pse.testserver.entities.User;
 
-import java.util.Set;
+import java.util.List;
 
 
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GroupRepositoryAdvanced{
-    
-    Set<Group> findAllByName(String name);
-    Set<Group> findAllByCategory(Category category);
-    Set<Group> findAllByNameSortedByCategory(String name, Category category);
-    Set<User> findJoinedUsers(Group group);
-    Set<Post> findPost(Group group);
+
+    List<Group> findAllByName(String name);
+
+    List<Group> findAllByCategory(Category category);
+
+    List<Group> findAllByNameSortedByCategory(String name, Category category);
+
+    List<User> findJoinedUsers(Group group);
+
+    List<Post> findPost(Group group);
 }

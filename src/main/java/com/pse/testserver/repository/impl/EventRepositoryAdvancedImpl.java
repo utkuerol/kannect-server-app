@@ -9,9 +9,9 @@ import com.pse.testserver.repository.EventRepositoryAdvanced;
 import com.pse.testserver.repository.UserRepositoryAdvanced;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.List;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -29,25 +29,25 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     private EntityManager entityManager;
     
     @Override
-    public Set<Event> findAllByDate(Date date) {
+    public List<Event> findAllByDate(Date date) {
         return null;
     }
     
     @Override
-    public Set<Event> findByNmeSortedByDate(String name, Date date) {
+    public List<Event> findByNmeSortedByDate(String name, Date date) {
         return null;
     }
     
     @Override
-    public Set<User> findParticipatedUsers(Event event) {
+    public List<User> findParticipatedUsers(Event event) {
         return null;
     }
-    
-    public Set<Event> findAllSortedByDate(String name, Date date) {
+
+    public List<Event> findAllSortedByDate(String name, Date date) {
         return null;
     }
-    
-    public Set<Event> findAllByNameSortedByCategory(String name, Category category) {
+
+    public List<Event> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
 }

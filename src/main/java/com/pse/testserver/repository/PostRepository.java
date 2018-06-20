@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post,String> {
 
-    @Query(value = "SELECT * from post",
+    @Query(value = "SELECT * from posts",
             nativeQuery=true)
     List<Post> findAll();
 }
