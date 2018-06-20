@@ -24,14 +24,14 @@ public class UserController {
     }
 
     @PostMapping("/subscribe")
-    public void subscribeUser(@RequestParam(value = "subscriber") long subscriberId,
-                              @RequestParam(value = "subscribed") long subscribedId) {
-        boolean success = userService.subscribeUser(subscriberId, subscribedId);
+    public void subscribeUser(@RequestBody User subscriber,
+                              @RequestBody User subscribed) {
+        boolean success = userService.subscribeUser(subscriber, subscribed);
     }
 
     @PostMapping("/unsubscribe")
-    public void unsubscribeUser(@RequestParam(value = "subscriber") long subscriberId,
-                                @RequestParam(value = "subscribed") long subscribedId) {
-        userService.unsubscribeUser(subscriberId, subscribedId);
+    public void unsubscribeUser(@RequestBody User subscriber,
+                                @RequestBody User subscribed) {
+        userService.unsubscribeUser(subscriber, subscribed);
     }
 }
