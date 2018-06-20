@@ -3,27 +3,52 @@ package com.pse.testserver.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Entity class for the persisted message data from the "messages" table.
+ * Represents a message, providing access to the message's unique id, text,
+ * sender, receiver and date of creation
+ */
 @Entity
 @Table(name = "messages")
 public class Message {
 
+    /**
+     * Incremental generated unique id.
+     */
     @Column(name = "id")
     private int id;
 
+    /**
+     * User-created text to be displayed in this message.
+     */
     @Column(name = "text")
     private String text;
 
+    /**
+     * User, which sent this message.
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
     private User sender;
 
+    /**
+     * User, which received this message.
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
     private User receiver;
 
+    /**
+     * Date of creation of this message.
+     */
     @Column(name = "date")
     private Date date;
 
+    /**
+     * Gets id.
+     *
+     * @return Value of id.
+     */
     public int getId() {
         return id;
     }
