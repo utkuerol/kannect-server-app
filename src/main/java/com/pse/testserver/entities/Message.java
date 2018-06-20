@@ -8,7 +8,7 @@ import java.util.Date;
 public class Message {
 
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name = "text")
     private String text;
@@ -24,7 +24,7 @@ public class Message {
     @Column(name = "date")
     private Date date;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

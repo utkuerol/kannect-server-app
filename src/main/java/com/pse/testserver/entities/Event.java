@@ -1,6 +1,8 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -25,6 +27,20 @@ public class Event {
      */
     @Column(name = "name")
     private String name;
+    
+    /**
+     * date of the event.
+     */
+    @Column(name = "name")
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     /**
      * Description of the event, containing extra information intended to be given from the user.

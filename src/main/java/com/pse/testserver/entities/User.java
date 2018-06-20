@@ -19,19 +19,27 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
+    
+    /**
+     * Name
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "name")
+    private String name;
 
     /**
      * E-Mail address.
      */
     @Column(name = "mail")
-    private String mail;
+    private String email;
 
     /**
      * Url of the profile picture.
      */
     @Column(name = "image_url")
-    private String image_url;
+    private String imageUrl;
 
     /**
      * Users, which this user subscribes.
@@ -125,7 +133,7 @@ public class User {
      *
      * @return Value of id.
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -134,7 +142,7 @@ public class User {
      *
      * @param id New value of id.
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -251,8 +259,8 @@ public class User {
      *
      * @return Value of mail.
      */
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
     /**
@@ -260,8 +268,8 @@ public class User {
      *
      * @param mail New value of mail.
      */
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     /**
@@ -306,7 +314,7 @@ public class User {
      * @return Value of image_url.
      */
     public String getImage_url() {
-        return image_url;
+        return imageUrl;
     }
 
     /**
@@ -314,8 +322,8 @@ public class User {
      *
      * @param image_url New value of image_url.
      */
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImage_url(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     /**

@@ -19,7 +19,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     /**
      * Name of the group.
@@ -180,7 +180,7 @@ public class Group {
      *
      * @return Value of id.
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -189,7 +189,7 @@ public class Group {
      *
      * @param id New value of id.
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
