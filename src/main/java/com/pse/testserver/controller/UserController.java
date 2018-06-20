@@ -25,15 +25,15 @@ public class UserController {
     }
 
     @PostMapping("/subscribe")
-    public void subscribeUser(@RequestBody User subscriber,
-                              @RequestBody User subscribed) {
-        boolean success = userService.subscribeUser(subscriber, subscribed);
+    public boolean subscribeUser(@RequestBody User subscriber,
+                                 @RequestBody User subscribed) {
+        return userService.subscribeUser(subscriber, subscribed);
     }
 
     @PostMapping("/unsubscribe")
-    public void unsubscribeUser(@RequestBody User subscriber,
-                                @RequestBody User subscribed) {
-        userService.unsubscribeUser(subscriber, subscribed);
+    public boolean unsubscribeUser(@RequestBody User subscriber,
+                                   @RequestBody User subscribed) {
+        return userService.unsubscribeUser(subscriber, subscribed);
     }
 
     @PostMapping("/joinGroup")
