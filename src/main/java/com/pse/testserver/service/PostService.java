@@ -62,5 +62,14 @@ public class PostService {
         return false;
     }
 
+    @Transactional
+    public boolean likePost(Post post) {
+        return false;
+    }
+    
+    @Transactional
+    public boolean unlikePost(Post post) {
+        return false;
+    }
 
 }

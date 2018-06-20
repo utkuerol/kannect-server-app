@@ -54,6 +54,17 @@ public class PostController {
         return false;
     }
 
+    @PostMapping("/likePost")
+    public boolean likePost(@RequestBody Post post, User user) {
+        postService.likePost(post);
+        return false;
+    }
+    
+    @PostMapping("/unlikePost")
+    public boolean unlikePost(@RequestBody Post post, User user) {
+        postService.unlikePost(post);
+        return false;
+    }
 
 
 }
