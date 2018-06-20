@@ -33,7 +33,7 @@ public class UserService {
     }
 
     @Transactional
-    public User findByEmail(String email) {
+    public User getByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
