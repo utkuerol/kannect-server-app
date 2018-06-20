@@ -14,7 +14,7 @@ import java.util.List;
 public class EventController {
     
     @Autowired
-    EventService eventService;
+    private EventService eventService;
     
     @GetMapping("/events")
     public List<Event> getEvents(@RequestParam(value = "name", defaultValue = "") String name) {
@@ -26,7 +26,7 @@ public class EventController {
     public boolean createEvent(@RequestBody Event event) {
         return eventService.createEvent(event);
     }
-    
+
     @DeleteMapping("/delete")
     public boolean deleteEvent(@RequestBody Event event) {
         return eventService.deleteEvent(event);

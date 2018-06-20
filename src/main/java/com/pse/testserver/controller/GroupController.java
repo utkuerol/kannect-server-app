@@ -1,8 +1,6 @@
 package com.pse.testserver.controller;
 
 import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
 import com.pse.testserver.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -34,8 +32,8 @@ public class GroupController {
         groupService.getAllByName(name);
         return null;
     }
-    
-    
+
+
     @PostMapping("/editGroup")
     public boolean editGroup(@RequestBody Group editedGroup ,@RequestBody Group GroupToEdit) {
         groupService.editGroup(editedGroup, GroupToEdit);

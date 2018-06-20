@@ -16,10 +16,10 @@ import java.util.List;
 public class EventService {
 
     @Autowired
-    EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     @Autowired
-    EventRepositoryAdvancedImpl eventRepositoryADV;
+    private EventRepositoryAdvancedImpl eventRepositoryADV;
 
     @Transactional
     public List<Event> getAllByName(String name) {

@@ -1,26 +1,24 @@
 package com.pse.testserver.service;
 
-import java.util.List;
-
-
 import com.pse.testserver.entities.Category;
+import com.pse.testserver.entities.Group;
+import com.pse.testserver.entities.Post;
 import com.pse.testserver.entities.User;
+import com.pse.testserver.repository.GroupRepository;
 import com.pse.testserver.repository.impl.GroupRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.repository.GroupRepository;
+import java.util.List;
 
 @Service
 public class GroupService {
     @Autowired
-    GroupRepositoryAdvancedImpl groupRepositoryADV;
+    private GroupRepositoryAdvancedImpl groupRepositoryADV;
 
     @Autowired
-    GroupRepository groupRepository;
+    private GroupRepository groupRepository;
 
 
     @Transactional

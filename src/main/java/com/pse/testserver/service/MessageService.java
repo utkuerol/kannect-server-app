@@ -1,26 +1,22 @@
 package com.pse.testserver.service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
+import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.User;
+import com.pse.testserver.repository.MessageRepository;
 import com.pse.testserver.repository.impl.MessageRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pse.testserver.entities.Message;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.repository.MessageRepository;
+import java.util.List;
 
 @Service
 public class MessageService {
     @Autowired
-    MessageRepository messageRepository;
+    private MessageRepository messageRepository;
 
     @Autowired
-    MessageRepositoryAdvancedImpl messageRepositoryADV;
+    private MessageRepositoryAdvancedImpl messageRepositoryADV;
 
     @Transactional
     public Message getById(int id) {

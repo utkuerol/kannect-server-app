@@ -16,9 +16,9 @@ import java.util.List;
 public class PostService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
     @Autowired
-    PostRepositoryAdvancedImpl postRepositoryADV;
+    private PostRepositoryAdvancedImpl postRepositoryADV;
 
     @Transactional
     public List<Post> getAllPosts() {
