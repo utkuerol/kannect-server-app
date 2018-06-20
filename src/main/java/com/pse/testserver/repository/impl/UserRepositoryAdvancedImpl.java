@@ -27,7 +27,7 @@ public class UserRepositoryAdvancedImpl implements UserRepositoryAdvanced {
     
 
     @Override
-    public Set<User> findAllByName(String name) {
+    public List<User> findAllByName(String name) {
         return null;
     }
     
