@@ -16,7 +16,7 @@ public class Message {
      * Incremental generated unique id.
      */
     @Column(name = "id")
-    private int id;
+    private long id;
 
     /**
      * User-created text to be displayed in this message.
@@ -49,7 +49,7 @@ public class Message {
      *
      * @return Value of id.
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -19,7 +19,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     /**
      * User-created text to be displayed in the comment.
@@ -53,7 +53,7 @@ public class Comment {
      *
      * @return Value of id.
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -62,7 +62,7 @@ public class Comment {
      *
      * @param id New value of id.
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
