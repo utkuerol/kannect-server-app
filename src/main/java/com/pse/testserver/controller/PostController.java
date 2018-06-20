@@ -3,6 +3,7 @@ package com.pse.testserver.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pse.testserver.entities.Post;
+import com.pse.testserver.entities.User;
 import com.pse.testserver.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,7 +25,7 @@ public class PostController {
 
     @GetMapping("/posts")
     @ResponseBody
-    public String getPosts(Model model) {
+    public String getPosts() {
 
         List<Post> feed = postService.getAllPosts();
 
@@ -38,4 +39,19 @@ public class PostController {
         }
         return "failed";
     }
+
+    @PostMapping("/post")
+    public boolean post(@RequestBody User user, @RequestBody String text) {
+        postService.post(user, text);
+        return false;
+    }
+
+    @PostMapping("/deletePost")
+    public boolean deletePost(@RequestBody Post post) {
+        postService.deletePost(post);
+        return false;
+    }
+
+
+
 }

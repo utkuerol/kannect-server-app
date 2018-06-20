@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.pse.testserver.repository.UserRepository;
 import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
 
+import javax.jws.soap.SOAPBinding;
+
 @Service
 public class UserService {
     @Autowired
@@ -38,13 +40,14 @@ public class UserService {
     }
 
     @Transactional
-    public boolean subscribeUser(long subscriber, long subscribed) {
+    public boolean subscribeUser(User subscriber, User subscribed) {
         return false;
     }
 
     @Transactional
-    public boolean unsubscribeUser(long subscriber, long subscribed) {
+    public boolean unsubscribeUser(User subscriber, User subscribed) {
         return false;
     }
+
 
 }

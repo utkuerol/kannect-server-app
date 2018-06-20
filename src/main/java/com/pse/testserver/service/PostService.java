@@ -46,4 +46,15 @@ public class PostService {
         return postRepositoryADV.findAllByName(name);
     }
 
+
+    @Transactional
+    public boolean post(User user, String text) {
+        return false;
+    }
+
+    @Transactional
+    public boolean deletePost(Post post) {
+        return false;
+    }
+
 }
