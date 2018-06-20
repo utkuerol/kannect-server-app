@@ -47,26 +47,26 @@ public class PostController {
     
     @PostMapping("/editPost")
     public boolean editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
-        postService.editPost(editedPost, postToEdit);
-        return false;
+        return postService.editPost(editedPost, postToEdit);
+
     }
 
     @PostMapping("/likePost")
     public boolean likePost(@RequestBody Post post, User user) {
-        postService.likePost(post);
-        return false;
+        return postService.likePost(post, user);
+
     }
     
     @PostMapping("/unlikePost")
     public boolean unlikePost(@RequestBody Post post, User user) {
-        postService.unlikePost(post);
-        return false;
+        return postService.unlikePost(post, user);
+
     }
     
     @PostMapping("/commentPost")
     public boolean commentPost(@RequestBody Post post, User user, Comment comment) {
-        postService.commentPost(post);
-        return false;
+        return postService.commentPost(post, user, comment);
+
     }
 
 

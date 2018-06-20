@@ -49,14 +49,14 @@ public class UserController {
 
     @PostMapping("/participateInEvent")
     public boolean participateInEvent(@RequestBody User user, @RequestBody Event event) {
-        //return userService.participateInEvent(user, event);
-        return true;
+        return userService.participateInEvent(user, event);
+
     }
 
     @PostMapping("/leaveEvent")
     public boolean leaveEvent(@RequestBody User user, @RequestBody Event event) {
-        //return userService.leaveEvent(user, event);
-        return true;
+        return userService.leaveEvent(user, event);
+
     }
 
 }

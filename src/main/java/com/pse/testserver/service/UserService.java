@@ -1,21 +1,25 @@
 package com.pse.testserver.service;
 
+import java.util.List;
+
+import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
-import com.pse.testserver.repository.UserRepository;
-import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+
+import com.pse.testserver.repository.UserRepository;
+import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
+
+import javax.jws.soap.SOAPBinding;
 
 @Service
 public class UserService {
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserRepositoryAdvancedImpl userRepositoryADV;
+    UserRepository userRepository;
+    UserRepositoryAdvancedImpl userRepositoryADV;
 
     @Transactional
     public List<User> getAllByName(String name) {
@@ -57,4 +61,13 @@ public class UserService {
         return false;
     }
 
+    @Transactional
+    public boolean participateInEvent(User user, Event event) {
+        return false;
+    }
+
+    @Transactional
+    public boolean leaveEvent(User user, Event event) {
+        return false;
+    }
 }
