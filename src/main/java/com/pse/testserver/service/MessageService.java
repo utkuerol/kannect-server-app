@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.Post;
 import com.pse.testserver.repository.MessageRepository;
 
@@ -13,7 +14,7 @@ public class MessageService {
     MessageRepository messageRepository;
 
     @Transactional
-    public List<Post> getAllPosts() {
+    public List<Message> getAllPosts() {
         return messageRepository.findAll();
     }
 }
