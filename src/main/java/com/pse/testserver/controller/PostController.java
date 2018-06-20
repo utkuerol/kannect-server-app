@@ -51,6 +51,12 @@ public class PostController {
         postService.deletePost(post);
         return false;
     }
+    
+    @PostMapping("/editPost")
+    public boolean editPost(@RequestBody Post editedPost ,@RequestBody Post PostToEdit) {
+        postService.editPost(PostToEdit);
+        return false;
+    }
 
 
 
