@@ -38,7 +38,12 @@ public class UserController {
 
     @PostMapping("/joinGroup")
     public void joinGroup(@RequestBody User user, @RequestBody Group group) {
-        //userService.joinGroup(user, group)
+        //userService.joinGroup(user, group);
+    }
+
+    @PostMapping("/leaveGroup")
+    public void leaveGroup(@RequestBody User user, @RequestBody Group group) {
+        //userService.leaveGroup(user, group);
     }
 
 }
