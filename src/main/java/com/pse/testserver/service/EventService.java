@@ -6,11 +6,13 @@ import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepository;
 import com.pse.testserver.repository.impl.EventRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class EventService {
 
     @Autowired
@@ -58,7 +60,7 @@ public class EventService {
     public Event getByDate(Date date) {
         return eventRepository.findByDate(date);
     }
-    
+
     @Transactional
     public boolean participateInEvent(Event event) {
         return false;

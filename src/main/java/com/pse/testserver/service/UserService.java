@@ -2,6 +2,7 @@ package com.pse.testserver.service;
 
 import java.util.List;
 
+import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,14 @@ public class UserService {
         return false;
     }
 
+    @Transactional
+    public boolean joinGroup(User user, Group group) {
+        return false;
+    }
+
+    @Transactional
+    public boolean leaveGroup(User user, Group group) {
+        return false;
+    }
 
 }
