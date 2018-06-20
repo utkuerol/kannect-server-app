@@ -74,4 +74,14 @@ public class GroupService {
     public boolean deleteGroup(Group group) {
         return false;
     }
+    
+    @Transactional
+    public boolean deletePost(Group group) {
+        return false;
+    }
+    
+    @Transactional
+    public boolean editGroup(Group editedgroup, Group groupToEdit) {
+        return false;
+    }
 }
