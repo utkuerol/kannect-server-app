@@ -2,6 +2,7 @@ package com.pse.testserver.service;
 
 import java.util.List;
 
+import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,13 @@ public class UserService {
         return false;
     }
 
+    @Transactional
+    public boolean participateInEvent(User user, Event event) {
+        return false;
+    }
+
+    @Transactional
+    public boolean leaveEvent(User user, Event event) {
+        return false;
+    }
 }

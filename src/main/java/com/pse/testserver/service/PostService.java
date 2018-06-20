@@ -1,9 +1,6 @@
 package com.pse.testserver.service;
 
-import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
+import com.pse.testserver.entities.*;
 import com.pse.testserver.repository.PostRepository;
 import com.pse.testserver.repository.impl.PostRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,16 +59,16 @@ public class PostService {
     }
 
     @Transactional
-    public boolean likePost(Post post) {
+    public boolean likePost(Post post, User user) {
         return false;
     }
     
     @Transactional
-    public boolean unlikePost(Post post) {
+    public boolean unlikePost(Post post, User user) {
         return false;
     }
     @Transactional
-    public boolean commentPost(Post post) {
+    public boolean commentPost(Post post, User user, Comment comment) {
         return false;
     }
 
