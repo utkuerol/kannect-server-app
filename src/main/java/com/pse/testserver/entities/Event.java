@@ -1,7 +1,6 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.Set;
 
@@ -29,7 +28,7 @@ public class Event {
     private String name;
     
     /**
-     * date of the event.
+     * Date of the event.
      */
     @Column(name = "name")
     private Date date;

@@ -22,7 +22,7 @@ public class User {
     private long id;
     
     /**
-     * Name
+     * Name of this user.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
