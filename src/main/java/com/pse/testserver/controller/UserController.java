@@ -1,5 +1,6 @@
 package com.pse.testserver.controller;
 
+import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,10 @@ public class UserController {
                                 @RequestBody User subscribed) {
         userService.unsubscribeUser(subscriber, subscribed);
     }
+
+    @PostMapping("/joinGroup")
+    public void joinGroup(@RequestBody User user, @RequestBody Group group) {
+        //userService.joinGroup(user, group)
+    }
+
 }

@@ -4,10 +4,7 @@ import com.pse.testserver.entities.Group;
 import com.pse.testserver.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @ComponentScan(basePackages = "com.pse.testserver.service")
@@ -19,7 +16,12 @@ public class GroupController {
 
     @PostMapping("/createGroup")
     public void createGroup(@RequestBody Group group) {
-        //groupService.createGroup(group)
+        //groupService.createGroup(group);
+    }
+
+    @DeleteMapping("/deleteGroup")
+    public void deleteGroup(@RequestBody Group group) {
+        //groupService.deleteGroup(group);
     }
 
 
