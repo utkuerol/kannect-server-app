@@ -8,6 +8,7 @@ import com.pse.testserver.repository.impl.EventRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
 import java.util.List;
@@ -70,6 +71,21 @@ public class EventService {
 
     @Transactional
     public boolean participateInEvent(Event event) {
+        return false;
+    }
+
+    @Transactional
+    public boolean createEvent(Event event) {
+        return false;
+    }
+
+    @Transactional
+    public boolean deleteEvent(Event event) {
+        return false;
+    }
+
+    @Transactional
+    public boolean editEvent(Event event) {
         return false;
     }
 }

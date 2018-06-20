@@ -22,34 +22,30 @@ public class PostController {
     @GetMapping("/personalFeed")
     @ResponseBody
     public List<Post> getPersonalFeed(@RequestBody User user) {
-        //postService.getPersonalFeed(user);
-        return null;
+        return postService.getAllByUser(user);
     }
 
     @GetMapping("/groupFeed")
     @ResponseBody
     public List<Post> getGroupFeed(@RequestBody Group group) {
-        //postService.getGroupFeed(group);
-        return null;
+        return postService.getAllByGroup(group);
     }
 
     @GetMapping("/eventFeed")
     @ResponseBody
     public List<Post> getEventFeed(@RequestBody Event event) {
-        //postService.getEventFeed(event);
-        return null;
+        return postService.getAllByEvent(event);
     }
 
     @PostMapping("/post")
     public boolean post(@RequestBody User user, @RequestBody String text) {
-        postService.post(user, text);
-        return false;
+        return postService.post(user, text);
+
     }
 
     @PostMapping("/deletePost")
     public boolean deletePost(@RequestBody Post post) {
-        postService.deletePost(post);
-        return false;
+        return postService.deletePost(post);
     }
 
 
