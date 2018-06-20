@@ -64,4 +64,14 @@ public class GroupService {
         return groupRepository.findByName(name);
     }
 
+    @Transactional
+    public boolean createGroup(Group group) {
+        return false;
+    }
+
+
+    @Transactional
+    public boolean deleteGroup(Group group) {
+        return false;
+    }
 }

@@ -15,13 +15,13 @@ public class GroupController {
     GroupService groupService;
 
     @PostMapping("/createGroup")
-    public void createGroup(@RequestBody Group group) {
-        //groupService.createGroup(group);
+    public boolean createGroup(@RequestBody Group group) {
+        return groupService.createGroup(group);
     }
 
     @DeleteMapping("/deleteGroup")
-    public void deleteGroup(@RequestBody Group group) {
-        //groupService.deleteGroup(group);
+    public boolean deleteGroup(@RequestBody Group group) {
+        return groupService.deleteGroup(group);
     }
 
 
