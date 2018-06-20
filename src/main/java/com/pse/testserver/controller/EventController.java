@@ -29,7 +29,20 @@ public class EventController {
 
     }
     
+    @PostMapping("/create")
+    public void createEvent(@RequestBody Event event) {
+        
+    }
     
+    @PostMapping("/delete")
+    public void deleteEvent(@RequestBody Event event) {
+        
+    }
+   
+    @PostMapping("/edit")
+    public void editEvent(@RequestBody Event event) {
+        
+    }
     
 
 }
