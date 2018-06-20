@@ -45,7 +45,7 @@ public class Message {
     private Date date;
 
     /**
-     * Gets id.
+     * Gets incremental generated unique id.
      *
      * @return Value of id.
      */
@@ -73,7 +73,7 @@ public class Message {
     }
 
     /**
-     * Gets receiver.
+     * Gets user, which received this message..
      *
      * @return Value of receiver.
      */
@@ -91,7 +91,7 @@ public class Message {
     }
 
     /**
-     * Gets text.
+     * Gets user-created text to be displayed in this message.
      *
      * @return Value of text.
      */
@@ -118,7 +118,7 @@ public class Message {
     }
 
     /**
-     * Gets sender.
+     * Gets user, which sent this message.
      *
      * @return Value of sender.
      */
