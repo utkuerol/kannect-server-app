@@ -71,5 +71,9 @@ public class PostService {
     public boolean unlikePost(Post post) {
         return false;
     }
+    @Transactional
+    public boolean commentPost(Post post) {
+        return false;
+    }
 
 }

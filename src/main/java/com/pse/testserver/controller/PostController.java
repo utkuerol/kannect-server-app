@@ -1,5 +1,6 @@
 package com.pse.testserver.controller;
 
+import com.pse.testserver.entities.Comment;
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
@@ -63,6 +64,12 @@ public class PostController {
     @PostMapping("/unlikePost")
     public boolean unlikePost(@RequestBody Post post, User user) {
         postService.unlikePost(post);
+        return false;
+    }
+    
+    @PostMapping("/commentPost")
+    public boolean commentPost(@RequestBody Post post, User user, Comment comment) {
+        postService.commentPost(post);
         return false;
     }
 
