@@ -7,7 +7,7 @@ import java.util.Date;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EventRepository extends CrudRepository<Event, Integer> {
-    Event findById(int id);
+    Event findById(long id);
     Event findByName(String name);
     Event findByDate(Date date);
 }

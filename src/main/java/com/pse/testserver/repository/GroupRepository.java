@@ -9,6 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface GroupRepository extends CrudRepository<Group, Integer> {
     
     Set<Group> findAll();
-    Group findById(int id);
+    Group findById(long id);
     Group findByName(String name);
 }
