@@ -24,8 +24,6 @@ public class User {
     /**
      * Name of this user.
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "name")
     private String name;
 
@@ -266,7 +264,7 @@ public class User {
     /**
      * Sets new mail.
      *
-     * @param mail New value of mail.
+     * @param email New value of mail.
      */
     public void setMail(String email) {
         this.email = email;
@@ -320,7 +318,7 @@ public class User {
     /**
      * Sets new image_url.
      *
-     * @param image_url New value of image_url.
+     * @param imageUrl New value of image_url.
      */
     public void setImage_url(String imageUrl) {
         this.imageUrl = imageUrl;
@@ -342,5 +340,51 @@ public class User {
      */
     public void setSubscriptions(Set<User> subscriptions) {
         this.subscriptions = subscriptions;
+    }
+
+
+    /**
+     * Gets Url of the profile picture..
+     *
+     * @return Value of Url of the profile picture..
+     */
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    /**
+     * Sets new Url of the profile picture..
+     *
+     * @param imageUrl New value of Url of the profile picture..
+     */
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    /**
+     * Gets Name of this user..
+     *
+     * @return Value of Name of this user..
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets new Name of this user..
+     *
+     * @param name New value of Name of this user..
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets new E-Mail address..
+     *
+     * @param email New value of E-Mail address..
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
