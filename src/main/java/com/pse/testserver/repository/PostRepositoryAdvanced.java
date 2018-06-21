@@ -9,7 +9,8 @@ import java.util.List;
 
 
 /**
- * The Interface PostRepositoryAdvanced.
+ * Advanced repository interface which includes find methods related to post entity.
+ *
  */
 public interface PostRepositoryAdvanced {
 
