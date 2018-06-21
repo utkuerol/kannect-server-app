@@ -16,7 +16,7 @@ public interface GroupRepositoryAdvanced{
      * Find all groups containing the string word.
      *
      * @param word word to be searched in all groups names
-     * @return {@linkplain java.util.List> of all groups containing the string word
+     * @return list of all groups containing the string word
      */
     List<Group> findAllByName(String word);
     
@@ -24,7 +24,7 @@ public interface GroupRepositoryAdvanced{
      * Find all groups belonging to the specified category.
      *
      * @param category category of groups searched
-     * @return {@linkplain java.util.List> of all groups that belong to the given category
+     * @return list of all groups that belong to the given category
      */
     List<Group> findAllByCategory(Category category);
     
@@ -33,7 +33,7 @@ public interface GroupRepositoryAdvanced{
      *
      * @param word word to be searched in all groups names
      * @param category category of groups searched
-     * @return {@linkplain java.util.List> of all groups that belong to the given category
+     * @return list of all groups that belong to the given category
      */
     List<Group> findAllByNameSortedByCategory(String word, Category category);
     
@@ -41,7 +41,7 @@ public interface GroupRepositoryAdvanced{
      * Find all members of group.
      *
      * @param group group to be searched in for members
-     * @return {@linkplain java.util.List> of all members of the group
+     * @return list of all members of the group
      */
     List<User> findJoinedUsers(Group group);
     
@@ -49,7 +49,7 @@ public interface GroupRepositoryAdvanced{
      * Find all posts of group.
      *
      * @param group group to be searched in for posts
-     * @return {@linkplain java.util.List> of all posts of the group
+     * @return list of all posts of the group
      */
     List<Post> findPost(Group group);
 }

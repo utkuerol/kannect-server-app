@@ -14,7 +14,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
     /**
      * Find all groups.
      *
-     * @return a {@linkplain java.util.List> of all available groups
+     * @return a list of all available groups
      */
     List<Group> findAll();
     

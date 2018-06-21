@@ -2,6 +2,7 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
+import com.pse.testserver.entities.User;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public interface EventRepositoryAdvanced{
      * Find all events containing the string word sorted by date.
      *
      * @param word word to be searched in all events names
-     * @return {@linkplain java.util.List> of all events containing the string word at the given date
+     * @return list of all events containing the string word at the given date
      */
     List<Event> findByNameSortedByDate(String word);
 
@@ -32,14 +33,15 @@ public interface EventRepositoryAdvanced{
      *
      * @param word word to be searched in all events names.
      * @param category category of searched events
-     * @return {@linkplain java.util.List> of all events containing the string word with the specified category
+     * @return list of all events containing the string word with the specified category
      */
     List<Event> findAllByNameSortedByCategory(String word, Category category);
 
 
     /**
-     * Find all events sorted by Date
-     * @return {@linkplain java.util.List> of all events
+     * Find all events containing the string word sorted by Date
+     * @param word word to be searched in all events names.
+     * @return list of all events containing the string word
      */
-    List<Event> findAllSortedByDate();
+    List<Event> findAllSortedByDate(String word);
 }

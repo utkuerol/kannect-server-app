@@ -26,7 +26,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * Find by name.
      *
      * @param name name of the searched User
-     * @return {@linkplain java.util.List> of all Users with the same given name
+     * @return list of all Users with the same given name
      */
     List<User> findByName(String name);
     

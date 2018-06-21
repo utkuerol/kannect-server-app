@@ -17,11 +17,7 @@ import java.util.List;
 @Repository
 public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
 
-    /** The entity manager. */
-    @Autowired
-    private EntityManager entityManager;
-
-    /* (non-Javadoc)
+    /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllByDate(java.util.Date)
      */
     @Override
@@ -45,14 +41,13 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
      * Find all sorted by date.
      *
      * @param name the name
-     * @param date the date
      * @return the list
      */
-    public List<Event> findAllSortedByDate(String name, Date date) {
+    public List<Event> findAllSortedByDate(String name) {
         return null;
     }
 
-    /* (non-Javadoc)
+    /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllByNameSortedByCategory(java.lang.String, com.pse.testserver.entities.Category)
      */
     public List<Event> findAllByNameSortedByCategory(String name, Category category) {
