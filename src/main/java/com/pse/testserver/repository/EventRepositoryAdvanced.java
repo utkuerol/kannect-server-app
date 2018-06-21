@@ -2,13 +2,12 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.User;
-
 import java.util.Date;
 import java.util.List;
 
 /**
- * The Interface EventRepositoryAdvanced.
+ * Advanced repository interface which includes find methods related to event entity.
+ *
  */
 public interface EventRepositoryAdvanced{
     
