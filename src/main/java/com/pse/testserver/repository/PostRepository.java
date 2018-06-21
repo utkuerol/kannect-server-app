@@ -14,7 +14,7 @@ public interface PostRepository extends CrudRepository<Post,String> {
     /**
      * Find all.
      *
-     * @return a {@linkplain java.util.List> of all available posts
+     * @return a list of all available posts
      */
     List<Post> findAll();
 

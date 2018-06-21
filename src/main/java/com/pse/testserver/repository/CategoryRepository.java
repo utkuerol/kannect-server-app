@@ -14,7 +14,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
     /**
      * Find all.
      *
-     * @return a {@linkplain java.util.List> of all available categories
+     * @return a list of all available categories
      */
     List<Category> findAll();
 

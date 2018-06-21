@@ -25,7 +25,7 @@ public interface MessageRepository extends CrudRepository<Message, Integer> {
      * Find message by sender.
      *
      * @param sender message sender
-     * @return message sended by the sender
+     * @return message sender by the sender
      */
     Message findBySender(User sender);
 

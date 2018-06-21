@@ -17,7 +17,7 @@ public interface PostRepositoryAdvanced {
      * Find all posts of a user.
      *
      * @param user user
-     * @return {@linkplain java.util.List> of all posts of the given user
+     * @return list of all posts of the given user
      */
     List<Post> findAllByUser(User user);
 
@@ -25,7 +25,7 @@ public interface PostRepositoryAdvanced {
      * find all posts of a group.
      *
      * @param group group
-     * @return {@linkplain java.util.List> of all posts of the given group
+     * @return list of all posts of the given group
      */
     List<Post> findAllByGroup(Group group);
 
@@ -33,7 +33,7 @@ public interface PostRepositoryAdvanced {
      * Find all posts of an event.
      *
      * @param event the event
-     * @return {@linkplain java.util.List> of all posts of the given event
+     * @return list of all posts of the given event
      */
     List<Post> findAllByEvent(Event event);
 
