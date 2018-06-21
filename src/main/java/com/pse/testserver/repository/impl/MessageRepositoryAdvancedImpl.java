@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * The Class MessageRepositoryAdvancedImpl.
+ * The Class EventRepositoryAdvancedImpl implement the find methods related to event entity, which are not
+ * supported by the spring framework.
  */
 @Repository
 public class MessageRepositoryAdvancedImpl implements MessageRepositoryAdvanced {
@@ -17,12 +18,14 @@ public class MessageRepositoryAdvancedImpl implements MessageRepositoryAdvanced 
     /**
      * @see com.pse.testserver.repository.MessageRepositoryAdvanced#findAllByReceiverSortedByDate(com.pse.testserver.entities.User)
      */
-    public List<Message> findAllByReceiverSortedByDate(User receiver) {
+    public List<Message> findAllReceivedMessagesSortedByDate(User receiver) {
         return null;
     }
 
-
-    public List<Message> findAllBySenderSortedByDate(User sender) {
+    /**
+     * @see com.pse.testserver.repository.MessageRepositoryAdvanced#findAllByReceiverSortedByDate(com.pse.testserver.entities.User)
+     */
+    public List<Message> findAllSentMessagesSortedByDate(User sender) {
         return null;
     }
 }
