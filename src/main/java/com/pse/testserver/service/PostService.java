@@ -18,59 +18,111 @@ import java.util.List;
 @Service
 public class PostService {
 
+    /**
+     * Injected PostRepository class dependency.
+     */
     @Autowired
     private PostRepository postRepository;
+
+    /**
+     * Injected PostRepositoryAdvancedImpl class dependency.
+     */
     @Autowired
     private PostRepositoryAdvancedImpl postRepositoryADV;
 
+    /**
+     * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
+     * in chronological order, with the latest created post being the first item.
+     *
+     * @param user whose personal feed is to be fetched.
+     * @return list of posts.
+     */
     @Transactional
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public List<Post> getPersonalFeed(User user) {
+        return null;
     }
 
+    /**
+     * Gets all posts, which are owned by the given user.
+     * @param user whose posts are to be fetched.
+     * @return list of posts.
+     */
     @Transactional
     public List<Post> getAllByUser(User user) {
         return postRepositoryADV.findAllByUser(user);
     }
 
+    /**
+     * Gets all posts, which are owned by the given group.
+     * @param group whose posts are to be fetched.
+     * @return list of posts.
+     */
     @Transactional
     public List<Post> getAllByGroup(Group group) {
         return postRepositoryADV.findAllByGroup(group);
     }
 
+    /**
+     * Gets all posts, which are owned by the given event.
+     * @param event whose posts are to be fetched.
+     * @return list of posts.
+     */
     @Transactional
     public List<Post> getAllByEvent(Event event) {
         return postRepositoryADV.findAllByEvent(event);
     }
 
+    /**
+     * Saves a new post object into the system.
+     * @param post to be saved, received from the client.
+     */
     @Transactional
-    public boolean post(Post post) {
-        return false;
+    public void post(Post post) {
     }
 
+    /**
+     * Deletes a post object from the system.
+     * @param post to be deleted.
+     */
     @Transactional
-    public boolean deletePost(Post post) {
-        return false;
+    public void deletePost(Post post) {
     }
 
+    /**
+     * Edits a post.
+     * @param editedPost received from the client, has the edited attributes.
+     * @param postToEdit original post to be edited, which will be compared to the editedPost
+     *                    received from the client and modified accordingly.
+     */
     @Transactional
-    public boolean editPost(Post editedPost, Post postToEdit) {
-        return false;
+    public void editPost(Post editedPost, Post postToEdit) {
     }
 
+    /**
+     * Adds the given user to the given post's list of liked users.
+     * @param post to be liked.
+     * @param user which likes the post.
+     */
     @Transactional
-    public boolean likePost(Post post, User user) {
-        return false;
+    public void likePost(Post post, User user) {
     }
 
+    /**
+     * Removes the given user from the given post's list of liked users.
+     * @param post to be unliked.
+     * @param user which unlikes the post.
+     */
     @Transactional
-    public boolean unlikePost(Post post, User user) {
-        return false;
+    public void unlikePost(Post post, User user) {
     }
 
+    /**
+     * Saves a new comment into the system.
+     * @param comment to be saved, received from the client.
+     */
     @Transactional
-    public boolean commentPost(Post post, User user, Comment comment) {
-        return false;
+    public void commentPost(Comment comment) {
+
     }
 
 }

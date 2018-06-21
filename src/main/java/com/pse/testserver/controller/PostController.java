@@ -19,7 +19,7 @@ public class PostController {
     @GetMapping("/personalFeed")
     @ResponseBody
     public List<Post> getPersonalFeed(@RequestBody User user) {
-        return postService.getAllByUser(user);
+        return postService.getPersonalFeed(user);
     }
 
     @GetMapping("/groupFeed")
@@ -34,35 +34,41 @@ public class PostController {
         return postService.getAllByEvent(event);
     }
 
+    @GetMapping("/eventFeed")
+    @ResponseBody
+    public List<Post> getUsersProfile(@RequestBody User user) {
+        return postService.getAllByUser(user);
+    }
+
     @PostMapping("/post")
-    public boolean post(@RequestBody Post post) {
-        return postService.post(post);
+    public void post(@RequestBody Post post) {
+        postService.post(post);
     }
 
     @DeleteMapping("/deletePost")
-    public boolean deletePost(@RequestBody Post post) {
-        return postService.deletePost(post);
+    public void deletePost(@RequestBody Post post) {
+        postService.deletePost(post);
     }
     
     @PostMapping("/editPost")
-    public boolean editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
-        return postService.editPost(editedPost, postToEdit);
+    public void editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
+        postService.editPost(editedPost, postToEdit);
     }
 
     @PostMapping("/likePost")
-    public boolean likePost(@RequestBody Post post, User user) {
-        return postService.likePost(post, user);
+    public void likePost(@RequestBody Post post, User user) {
+        postService.likePost(post, user);
 
     }
     
     @PostMapping("/unlikePost")
-    public boolean unlikePost(@RequestBody Post post, User user) {
-        return postService.unlikePost(post, user);
+    public void unlikePost(@RequestBody Post post, User user) {
+        postService.unlikePost(post, user);
     }
     
     @PostMapping("/commentPost")
-    public boolean commentPost(@RequestBody Post post, User user, Comment comment) {
-        return postService.commentPost(post, user, comment);
+    public void commentPost(@RequestBody Comment comment) {
+        postService.commentPost(comment);
     }
 
 
