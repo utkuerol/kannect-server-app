@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface CategoryRepository.
  */
