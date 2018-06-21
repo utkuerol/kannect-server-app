@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * The Class UserRepositoryAdvancedImpl.
+ * The Class UserRepositoryAdvancedImpl implement the find methods related to user entity, which are not
+ * supported by the spring framework.
  */
 @Repository
 public class UserRepositoryAdvancedImpl implements UserRepositoryAdvanced {
