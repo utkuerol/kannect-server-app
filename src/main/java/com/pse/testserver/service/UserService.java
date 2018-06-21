@@ -52,15 +52,6 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    /**
-     * Gets the user with the given email address.
-     * @param email to search for.
-     * @return found user.
-     */
-    @Transactional
-    public User getByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
 
     /**
      * Adds the subscriber user to the subscribed user's list of subscribers and the subscribed user to

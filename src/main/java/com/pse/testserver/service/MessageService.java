@@ -49,7 +49,7 @@ public class MessageService {
      */
     @Transactional
     public List<Message> getAllByReceiverSortedByDate(User receiver) {
-        return messageRepositoryADV.findAllByReceiverSortedByDate(receiver);
+        return messageRepositoryADV.findAllReceivedMessagesSortedByDate(receiver);
     }
 
     /**
@@ -59,7 +59,7 @@ public class MessageService {
      */
     @Transactional
     public List<Message> findAllBySenderSortedByDate(User sender) {
-        return messageRepositoryADV.findAllBySenderSortedByDate(sender);
+        return messageRepositoryADV.findAllSentMessagesSortedByDate(sender);
     }
 
     /**
