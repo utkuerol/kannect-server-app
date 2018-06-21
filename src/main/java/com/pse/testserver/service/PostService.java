@@ -44,12 +44,6 @@ public class PostService {
     }
 
     @Transactional
-    public List<User> getAllByName(String name) {
-        return postRepositoryADV.findAllByName(name);
-    }
-
-
-    @Transactional
     public boolean post(Post post) {
         return false;
     }
