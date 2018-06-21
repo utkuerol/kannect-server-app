@@ -33,9 +33,9 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
 
 
     /**
-     * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllByDate(java.lang.String)
+     * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllSortedByDate(java.lang.String)
      */
-    public List<Event> findAllSortedByDate(String name) {
+    public List<Event> findAllSortedByDate() {
         return null;
     }
 

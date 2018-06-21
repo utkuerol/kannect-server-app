@@ -38,9 +38,9 @@ public interface EventRepositoryAdvanced{
 
 
     /**
-     * Find all events containing the string name sorted by Date
+     * Find all events sorted by Date
      * @param name word to be searched in all events names.
-     * @return list of all events containing the string name
+     * @return list of events, chronologically sorted with the latest event being the first element.
      */
-    List<Event> findAllSortedByDate(String name);
+    List<Event> findAllSortedByDate();
 }
