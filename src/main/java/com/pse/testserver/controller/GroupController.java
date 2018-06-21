@@ -33,7 +33,6 @@ public class GroupController {
         return null;
     }
 
-
     @PostMapping("/editGroup")
     public boolean editGroup(@RequestBody Group editedGroup ,@RequestBody Group GroupToEdit) {
         groupService.editGroup(editedGroup, GroupToEdit);

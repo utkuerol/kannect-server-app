@@ -9,26 +9,34 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Service class implementing the business logic regarding the category entity, which includes
- * creating, modifying, deleting and other operations which the application
+ * Service class implementing the business logic regarding the Category entity, which includes
+ * searching, creating, modifying, deleting and other operations which the application needs to perform on mainly category
+ * objects. To perform these operations, methods of the injected repository class(es) are to be used.
  */
 @Service
 public class CategoryService {
+
+    /**
+     * Injected CategoryRepository class dependency.
+     */
     @Autowired
     private CategoryRepository categoryRepository;
 
+    /**
+     * @return list of categories
+     */
     @Transactional
-    public List<Category> getAllPosts() {
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
     @Transactional
-    public Category findById(long id) {
+    public Category getById(long id) {
         return categoryRepository.findById(id);
     }
 
     @Transactional
-    public List<Category> findByName(String name) {
+    public List<Category> getByName(String name) {
         return categoryRepository.findByName(name);
     }
 }
