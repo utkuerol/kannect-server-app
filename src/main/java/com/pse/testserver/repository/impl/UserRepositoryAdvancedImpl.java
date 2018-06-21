@@ -8,13 +8,21 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserRepositoryAdvancedImpl.
+ */
 @Repository
 public class UserRepositoryAdvancedImpl implements UserRepositoryAdvanced {
 
+    /** The entity manager. */
     @Autowired
     private EntityManager entityManager;
 
 
+    /* (non-Javadoc)
+     * @see com.pse.testserver.repository.UserRepositoryAdvanced#findAllByName(java.lang.String)
+     */
     @Override
     public List<User> findAllByName(String name) {
         return null;
