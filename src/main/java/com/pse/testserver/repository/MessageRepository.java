@@ -1,15 +1,13 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Message;
-import com.pse.testserver.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * The Interface MessageRepository.
+ * Simple interface which includes find methods related to message entity.
+ * To perform these operations, methods of the spring framework are to be used.
  */
-/*
 
- */
 public interface MessageRepository extends CrudRepository<Message, Integer> {
     
     /**
@@ -20,19 +18,4 @@ public interface MessageRepository extends CrudRepository<Message, Integer> {
      */
     Message findById(long id);
 
-    /**
-     * Find message by sender.
-     *
-     * @param sender message sender
-     * @return message sender by the sender
-     */
-    Message findBySender(User sender);
-
-    /**
-     * Find message by receiver.
-     *
-     * @param receiver message receiver
-     * @return message received by the receiver
-     */
-    Message findByReceiver(User receiver);
 }
