@@ -9,6 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Service class implementing the business logic regarding the post entity, which includes (or may include
+ * in future versions) searching, creating, modifying, deleting and other operations which the application needs
+ * to perform on mainly post objects.
+ * To perform these operations, methods of the injected repository class(es) are to be used.
+ */
 @Service
 public class PostService {
 
@@ -52,7 +58,7 @@ public class PostService {
     public boolean deletePost(Post post) {
         return false;
     }
-    
+
     @Transactional
     public boolean editPost(Post editedPost, Post postToEdit) {
         return false;
@@ -62,11 +68,12 @@ public class PostService {
     public boolean likePost(Post post, User user) {
         return false;
     }
-    
+
     @Transactional
     public boolean unlikePost(Post post, User user) {
         return false;
     }
+
     @Transactional
     public boolean commentPost(Post post, User user, Comment comment) {
         return false;

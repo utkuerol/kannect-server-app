@@ -12,6 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Service class implementing the business logic regarding the group entity, which includes (or may include
+ * in future versions) searching, creating, modifying, deleting and other operations which the application needs
+ * to perform on mainly group objects.
+ * To perform these operations, methods of the injected repository class(es) are to be used.
+ */
 @Service
 public class GroupService {
 
@@ -73,12 +79,12 @@ public class GroupService {
     public boolean deleteGroup(Group group) {
         return false;
     }
-    
+
     @Transactional
     public boolean deletePost(Group group) {
         return false;
     }
-    
+
     @Transactional
     public boolean editGroup(Group editedgroup, Group groupToEdit) {
         return false;

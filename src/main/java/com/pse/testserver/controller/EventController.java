@@ -18,8 +18,7 @@ public class EventController {
     
     @GetMapping("/events")
     public List<Event> getEvents(@RequestParam(value = "name", defaultValue = "") String name) {
-        return eventService.getAllByName(name);
-
+        return eventService.getByNameSortedByDate(name);
     }
     
     @PostMapping("/create")

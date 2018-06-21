@@ -2,7 +2,6 @@ package com.pse.testserver.repository.impl;
 
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepositoryAdvanced;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,24 +30,16 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     }
 
     /**
-     * Find by nme sorted by date.
+     * Find by name sorted by date.
      *
      * @param name the name
-     * @param date the date
      * @return the list
      */
     @Override
-    public List<Event> findByNmeSortedByDate(String name, Date date) {
+    public List<Event> findByNameSortedByDate(String name) {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.pse.testserver.repository.EventRepositoryAdvanced#findParticipatedUsers(com.pse.testserver.entities.Event)
-     */
-    @Override
-    public List<User> findParticipatedUsers(Event event) {
-        return null;
-    }
 
     /**
      * Find all sorted by date.

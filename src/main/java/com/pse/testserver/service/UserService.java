@@ -11,6 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Service class implementing the business logic regarding the user entity, which includes (or may include
+ * in future versions) searching, creating, modifying, deleting and other operations which the application needs
+ * to perform on mainly user objects.
+ * To perform these operations, methods of the injected repository class(es) are to be used.
+ */
 @Service
 public class UserService {
     @Autowired
