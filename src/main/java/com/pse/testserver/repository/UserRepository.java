@@ -9,7 +9,8 @@ import java.util.List;
 
 
 /**
- * The Interface UserRepository.
+ * Simple repository interface which includes find methods related to user entity.
+ * To perform these operations, methods of the spring framework are to be used.
  */
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
@@ -29,13 +30,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * @return list of all Users with the same given name
      */
     List<User> findByName(String name);
-    
-    /**
-     * Find by email.
-     *
-     * @param email address of user
-     * @return user with the specified address mail
-     */
-    User findByEmail(String email);
 
 }
