@@ -9,6 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TestServerApplicationTests {
 
+	/**
+	 * Context loads.
+	 */
 	@Test
 	public void contextLoads() {
 	}
