@@ -4,7 +4,7 @@ import com.pse.testserver.entities.Event;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Simple interface which includes find methods related to event entity.
+ * Simple repository interface which includes find methods related to event entity.
  * To perform these operations, methods of the spring framework are to be used.
  */
 public interface EventRepository extends CrudRepository<Event, Integer> {
