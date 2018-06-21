@@ -4,25 +4,18 @@ import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepositoryAdvanced;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class EventRepositoryAdvancedImpl.
  */
 @Repository
 public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
 
-    /** The entity manager. */
-    @Autowired
-    private EntityManager entityManager;
-
-    /* (non-Javadoc)
+    /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllByDate(java.util.Date)
      */
     @Override
@@ -31,18 +24,14 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     }
 
     /**
-     * Find by nme sorted by date.
-     *
-     * @param name the name
-     * @param date the date
-     * @return the list
+     * @see com.pse.testserver.repository.EventRepositoryAdvanced#findByNmeSortedByDate(java.lang.String)
      */
     @Override
-    public List<Event> findByNmeSortedByDate(String name, Date date) {
+    public List<Event> findByNameSortedByDate(String word) {
         return null;
     }
 
-    /* (non-Javadoc)
+    /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findParticipatedUsers(com.pse.testserver.entities.Event)
      */
     @Override
@@ -51,30 +40,17 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
     }
 
     /**
-     * Find all sorted by date.
-     *
-     * @param name the name
-     * @param date the date
-     * @return the list
+     * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllSortedByDate(java.lang.String, java.util.Date)
      */
-    public List<Event> findAllSortedByDate(String name, Date date) {
+    public List<Event> findAllSortedByDate(String word) {
         return null;
     }
 
-    /* (non-Javadoc)
+    /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllByNameSortedByCategory(java.lang.String, com.pse.testserver.entities.Category)
      */
     public List<Event> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
 
-    /**
-     * Find all by name.
-     *
-     * @param name the name
-     * @return the list
-     */
-    public List<Event> findAllByName(String name) {
-        return null;
-    }
 }
