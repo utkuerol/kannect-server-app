@@ -2,7 +2,6 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
-import com.pse.testserver.entities.User;
 
 import java.util.Date;
 import java.util.List;
@@ -39,9 +38,8 @@ public interface EventRepositoryAdvanced{
 
 
     /**
-     * Find all events containing the string word sorted by Date
-     * @param word word to be searched in all events names.
-     * @return {@linkplain java.util.List> of all events containing the string word
+     * Find all events sorted by Date
+     * @return {@linkplain java.util.List> of all events
      */
-    List<Event> findAllSortedByDate(String word);
+    List<Event> findAllSortedByDate();
 }

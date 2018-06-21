@@ -1,10 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Group;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
 
 
 /**
@@ -25,7 +24,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param id unique id of the searched group
      * @return group with the defined id
      */
-    Group findById(int id);
+    Group findById(long id);
     
     /**
      * Find group by name.

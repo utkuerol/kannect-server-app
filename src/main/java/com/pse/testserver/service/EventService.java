@@ -64,56 +64,73 @@ public class EventService {
         return eventRepositoryADV.findByNameSortedByDate(name);
     }
 
+    /**
+     * Method to look for users, which participate in the given event.
+     *
+     * @param event .
+     * @return list of users, which participate in the given event.
+     */
     @Transactional
     public List<User> getParticipatedUsers(Event event) {
         //event.getUsers etc....
         return null;
     }
 
-
+    /**
+     * Method to get all events
+     * @return list of events, chronologically sorted with the latest event being the first element.
+     */
     @Transactional
-    public List<Event> getAllSortedByDate(String name, Date date) {
-        return eventRepositoryADV.findAllSortedByDate(name, date);
+    public List<Event> getAllSortedByDate() {
+        return eventRepositoryADV.findAllSortedByDate();
     }
 
-
+    /**
+     * Method to look for events, which include the given String in their names and fall into the given
+     * category.
+     * @param name to look for.
+     * @param category under which the search will be performed.
+     * @return list of wanted events.
+     */
     @Transactional
     public List<Event> getAllByNameSortedByCategory(String name, Category category) {
         return eventRepositoryADV.findAllByNameSortedByCategory(name, category);
     }
 
+    /**
+     * Method to get an event by the given id.
+     * @param id
+     * @return event with the given id.
+     */
     @Transactional
-    public Event getById(int id) {
+    public Event getById(long id) {
         return eventRepository.findById(id);
     }
 
+    /**
+     * Method to save an event to the system.
+     * @param event to be saved.
+     */
     @Transactional
-    public Event getByName(String name) {
-        return eventRepository.findByName(name);
+    public void createEvent(Event event) {
     }
 
+    /**
+     * Method to delete an event from the system.
+     * @param event to be deleted.
+     */
     @Transactional
-    public Event getByDate(Date date) {
-        return eventRepository.findByDate(date);
+    public void deleteEvent(Event event) {
     }
 
+    /**
+     * Method to edit an event.
+     * @param editedEvent received from the client, has the edited attributes.
+     * @param eventToEdit original event to be edited, which will be compared to the editedEvent
+     *                    received from the client and modified accordingly.
+     */
     @Transactional
-    public boolean participateInEvent(Event event) {
-        return false;
-    }
+    public void editEvent(Event editedEvent, Event eventToEdit) {
 
-    @Transactional
-    public boolean createEvent(Event event) {
-        return false;
-    }
-
-    @Transactional
-    public boolean deleteEvent(Event event) {
-        return false;
-    }
-
-    @Transactional
-    public boolean editEvent(Event editedEvent, Event eventToEdit) {
-        return false;
     }
 }

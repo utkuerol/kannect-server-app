@@ -1,10 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Event;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
-
-import org.springframework.data.repository.CrudRepository;
 
 /**
  * The Interface EventRepository.
@@ -17,7 +16,7 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
      * @param id unique id of the searched event
      * @return event with the defined id
      */
-    Event findById(int id);
+    Event findById(long id);
     
     /**
      * Fiind event by name.

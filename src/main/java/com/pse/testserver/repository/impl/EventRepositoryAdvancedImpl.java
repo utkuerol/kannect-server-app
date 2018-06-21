@@ -59,6 +59,11 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
         return null;
     }
 
+    @Override
+    public List<Event> findAllSortedByDate() {
+        return null;
+    }
+
     /**
      * Find all by name.
      *

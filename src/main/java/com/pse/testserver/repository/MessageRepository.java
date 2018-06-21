@@ -2,7 +2,6 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.User;
-
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -19,7 +18,7 @@ public interface MessageRepository extends CrudRepository<Message, Integer> {
      * @param id unique id of the searched message
      * @return message with the defined id
      */
-    Message findById(int id);
+    Message findById(long id);
 
     /**
      * Find message by sender.
