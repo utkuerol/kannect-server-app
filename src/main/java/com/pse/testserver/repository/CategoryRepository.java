@@ -9,7 +9,7 @@ import java.util.List;
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
     
     /**
-     * @return a @see <List> of all available categories
+     * @return a {@linkplain java.util.List> of all available categories
      */
     List<Category> findAll();
 
