@@ -124,13 +124,11 @@ public class EventService {
     }
 
     /**
-     * Method to edit an event.
+     * Edits an event by saving the editedEvent received from the client.
      * @param editedEvent received from the client, has the edited attributes.
-     * @param eventToEdit original event to be edited, which will be compared to the editedEvent
-     *                    received from the client and modified accordingly.
      */
     @Transactional
-    public void editEvent(Event editedEvent, Event eventToEdit) {
+    public void editEvent(Event editedEvent) {
 
     }
 }

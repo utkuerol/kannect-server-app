@@ -111,12 +111,10 @@ public class GroupService {
     }
 
     /**
-     * Method to edit a group.
+     * Edits a group by saving the editedGroup received from the client.
      * @param editedGroup received from the client, has the edited attributes.
-     * @param groupToEdit original group to be edited, which will be compared to the editedGroup
-     *                    received from the client and modified accordingly.
      */
     @Transactional
-    public void editGroup(Group editedGroup, Group groupToEdit) {
+    public void editGroup(Group editedGroup) {
     }
 }

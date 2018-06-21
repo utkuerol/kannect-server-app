@@ -51,8 +51,8 @@ public class PostController {
     }
     
     @PostMapping("/editPost")
-    public void editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
-        postService.editPost(editedPost, postToEdit);
+    public void editPost(@RequestBody Post editedPost) {
+        postService.editPost(editedPost);
     }
 
     @PostMapping("/likePost")

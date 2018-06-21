@@ -17,13 +17,13 @@ public class GroupController {
     GroupService groupService;
 
     @PostMapping("/createGroup")
-    public boolean createGroup(@RequestBody Group group) {
-        return groupService.createGroup(group);
+    public void createGroup(@RequestBody Group group) {
+        groupService.createGroup(group);
     }
 
     @DeleteMapping("/deleteGroup")
-    public boolean deleteGroup(@RequestBody Group group) {
-        return groupService.deleteGroup(group);
+    public void deleteGroup(@RequestBody Group group) {
+        groupService.deleteGroup(group);
     }
 
     @GetMapping("/groups")
@@ -34,8 +34,8 @@ public class GroupController {
     }
 
     @PostMapping("/editGroup")
-    public boolean editGroup(@RequestBody Group editedGroup ,@RequestBody Group GroupToEdit) {
-        groupService.editGroup(editedGroup, GroupToEdit);
+    public boolean editGroup(@RequestBody Group editedGroup) {
+        groupService.editGroup(editedGroup);
         return false;
     }
 

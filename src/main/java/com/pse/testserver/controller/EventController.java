@@ -22,18 +22,18 @@ public class EventController {
     }
     
     @PostMapping("/create")
-    public boolean createEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+    public void createEvent(@RequestBody Event event) {
+        eventService.createEvent(event);
     }
 
     @DeleteMapping("/delete")
-    public boolean deleteEvent(@RequestBody Event event) {
-        return eventService.deleteEvent(event);
+    public void deleteEvent(@RequestBody Event event) {
+        eventService.deleteEvent(event);
     }
    
     @PostMapping("/edit")
-    public boolean editEvent(@RequestBody Event editedEvent, @RequestBody Event eventToEdit) {
-        return eventService.editEvent(editedEvent, eventToEdit);
+    public void editEvent(@RequestBody Event editedEvent) {
+        eventService.editEvent(editedEvent);
     }
     
 

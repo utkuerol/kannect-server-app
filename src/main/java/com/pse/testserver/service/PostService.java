@@ -89,13 +89,11 @@ public class PostService {
     }
 
     /**
-     * Edits a post.
+     * Edits a post by saving the editedPost received from the client.
      * @param editedPost received from the client, has the edited attributes.
-     * @param postToEdit original post to be edited, which will be compared to the editedPost
-     *                    received from the client and modified accordingly.
      */
     @Transactional
-    public void editPost(Post editedPost, Post postToEdit) {
+    public void editPost(Post editedPost) {
     }
 
     /**
