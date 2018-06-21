@@ -28,7 +28,7 @@ public class GroupController {
 
     @GetMapping("/groups")
     @ResponseBody
-    public List<Group> getUsers(@RequestParam(value = "name", defaultValue = "") String name) {
+    public List<Group> getGroups(@RequestParam(value = "name", defaultValue = "") String name) {
         groupService.getAllByName(name);
         return null;
     }
