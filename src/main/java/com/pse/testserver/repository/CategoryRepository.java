@@ -29,9 +29,9 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
     /**
      * find category by name.
      *
-     * @param word word to be searched in all categories names
-     * @return {@linkplain java.util.List> of all categories containing the string word
+     * @param name word to be searched in all categories names
+     * @return list of all categories containing the string name
      */
-    List<Category> findByName(String word);
+    List<Category> findByName(String name);
 
 }
