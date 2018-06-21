@@ -7,7 +7,8 @@ import java.util.List;
 
 
 /**
- * The Interface GroupRepository.
+ * Simple interface which includes find methods related to group entity.
+ * To perform these operations, methods of the spring framework are to be used.
  */
 public interface GroupRepository extends CrudRepository<Group, Integer> {
 
@@ -26,11 +27,4 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      */
     Group findById(long id);
     
-    /**
-     * Find group by name.
-     *
-     * @param name name of the searched group
-     * @return group with the defined name
-     */
-    Group findByName(String name);
 }
