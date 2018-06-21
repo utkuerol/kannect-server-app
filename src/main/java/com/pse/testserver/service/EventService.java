@@ -34,7 +34,7 @@ public class EventService {
     private EventRepositoryAdvancedImpl eventRepositoryADV;
 
     /**
-     * Method to look for events, which include the given String in their names.
+     * Looks for events, which include the given String in their names.
      *
      * @param name to look for events.
      * @return list of wanted events.
@@ -45,7 +45,7 @@ public class EventService {
     }
 
     /**
-     * Method to look for events, which take place on the given date
+     * Looks for events, which take place on the given date
      * @param date to look for events.
      * @return list of wanted events.
      */
@@ -55,7 +55,7 @@ public class EventService {
     }
 
     /**
-     * Method to look for events, which include the given String in their names.
+     * Looks for events, which include the given String in their names.
      * @param name to look for events.
      * @return list of wanted events chronologically sorted with the latest event being the first element.
      */
@@ -65,7 +65,7 @@ public class EventService {
     }
 
     /**
-     * Method to look for users, which participate in the given event.
+     * Looks for users, which participate in the given event.
      *
      * @param event .
      * @return list of users, which participate in the given event.
@@ -77,7 +77,7 @@ public class EventService {
     }
 
     /**
-     * Method to get all events
+     * Gets all events
      * @return list of events, chronologically sorted with the latest event being the first element.
      */
     @Transactional
@@ -86,7 +86,7 @@ public class EventService {
     }
 
     /**
-     * Method to look for events, which include the given String in their names and fall into the given
+     * Looks for events, which include the given String in their names and fall into the given
      * category.
      * @param name to look for.
      * @param category under which the search will be performed.
@@ -98,8 +98,8 @@ public class EventService {
     }
 
     /**
-     * Method to get an event by the given id.
-     * @param id
+     * Gets the event by the given id.
+     * @param id to look for.
      * @return event with the given id.
      */
     @Transactional
@@ -108,7 +108,7 @@ public class EventService {
     }
 
     /**
-     * Method to save an event to the system.
+     * Saves an event to the system.
      * @param event to be saved.
      */
     @Transactional
@@ -116,7 +116,7 @@ public class EventService {
     }
 
     /**
-     * Method to delete an event from the system.
+     * Deletes an event from the system.
      * @param event to be deleted.
      */
     @Transactional

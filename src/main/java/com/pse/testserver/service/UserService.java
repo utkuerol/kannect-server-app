@@ -34,7 +34,6 @@ public class UserService {
 
     /**
      * Searchs and gives all users with the given name.
-     *
      * @param name to search for. Empty String parameter gets all users.
      * @return list of users.
      */

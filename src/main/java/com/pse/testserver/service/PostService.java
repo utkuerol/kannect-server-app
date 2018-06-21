@@ -53,7 +53,7 @@ public class PostService {
     }
 
     /**
-     * Gets all posts, which are owned by the given group.
+     * Gets all posts, which are owned by the given group and sorts them chronologically.
      * @param group whose posts are to be fetched.
      * @return list of posts.
      */
@@ -63,7 +63,7 @@ public class PostService {
     }
 
     /**
-     * Gets all posts, which are owned by the given event.
+     * Gets all posts, which are owned by the given event and sorts them chronologically.
      * @param event whose posts are to be fetched.
      * @return list of posts.
      */
