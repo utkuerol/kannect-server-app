@@ -9,9 +9,25 @@ import org.springframework.data.repository.CrudRepository;
 
  */
 public interface MessageRepository extends CrudRepository<Message, Integer> {
+    
+    /**
+     * find message by id
+     * @param id unique id of the searched message
+     * @return message with the defined id
+     */
     Message findById(int id);
 
-    Message findBySender(User user);
+    /**
+     * find message by sender
+     * @param sender message sender
+     * @return message sended by the sender
+     */
+    Message findBySender(User sender);
 
-    Message findByReceiver(User user);
+    /**
+     * find message by receiver
+     * @param receiver message receiver
+     * @return message received by the receiver
+     */
+    Message findByReceiver(User receiver);
 }
