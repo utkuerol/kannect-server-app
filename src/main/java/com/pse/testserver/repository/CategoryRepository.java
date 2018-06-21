@@ -7,7 +7,8 @@ import java.util.List;
 
 
 /**
- * The Interface CategoryRepository.
+ * Simple interface which includes find methods related to category entity.
+ * To perform these operations, methods of the spring framework are to be used.
  */
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
     
