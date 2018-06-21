@@ -6,7 +6,7 @@ import com.pse.testserver.entities.User;
 import java.util.List;
 
 /**
- * The Interface MessageRepositoryAdvanced.
+ * Advanced repository interface which includes find methods related to message entity.
  */
 public interface MessageRepositoryAdvanced {
     
@@ -16,8 +16,12 @@ public interface MessageRepositoryAdvanced {
      * @param receiver receiver of searched messages
      * @return list of all messages received sorted by date
      */
-    List<Message> findAllByReceiverSortedByDate(User receiver);
-
-
-    List<Message> findAllBySenderSortedByDate(User sender);
+    List<Message> findAllReceivedMessagesSortedByDate(User receiver);
+    
+    /**
+     * Find all sent messages sorted by date.
+     * @param sender sender of searched messages
+     * @return list of all messages sent sorted by date
+     */
+    List<Message> findAllSentMessagesSortedByDate(User sender);
 }
