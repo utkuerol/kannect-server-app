@@ -9,10 +9,16 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post,String> {
 
 
-    @Query(value = "SELECT * from posts",
-            nativeQuery=true)
+    /**
+     * @return a {@linkplain java.util.List> of all available posts
+     */
     List<Post> findAll();
 
+    /**
+     * find post by id
+     * @param id unique id of the searched post
+     * @return post with the defined id
+     */
     Post findById(long id);
     
 

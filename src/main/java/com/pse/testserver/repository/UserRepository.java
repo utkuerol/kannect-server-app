@@ -10,14 +10,25 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
     
+    /**
+     * find user by id
+     * @param id unique id of the searched user
+     * @return user with the defined id
+     */
     User findById(long id);
-    List<User> findByName(String name);
-    User findByEmail(String email);
     
-/*
-    @Modifying 
-    @Query("update User set Email = :email where id = :id")
-    int updateUser(int id, String email);
-    */
+    /**
+     * 
+     * @param name name of the searched User
+     * @return {@linkplain java.util.List> of all Users with the same given name
+     */
+    List<User> findByName(String name);
+    
+    /**
+     * 
+     * @param email address of user
+     * @return user with the specified address mail
+     */
+    User findByEmail(String email);
 
 }

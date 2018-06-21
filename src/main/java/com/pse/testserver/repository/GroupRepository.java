@@ -15,14 +15,14 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
     List<Group> findAll();
     
     /**
-     * 
+     * find group by id
      * @param id unique id of the searched group
      * @return group with the defined id
      */
     Group findById(int id);
     
     /**
-     * 
+     * find group by name
      * @param name name of the searched group
      * @return group with the defined name
      */
