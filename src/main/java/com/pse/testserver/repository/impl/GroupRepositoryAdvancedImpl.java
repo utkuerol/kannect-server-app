@@ -3,14 +3,14 @@ package com.pse.testserver.repository.impl;
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.GroupRepositoryAdvanced;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * The Class GroupRepositoryAdvancedImpl.
+ * The Class GroupRepositoryAdvancedImpl implement the find methods related to group entity, which are not
+ * supported by the spring framework.
  */
 @Repository
 public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
@@ -21,14 +21,6 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
      */
     @Override
     public List<Group> findAllByName(String name) {
-        return null;
-    }
-
-    /**
-     * @see com.pse.testserver.repository.GroupRepositoryAdvanced#findJoinedUsers(com.pse.testserver.entities.Group)
-     */
-    @Override
-    public List<User> findJoinedUsers(Group group) {
         return null;
     }
 
