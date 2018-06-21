@@ -21,27 +21,27 @@ public interface EventRepositoryAdvanced{
     List<Event> findAllByDate(Date date);
 
     /**
-     * Find all events containing the string word sorted by date.
+     * Find all events containing the string name sorted by date.
      *
-     * @param word word to be searched in all events names
-     * @return list of all events containing the string word at the given date
+     * @param name word to be searched in all events names
+     * @return list of all events containing the string name at the given date
      */
-    List<Event> findByNameSortedByDate(String word);
+    List<Event> findByNameSortedByDate(String name);
 
     /**
-     * Find all events containing the string word sorted by category.
+     * Find all events containing the string name sorted by category.
      *
-     * @param word word to be searched in all events names.
+     * @param name word to be searched in all events names.
      * @param category category of searched events
-     * @return list of all events containing the string word with the specified category
+     * @return list of all events containing the string name with the specified category
      */
-    List<Event> findAllByNameSortedByCategory(String word, Category category);
+    List<Event> findAllByNameSortedByCategory(String name, Category category);
 
 
     /**
-     * Find all events containing the string word sorted by Date
-     * @param word word to be searched in all events names.
-     * @return list of all events containing the string word
+     * Find all events containing the string name sorted by Date
+     * @param name word to be searched in all events names.
+     * @return list of all events containing the string name
      */
-    List<Event> findAllSortedByDate(String word);
+    List<Event> findAllSortedByDate(String name);
 }

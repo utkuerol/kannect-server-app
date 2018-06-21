@@ -20,7 +20,7 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
      * @see com.pse.testserver.repository.GroupRepositoryAdvanced#findAllByName(java.lang.String)
      */
     @Override
-    public List<Group> findAllByName(String word) {
+    public List<Group> findAllByName(String name) {
         return null;
     }
 
@@ -52,7 +52,7 @@ public class GroupRepositoryAdvancedImpl implements GroupRepositoryAdvanced {
      * @see com.pse.testserver.repository.GroupRepositoryAdvanced#findAllByNameSortedByCategory(java.lang.String, com.pse.testserver.entities.Category)
      */
     @Override
-    public List<Group> findAllByNameSortedByCategory(String word, Category category) {
+    public List<Group> findAllByNameSortedByCategory(String name, Category category) {
         return null;
     }
 }
