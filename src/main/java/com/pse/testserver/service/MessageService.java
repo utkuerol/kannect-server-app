@@ -18,42 +18,56 @@ import java.util.List;
  */
 @Service
 public class MessageService {
+
+    /**
+     * Injected MessageRepository class dependency.
+     */
     @Autowired
     private MessageRepository messageRepository;
 
+    /**
+     * Injected MessageRepositoryAdvancedImpl class dependency.
+     */
     @Autowired
     private MessageRepositoryAdvancedImpl messageRepositoryADV;
 
+    /**
+     * Finds a message by its unique id.
+     *
+     * @param id to search for.
+     * @return found message.
+     */
     @Transactional
     public Message getById(int id) {
         return messageRepository.findById(id);
     }
 
-
+    /**
+     * Gets list of messages, which are received by the given user.
+     * @param receiver of the messages.
+     * @return list of messages.
+     */
     @Transactional
-    Message getBySender(User user) {
-        return messageRepository.findBySender(user);
+    public List<Message> getAllByReceiverSortedByDate(User receiver) {
+        return messageRepositoryADV.findAllByReceiverSortedByDate(receiver);
     }
 
-
+    /**
+     * Gets list of messages, which are sent by the given user.
+     * @param sender of the messages.
+     * @return list of messages.
+     */
     @Transactional
-    public Message getByReceiver(User user) {
-        return messageRepository.findByReceiver(user);
+    public List<Message> findAllBySenderSortedByDate(User sender) {
+        return messageRepositoryADV.findAllBySenderSortedByDate(sender);
     }
 
-
+    /**
+     * Saves a new message object into the system.
+     * @param message to be saved, received from the client.
+     */
     @Transactional
-    public List<Message> getAllByReceiverSortedByDate(User user) {
-        return messageRepositoryADV.findAllByReceiverSortedByDate(user);
-    }
+    public void sendMessage(Message message) {
 
-    @Transactional
-    public List<Message> findAllByReceiverSortedBySender(User user) {
-        return messageRepositoryADV.findAllByReceiverSortedBySender(user);
-    }
-
-    @Transactional
-    public boolean sendMessage(Message message) {
-        return false;
     }
 }

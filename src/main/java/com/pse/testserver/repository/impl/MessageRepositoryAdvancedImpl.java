@@ -21,10 +21,8 @@ public class MessageRepositoryAdvancedImpl implements MessageRepositoryAdvanced 
         return null;
     }
 
-    /**
-     * @see com.pse.testserver.repository.MessageRepositoryAdvanced#findAllByReceiverSortedBySender(com.pse.testserver.entities.User)
-     */
-    public List<Message> findAllByReceiverSortedBySender(User sender) {
+
+    public List<Message> findAllBySenderSortedByDate(User sender) {
         return null;
     }
 }

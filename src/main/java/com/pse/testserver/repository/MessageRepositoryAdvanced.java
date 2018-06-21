@@ -1,9 +1,9 @@
 package com.pse.testserver.repository;
 
-import java.util.List;
-
 import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.User;
+
+import java.util.List;
 
 /**
  * The Interface MessageRepositoryAdvanced.
@@ -18,11 +18,6 @@ public interface MessageRepositoryAdvanced {
      */
     List<Message> findAllByReceiverSortedByDate(User receiver);
 
-    /**
-     * Find all received messages sorted by sender.
-     *
-     * @param sender sender of searched messages
-     * @return list of all messages received sorted by sender
-     */
-    List<Message> findAllByReceiverSortedBySender(User sender);
+
+    List<Message> findAllBySenderSortedByDate(User sender);
 }
