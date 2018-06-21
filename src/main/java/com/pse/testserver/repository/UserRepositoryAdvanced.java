@@ -6,7 +6,8 @@ import java.util.List;
 
 
 /**
- * The Interface UserRepositoryAdvanced.
+ * Advanced repository interface which includes find methods related to user entity.
+ *
  */
 public interface UserRepositoryAdvanced {
     
