@@ -47,7 +47,7 @@ public class MessageService {
     }
 
     @Transactional
-    public boolean sendMessage(User sender, User receiver) {
+    public boolean sendMessage(Message message) {
         return false;
     }
 }

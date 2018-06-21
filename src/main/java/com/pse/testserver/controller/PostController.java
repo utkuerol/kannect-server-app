@@ -35,9 +35,8 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public boolean post(@RequestBody User user, @RequestBody String text) {
-        return postService.post(user, text);
-
+    public boolean post(@RequestBody Post post) {
+        return postService.post(post);
     }
 
     @DeleteMapping("/deletePost")
@@ -48,7 +47,6 @@ public class PostController {
     @PostMapping("/editPost")
     public boolean editPost(@RequestBody Post editedPost, @RequestBody Post postToEdit) {
         return postService.editPost(editedPost, postToEdit);
-
     }
 
     @PostMapping("/likePost")
@@ -60,13 +58,11 @@ public class PostController {
     @PostMapping("/unlikePost")
     public boolean unlikePost(@RequestBody Post post, User user) {
         return postService.unlikePost(post, user);
-
     }
     
     @PostMapping("/commentPost")
     public boolean commentPost(@RequestBody Post post, User user, Comment comment) {
         return postService.commentPost(post, user, comment);
-
     }
 
 

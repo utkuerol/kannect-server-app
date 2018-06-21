@@ -44,7 +44,7 @@ public class PostService {
 
 
     @Transactional
-    public boolean post(User user, String text) {
+    public boolean post(Post post) {
         return false;
     }
 

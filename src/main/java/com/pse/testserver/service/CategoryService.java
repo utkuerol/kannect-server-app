@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Service class implementing the business logic regarding the category entity, which includes
+ * creating, modifying, deleting and other operations which the application
+ */
 @Service
 public class CategoryService {
     @Autowired

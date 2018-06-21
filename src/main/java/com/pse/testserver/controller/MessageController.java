@@ -32,7 +32,7 @@ public class MessageController {
     }
 
     @PostMapping("/sendMessage")
-    public boolean sendMessage(@RequestBody User sender, @RequestBody User receiver) {
-        return messageService.sendMessage(sender, receiver);
+    public boolean sendMessage(@RequestBody Message message) {
+        return messageService.sendMessage(message);
     }
 }
