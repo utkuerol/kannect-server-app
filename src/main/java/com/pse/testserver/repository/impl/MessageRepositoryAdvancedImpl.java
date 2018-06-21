@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * The Class MessageRepositoryAdvancedImpl implement the find methods related to event entity, which are not
+ * The Class MessageRepositoryAdvancedImpl implement the find methods related to message entity, which are not
  * supported by the spring framework.
  */
 @Repository
