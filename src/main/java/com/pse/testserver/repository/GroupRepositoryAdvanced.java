@@ -3,12 +3,12 @@ package com.pse.testserver.repository;
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
 
 import java.util.List;
 
 /**
- * The Interface GroupRepositoryAdvanced.
+ * Advanced repository interface which includes find methods related to group entity.
+ * 
  */
 public interface GroupRepositoryAdvanced{
     
@@ -37,13 +37,6 @@ public interface GroupRepositoryAdvanced{
      */
     List<Group> findAllByNameSortedByCategory(String name, Category category);
     
-    /**
-     * Find all members of group.
-     *
-     * @param group group to be searched in for members
-     * @return list of all members of the group
-     */
-    List<User> findJoinedUsers(Group group);
     
     /**
      * Find all posts of group.
