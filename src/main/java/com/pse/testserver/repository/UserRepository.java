@@ -7,25 +7,32 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+/**
+ * The Interface UserRepository.
+ */
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
     
     /**
-     * find user by id
+     * Find user by id.
+     *
      * @param id unique id of the searched user
      * @return user with the defined id
      */
     User findById(long id);
     
     /**
-     * 
+     * Find by name.
+     *
      * @param name name of the searched User
      * @return {@linkplain java.util.List> of all Users with the same given name
      */
     List<User> findByName(String name);
     
     /**
-     * 
+     * Find by email.
+     *
      * @param email address of user
      * @return user with the specified address mail
      */
