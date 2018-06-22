@@ -13,7 +13,7 @@ import java.util.List;
 public interface GroupRepositoryAdvanced{
     
     /**
-     * Find all groups containing the string name.
+     * Find all groups from the database containing the string name.
      *
      * @param name word to be searched in all groups names
      * @return list of all groups containing the string name
@@ -21,7 +21,7 @@ public interface GroupRepositoryAdvanced{
     List<Group> findAllByName(String name);
     
     /**
-     * Find all groups belonging to the specified category.
+     * Find all groups from the database belonging to the specified category.
      *
      * @param category category of groups searched
      * @return list of all groups that belong to the given category
@@ -29,7 +29,7 @@ public interface GroupRepositoryAdvanced{
     List<Group> findAllByCategory(Category category);
     
     /**
-     * Find all groups containing the string name with the specified category.
+     * Find all groups from the database containing the string name with the specified category.
      *
      * @param name word to be searched in all groups names
      * @param category category of groups searched
@@ -39,7 +39,7 @@ public interface GroupRepositoryAdvanced{
     
     
     /**
-     * Find all posts of group.
+     * Find all posts of group from the database.
      *
      * @param group group to be searched in for posts
      * @return list of all posts of the group
