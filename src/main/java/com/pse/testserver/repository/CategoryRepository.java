@@ -13,14 +13,14 @@ import java.util.List;
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
     
     /**
-     * Find all.
+     * Find all categories from database.
      *
      * @return a list of all available categories
      */
     List<Category> findAll();
 
     /**
-     * find category by id.
+     * Find category from database by id.
      *
      * @param id unique id of the searched category
      * @return category with the defined id
@@ -28,7 +28,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
     Category findById(long id);
 
     /**
-     * find category by name.
+     * find category from database by name.
      *
      * @param name word to be searched in all categories names
      * @return list of all categories containing the string name
