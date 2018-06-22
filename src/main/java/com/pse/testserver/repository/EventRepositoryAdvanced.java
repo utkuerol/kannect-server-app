@@ -12,7 +12,7 @@ import java.util.List;
 public interface EventRepositoryAdvanced{
     
     /**
-     * Find all events by date.
+     * Find all events from the database by date.
      *
      * @param date date of searched events
      * @return events with the specified date
@@ -20,7 +20,7 @@ public interface EventRepositoryAdvanced{
     List<Event> findAllByDate(Date date);
 
     /**
-     * Find all events containing the string name sorted by date.
+     * Find all events from the database containing the string name sorted by date.
      *
      * @param name word to be searched in all events names
      * @return list of all events containing the string name at the given date
@@ -28,7 +28,7 @@ public interface EventRepositoryAdvanced{
     List<Event> findByNameSortedByDate(String name);
 
     /**
-     * Find all events containing the string name sorted by category.
+     * Find all events from the database containing the string name sorted by category.
      *
      * @param name word to be searched in all events names.
      * @param category category of searched events
@@ -38,7 +38,7 @@ public interface EventRepositoryAdvanced{
 
 
     /**
-     * Find all events sorted by Date
+     * Find all events from the database sorted by Date
      * @param name word to be searched in all events names.
      * @return list of events, chronologically sorted with the latest event being the first element.
      */
