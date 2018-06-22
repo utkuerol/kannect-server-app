@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface EventRepository extends CrudRepository<Event, Integer> {
     
     /**
-     * Find event by id.
+     * Find event from database by id.
      *
      * @param id unique id of the searched event
      * @return event with the defined id
