@@ -13,14 +13,14 @@ import java.util.List;
 public interface GroupRepository extends CrudRepository<Group, Integer> {
 
     /**
-     * Find all groups.
+     * Find all groups from the database.
      *
      * @return a list of all available groups
      */
     List<Group> findAll();
     
     /**
-     * Find group by id.
+     * Find group from the database by id.
      *
      * @param id unique id of the searched group
      * @return group with the defined id
