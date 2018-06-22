@@ -28,7 +28,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
     Category findById(long id);
 
     /**
-     * find category from database by name.
+     * Find category from database by name.
      *
      * @param name word to be searched in all categories names
      * @return list of all categories containing the string name
