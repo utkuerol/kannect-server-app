@@ -13,14 +13,14 @@ public interface PostRepository extends CrudRepository<Post,String> {
 
 
     /**
-     * Find all.
+     * Find all posts from the database.
      *
      * @return a list of all available posts
      */
     List<Post> findAll();
 
     /**
-     * Find post by id.
+     * Find post from the database by id.
      *
      * @param id unique id of the searched post
      * @return post with the defined id

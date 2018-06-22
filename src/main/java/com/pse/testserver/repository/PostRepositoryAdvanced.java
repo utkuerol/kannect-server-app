@@ -15,7 +15,7 @@ import java.util.List;
 public interface PostRepositoryAdvanced {
 
     /**
-     * Find all posts of a user.
+     * Find all posts of a user from the database.
      *
      * @param user user
      * @return list of all posts of the given user
@@ -23,7 +23,7 @@ public interface PostRepositoryAdvanced {
     List<Post> findAllByUser(User user);
 
     /**
-     * find all posts of a group.
+     * find all posts of a group from the database.
      *
      * @param group group
      * @return list of all posts of the given group
@@ -31,7 +31,7 @@ public interface PostRepositoryAdvanced {
     List<Post> findAllByGroup(Group group);
 
     /**
-     * Find all posts of an event.
+     * Find all posts of an event from the database.
      *
      * @param event the event
      * @return list of all posts of the given event
