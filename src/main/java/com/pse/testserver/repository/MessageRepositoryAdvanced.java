@@ -11,7 +11,7 @@ import java.util.List;
 public interface MessageRepositoryAdvanced {
     
     /**
-     * Find all received messages sorted by date.
+     * Find all received messages from the database sorted by date.
      *
      * @param receiver receiver of searched messages
      * @return list of all messages received sorted by date
@@ -19,7 +19,7 @@ public interface MessageRepositoryAdvanced {
     List<Message> findAllReceivedMessagesSortedByDate(User receiver);
     
     /**
-     * Find all sent messages sorted by date.
+     * Find all sent messages from the database sorted by date.
      * @param sender sender of searched messages
      * @return list of all messages sent sorted by date
      */

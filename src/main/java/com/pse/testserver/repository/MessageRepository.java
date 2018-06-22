@@ -11,7 +11,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface MessageRepository extends CrudRepository<Message, Integer> {
     
     /**
-     * Find message by id.
+     * Find message by id from the database.
      *
      * @param id unique id of the searched message
      * @return message with the defined id
