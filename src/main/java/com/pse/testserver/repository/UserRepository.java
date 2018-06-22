@@ -16,7 +16,7 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Integer> {
     
     /**
-     * Find user by id.
+     * Find user from the database by id.
      *
      * @param id unique id of the searched user
      * @return user with the defined id
@@ -24,7 +24,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     User findById(long id);
     
     /**
-     * Find by name.
+     * Find users from the database by name.
      *
      * @param name name of the searched User
      * @return list of all Users with the same given name

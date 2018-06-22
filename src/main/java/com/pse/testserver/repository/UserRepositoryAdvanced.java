@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserRepositoryAdvanced {
     
     /**
-     * Find all users by name.
+     * Find all users from the database by name.
      *
      * @param name the name of user
      * @return list of all users having the specified name
