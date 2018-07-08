@@ -49,7 +49,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByUser(User user) {
-        return postRepositoryADV.findAllByUser(user);
+        return postRepositoryADV.findAllByUser(user.getId());
     }
 
     /**
@@ -59,7 +59,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByGroup(Group group) {
-        return postRepositoryADV.findAllByGroup(group);
+        return postRepositoryADV.findAllByGroup(group.getId());
     }
 
     /**
@@ -69,7 +69,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByEvent(Event event) {
-        return postRepositoryADV.findAllByEvent(event);
+        return postRepositoryADV.findAllByEvent(event.getId());
     }
 
     /**

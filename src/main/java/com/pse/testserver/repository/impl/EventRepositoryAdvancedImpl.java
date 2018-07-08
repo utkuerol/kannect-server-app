@@ -31,6 +31,11 @@ public class EventRepositoryAdvancedImpl implements EventRepositoryAdvanced {
         return null;
     }
 
+    @Override
+    public List<Event> findAllByNameSortedByCategory(String name, long category) {
+        return null;
+    }
+
 
     /**
      * @see com.pse.testserver.repository.EventRepositoryAdvanced#findAllSortedByDate(java.lang.String)

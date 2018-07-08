@@ -1,7 +1,6 @@
 package com.pse.testserver.repository.impl;
 
 import com.pse.testserver.entities.User;
-import com.pse.testserver.repository.UserRepositoryAdvanced;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 

@@ -2,6 +2,9 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +20,8 @@ public interface EventRepositoryAdvanced{
      * @param date date of searched events
      * @return events with the specified date
      */
-    List<Event> findAllByDate(Date date);
+    @Query("Select * from events e where e.date like date")
+    List<Event> findAllByDate(@Param("date") Date date);
 
     /**
      * Find all events from the database containing the string name sorted by date.
@@ -25,7 +29,8 @@ public interface EventRepositoryAdvanced{
      * @param name word to be searched in all events names
      * @return list of all events containing the string name at the given date
      */
-    List<Event> findByNameSortedByDate(String name);
+    @Query("Select * from events e where e.name like name")
+    List<Event> findByNameSortedByDate(@Param("name") String name);
 
     /**
      * Find all events from the database containing the string name sorted by category.
@@ -34,13 +39,14 @@ public interface EventRepositoryAdvanced{
      * @param category category of searched events
      * @return list of all events containing the string name with the specified category
      */
-    List<Event> findAllByNameSortedByCategory(String name, Category category);
+    @Query("Select * from events e where e.name like name and e.category_id like category")
+    List<Event> findAllByNameSortedByCategory(@Param("name") String name, @Param("category") long category);
 
 
     /**
      * Find all events from the database sorted by Date
-     * @param name word to be searched in all events names.
      * @return list of events, chronologically sorted with the latest event being the first element.
      */
+    @Query("Select * from events ORDER BY date DESC")
     List<Event> findAllSortedByDate();
 }

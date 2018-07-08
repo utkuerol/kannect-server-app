@@ -2,6 +2,8 @@ package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Message;
 import com.pse.testserver.entities.User;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -16,12 +18,16 @@ public interface MessageRepositoryAdvanced {
      * @param receiver receiver of searched messages
      * @return list of all messages received sorted by date
      */
-    List<Message> findAllReceivedMessagesSortedByDate(User receiver);
+    @Query(value = "SELECT * from messages m where m.receiver_id like receiver_id ORDER BY date DESC",
+            nativeQuery = true)
+    List<Message> findAllReceivedMessagesSortedByDate(@Param("receiver_id") long receiver);
     
     /**
      * Find all sent messages from the database sorted by date.
      * @param sender sender of searched messages
      * @return list of all messages sent sorted by date
      */
-    List<Message> findAllSentMessagesSortedByDate(User sender);
+    @Query(value = "SELECT * from messages m where m.sender_id like sender_id ORDER BY date DESC",
+            nativeQuery = true)
+    List<Message> findAllSentMessagesSortedByDate(@Param("sender_id") long sender);
 }

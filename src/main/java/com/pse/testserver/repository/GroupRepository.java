@@ -1,7 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Group;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,6 +19,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      *
      * @return a list of all available groups
      */
+    @Query("Select * from groups")
     List<Group> findAll();
     
     /**
@@ -25,6 +28,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param id unique id of the searched group
      * @return group with the defined id
      */
-    Group findById(long id);
+    @Query("Select * from groups g where g.id like id")
+    Group findById(@Param("id") long id);
     
 }

@@ -1,7 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Post;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ public interface PostRepository extends CrudRepository<Post,String> {
      *
      * @return a list of all available posts
      */
+    @Query(value = "SELECT * from posts",
+            nativeQuery = true)
     List<Post> findAll();
 
     /**
@@ -25,7 +29,9 @@ public interface PostRepository extends CrudRepository<Post,String> {
      * @param id unique id of the searched post
      * @return post with the defined id
      */
-    Post findById(long id);
+    @Query(value = "SELECT * from posts p where p.id like id",
+            nativeQuery = true)
+    Post findById(@Param("id") long id);
     
 
 }

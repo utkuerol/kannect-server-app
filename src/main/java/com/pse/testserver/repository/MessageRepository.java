@@ -1,7 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Message;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Simple interface which includes find methods related to message entity.
@@ -16,6 +18,7 @@ public interface MessageRepository extends CrudRepository<Message, Integer> {
      * @param id unique id of the searched message
      * @return message with the defined id
      */
-    Message findById(long id);
+    @Query("Select * from messages m where m.id like id")
+    Message findById(@Param("id") long id);
 
 }

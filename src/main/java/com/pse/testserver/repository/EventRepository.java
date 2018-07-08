@@ -1,7 +1,9 @@
 package com.pse.testserver.repository;
 
 import com.pse.testserver.entities.Event;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Simple repository interface which includes find methods related to event entity.
@@ -15,6 +17,7 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
      * @param id unique id of the searched event
      * @return event with the defined id
      */
-    Event findById(long id);
+    @Query("Select * from events e where e.id like id")
+    Event findById(@Param("id") long id);
 
 }

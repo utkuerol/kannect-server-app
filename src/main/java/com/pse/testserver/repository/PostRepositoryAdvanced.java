@@ -4,6 +4,8 @@ import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
 import com.pse.testserver.entities.User;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,25 +19,31 @@ public interface PostRepositoryAdvanced {
     /**
      * Find all posts of a user from the database.
      *
-     * @param user user
+     * @param id id of the user
      * @return list of all posts of the given user
      */
-    List<Post> findAllByUser(User user);
+    @Query(value = "SELECT * from posts p where p.creator_id like id",
+            nativeQuery = true)
+    List<Post> findAllByUser(@Param("id") long id);
 
     /**
      * find all posts of a group from the database.
      *
-     * @param group group
+     * @param id the id of the group
      * @return list of all posts of the given group
      */
-    List<Post> findAllByGroup(Group group);
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+            nativeQuery = true)
+    List<Post> findAllByGroup(@Param("id") long id);
 
     /**
      * Find all posts of an event from the database.
      *
-     * @param event the event
+     * @param id the id of the event
      * @return list of all posts of the given event
      */
-    List<Post> findAllByEvent(Event event);
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+            nativeQuery = true)
+    List<Post> findAllByEvent(@Param("id") long id);
 
 }

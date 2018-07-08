@@ -3,6 +3,8 @@ package com.pse.testserver.repository;
 import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.Post;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -18,7 +20,8 @@ public interface GroupRepositoryAdvanced{
      * @param name word to be searched in all groups names
      * @return list of all groups containing the string name
      */
-    List<Group> findAllByName(String name);
+    @Query("Select * from groups g where g.name like name")
+    List<Group> findAllByName(@Param("name") String name);
     
     /**
      * Find all groups from the database belonging to the specified category.
@@ -26,7 +29,8 @@ public interface GroupRepositoryAdvanced{
      * @param category category of groups searched
      * @return list of all groups that belong to the given category
      */
-    List<Group> findAllByCategory(Category category);
+    @Query("Select * from groups g where g.category_id like category")
+    List<Group> findAllByCategory(@Param("category") long category);
     
     /**
      * Find all groups from the database containing the string name with the specified category.
@@ -35,7 +39,8 @@ public interface GroupRepositoryAdvanced{
      * @param category category of groups searched
      * @return list of all groups that belong to the given category
      */
-    List<Group> findAllByNameSortedByCategory(String name, Category category);
+    @Query("Select * from groups g where g.name like name and g.category_id like category")
+    List<Group> findAllByNameSortedByCategory(@Param("name") String name, @Param("category") long category);
     
     
     /**
