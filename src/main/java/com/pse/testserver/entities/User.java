@@ -1,6 +1,7 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,13 +47,13 @@ public class User {
     @JoinTable(name = "user_subscriptions",
             inverseJoinColumns = {@JoinColumn(name = "subscribed_id")},
             joinColumns = {@JoinColumn(name = "subscriber_id")})
-    private Set<User> subscriptions;
+    private List<User> subscriptions;
 
     /**
      * Users, which subscribe this user.
      */
     @ManyToMany(mappedBy = "subscriptions")
-    private Set<User> subscribers;
+    private List<User> subscribers;
 
     /**
      * Groups, which this user has joined.
@@ -61,7 +62,7 @@ public class User {
     @JoinTable(name = "group_members",
             inverseJoinColumns = {@JoinColumn(name = "group_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
-    private Set<Group> joinedGroups;
+    private List<Group> joinedGroups;
 
     /**
      * Events, in which this user has participated.
@@ -70,50 +71,49 @@ public class User {
     @JoinTable(name = "event_participants",
             inverseJoinColumns = {@JoinColumn(name = "event_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
-    private Set<Event> participatedEvents;
+    private List<Event> participatedEvents;
+
+    /**
+     * Posts, which are liked by this user.
+     */
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "post_likes",
+            inverseJoinColumns = {@JoinColumn(name = "post_id")},
+            joinColumns = {@JoinColumn(name = "user_id")})
+    private List<Post> likedPosts;
 
     /**
      * Posts, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Post> createdPosts;
+    private List<Post> createdPosts;
 
     /**
      * Groups, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Group> createdGroups;
+    private List<Group> createdGroups;
 
     /**
      * Events, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Event> createdEvents;
+    private List<Event> createdEvents;
 
     /**
      * Comments, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Comment> createdComments;
+    private List<Comment> createdComments;
 
-    /**
-     * Messages, which this user has received.
-     */
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Message> receivedMessages;
 
-    /**
-     * Messages, which this user has sent.
-     */
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Message> sentMessages;
 
     /**
      * Gets createdGroups.
      *
      * @return Value of createdGroups.
      */
-    public Set<Group> getCreatedGroups() {
+    public List<Group> getCreatedGroups() {
         return createdGroups;
     }
 
@@ -122,7 +122,7 @@ public class User {
      *
      * @param createdGroups New value of createdGroups.
      */
-    public void setCreatedGroups(Set<Group> createdGroups) {
+    public void setCreatedGroups(List<Group> createdGroups) {
         this.createdGroups = createdGroups;
     }
 
@@ -144,48 +144,13 @@ public class User {
         this.id = id;
     }
 
-    /**
-     * Gets receivedMessages.
-     *
-     * @return Value of receivedMessages.
-     */
-    public Set<Message> getReceivedMessages() {
-        return receivedMessages;
-    }
-
-    /**
-     * Sets new receivedMessages.
-     *
-     * @param receivedMessages New value of receivedMessages.
-     */
-    public void setReceivedMessages(Set<Message> receivedMessages) {
-        this.receivedMessages = receivedMessages;
-    }
-
-    /**
-     * Gets sentMessages.
-     *
-     * @return Value of sentMessages.
-     */
-    public Set<Message> getSentMessages() {
-        return sentMessages;
-    }
-
-    /**
-     * Sets new sentMessages.
-     *
-     * @param sentMessages New value of sentMessages.
-     */
-    public void setSentMessages(Set<Message> sentMessages) {
-        this.sentMessages = sentMessages;
-    }
 
     /**
      * Gets createdEvents.
      *
      * @return Value of createdEvents.
      */
-    public Set<Event> getCreatedEvents() {
+    public List<Event> getCreatedEvents() {
         return createdEvents;
     }
 
@@ -194,7 +159,7 @@ public class User {
      *
      * @param createdEvents New value of createdEvents.
      */
-    public void setCreatedEvents(Set<Event> createdEvents) {
+    public void setCreatedEvents(List<Event> createdEvents) {
         this.createdEvents = createdEvents;
     }
 
@@ -203,7 +168,7 @@ public class User {
      *
      * @return Value of createdPosts.
      */
-    public Set<Post> getCreatedPosts() {
+    public List<Post> getCreatedPosts() {
         return createdPosts;
     }
 
@@ -212,7 +177,7 @@ public class User {
      *
      * @param createdPosts New value of createdPosts.
      */
-    public void setCreatedPosts(Set<Post> createdPosts) {
+    public void setCreatedPosts(List<Post> createdPosts) {
         this.createdPosts = createdPosts;
     }
 
@@ -221,7 +186,7 @@ public class User {
      *
      * @return Value of joinedGroups.
      */
-    public Set<Group> getJoinedGroups() {
+    public List<Group> getJoinedGroups() {
         return joinedGroups;
     }
 
@@ -230,7 +195,7 @@ public class User {
      *
      * @param joinedGroups New value of joinedGroups.
      */
-    public void setJoinedGroups(Set<Group> joinedGroups) {
+    public void setJoinedGroups(List<Group> joinedGroups) {
         this.joinedGroups = joinedGroups;
     }
 
@@ -239,7 +204,7 @@ public class User {
      *
      * @return Value of createdComments.
      */
-    public Set<Comment> getCreatedComments() {
+    public List<Comment> getCreatedComments() {
         return createdComments;
     }
 
@@ -248,7 +213,7 @@ public class User {
      *
      * @param createdComments New value of createdComments.
      */
-    public void setCreatedComments(Set<Comment> createdComments) {
+    public void setCreatedComments(List<Comment> createdComments) {
         this.createdComments = createdComments;
     }
 
@@ -275,7 +240,7 @@ public class User {
      *
      * @return Value of participatedEvents.
      */
-    public Set<Event> getParticipatedEvents() {
+    public List<Event> getParticipatedEvents() {
         return participatedEvents;
     }
 
@@ -284,7 +249,7 @@ public class User {
      *
      * @param participatedEvents New value of participatedEvents.
      */
-    public void setParticipatedEvents(Set<Event> participatedEvents) {
+    public void setParticipatedEvents(List<Event> participatedEvents) {
         this.participatedEvents = participatedEvents;
     }
 
@@ -293,7 +258,7 @@ public class User {
      *
      * @return Value of subscribers.
      */
-    public Set<User> getSubscribers() {
+    public List<User> getSubscribers() {
         return subscribers;
     }
 
@@ -302,7 +267,7 @@ public class User {
      *
      * @param subscribers New value of subscribers.
      */
-    public void setSubscribers(Set<User> subscribers) {
+    public void setSubscribers(List<User> subscribers) {
         this.subscribers = subscribers;
     }
 
@@ -329,7 +294,7 @@ public class User {
      *
      * @return Value of subscriptions.
      */
-    public Set<User> getSubscriptions() {
+    public List<User> getSubscriptions() {
         return subscriptions;
     }
 
@@ -338,7 +303,7 @@ public class User {
      *
      * @param subscriptions New value of subscriptions.
      */
-    public void setSubscriptions(Set<User> subscriptions) {
+    public void setSubscriptions(List<User> subscriptions) {
         this.subscriptions = subscriptions;
     }
 
@@ -386,5 +351,23 @@ public class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Sets new Posts, which are liked by this user..
+     *
+     * @param likedPosts New value of Posts, which are liked by this user..
+     */
+    public void setLikedPosts(List<Post> likedPosts) {
+        this.likedPosts = likedPosts;
+    }
+
+    /**
+     * Gets Posts, which are liked by this user..
+     *
+     * @return Value of Posts, which are liked by this user..
+     */
+    public List<Post> getLikedPosts() {
+        return likedPosts;
     }
 }

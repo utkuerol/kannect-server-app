@@ -1,12 +1,16 @@
 package com.pse.testserver.service;
 
 import com.pse.testserver.entities.*;
+import com.pse.testserver.repository.CommentRepository;
 import com.pse.testserver.repository.PostRepository;
+import com.pse.testserver.repository.UserRepository;
 import com.pse.testserver.repository.impl.PostRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -30,6 +34,12 @@ public class PostService {
     @Autowired
     private PostRepositoryAdvancedImpl postRepositoryADV;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
     /**
      * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
      * in chronological order, with the latest created post being the first item.
@@ -39,7 +49,22 @@ public class PostService {
      */
     @Transactional
     public List<Post> getPersonalFeed(User user) {
-        return null;
+        List<Post> personalFeed = new LinkedList<>();
+
+        for (User subscription : user.getSubscriptions()) {
+            personalFeed.addAll(postRepositoryADV.findAllOwnedByUser(subscription.getId()));
+        }
+
+        for (Group joinedGroup : user.getJoinedGroups()) {
+            personalFeed.addAll(postRepositoryADV.findAllByGroup(joinedGroup.getId()));
+        }
+
+        for (Event participatedEvent : user.getParticipatedEvents()) {
+            personalFeed.addAll(postRepositoryADV.findAllByEvent(participatedEvent.getId()));
+        }
+
+        personalFeed.sort(Comparator.comparing(Post::getDate));
+        return personalFeed;
     }
 
     /**
@@ -49,7 +74,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByUser(User user) {
-        return postRepositoryADV.findAllByUser(user.getId());
+        return postRepositoryADV.findAllOwnedByUser(user.getId());
     }
 
     /**
@@ -77,7 +102,8 @@ public class PostService {
      * @param post to be saved, received from the client.
      */
     @Transactional
-    public void post(Post post) {
+    public void newPost(Post post) {
+        postRepository.save(post);
     }
 
     /**
@@ -86,6 +112,7 @@ public class PostService {
      */
     @Transactional
     public void deletePost(Post post) {
+        postRepository.delete(post);
     }
 
     /**
@@ -94,6 +121,7 @@ public class PostService {
      */
     @Transactional
     public void editPost(Post editedPost) {
+        postRepository.save(editedPost);
     }
 
     /**
@@ -103,6 +131,10 @@ public class PostService {
      */
     @Transactional
     public void likePost(Post post, User user) {
+        post.getLikedUsers().add(user);
+        postRepository.save(post);
+        user.getLikedPosts().add(post);
+        userRepository.save(user);
     }
 
     /**
@@ -112,6 +144,10 @@ public class PostService {
      */
     @Transactional
     public void unlikePost(Post post, User user) {
+        post.getLikedUsers().remove(user);
+        postRepository.save(post);
+        user.getLikedPosts().remove(post);
+        userRepository.save(user);
     }
 
     /**
@@ -120,7 +156,10 @@ public class PostService {
      */
     @Transactional
     public void commentPost(Comment comment) {
-
+        commentRepository.save(comment);
+        Post post = comment.getPost();
+        post.getComments().add(comment);
+        postRepository.save(post);
     }
 
 }

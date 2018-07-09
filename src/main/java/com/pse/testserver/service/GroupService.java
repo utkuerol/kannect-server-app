@@ -43,56 +43,6 @@ public class GroupService {
         return groupRepositoryADV.findAllByName(name);
     }
 
-    /**
-     * Method to get the users, which have joined the given group.
-     *
-     * @param group to look of joined users.
-     * @return list of users
-     */
-    @Transactional
-    public List<User> getJoinedUsers(Group group) {
-        return null;
-    }
-
-    /**
-     * Method to get all groups, which fall into the given category.
-     * @param category to look for groups.
-     * @return list of groups
-     */
-    @Transactional
-    public List<Group> getAllByCategory(Category category) {
-        return groupRepositoryADV.findAllByCategory(category);
-    }
-
-    /**
-     * Method to look for groups, which include the given String in their names and fall into the given category.
-     * @param name to look for.
-     * @param category to look for.
-     * @return list of groups
-     */
-    @Transactional
-    public List<Group> getAllByNameSortedByCategory(String name, Category category) {
-        return groupRepositoryADV.findAllByNameSortedByCategory(name, category);
-    }
-
-    /**
-     * Method to get all groups in the system.
-     * @return list of groups.
-     */
-    @Transactional
-    public List<Group> getAll() {
-        return groupRepository.findAll();
-    }
-
-    /**
-     * Method to find a group by its unique id.
-     * @param id
-     * @return found group.
-     */
-    @Transactional
-    public Group getById(int id) {
-        return groupRepository.findById(id);
-    }
 
     /**
      * Method to save a new group to the system.
@@ -100,6 +50,7 @@ public class GroupService {
      */
     @Transactional
     public void createGroup(Group group) {
+        groupRepository.save(group);
     }
 
     /**
@@ -108,6 +59,7 @@ public class GroupService {
      */
     @Transactional
     public void deleteGroup(Group group) {
+        groupRepository.delete(group);
     }
 
     /**
@@ -116,5 +68,6 @@ public class GroupService {
      */
     @Transactional
     public void editGroup(Group editedGroup) {
+        groupRepository.save(editedGroup);
     }
 }

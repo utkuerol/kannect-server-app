@@ -17,7 +17,6 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
      * @param id unique id of the searched event
      * @return event with the defined id
      */
-    @Query("Select * from events e where e.id like id")
     Event findById(@Param("id") long id);
 
 }

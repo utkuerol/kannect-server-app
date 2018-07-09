@@ -80,9 +80,9 @@ public class PostController {
      * Saves a new post object into the system.
      * @param post to be saved, received from the client.
      */
-    @PostMapping("/post")
-    public void post(@RequestBody Post post) {
-        postService.post(post);
+    @PostMapping("/newPost")
+    public void newPost(@RequestBody Post post) {
+        postService.newPost(post);
     }
 
     /**

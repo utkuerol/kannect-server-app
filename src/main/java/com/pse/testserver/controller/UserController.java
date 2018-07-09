@@ -101,7 +101,6 @@ public class UserController {
     @PostMapping("/participateInEvent")
     public void participateInEvent(@RequestBody User user, @RequestBody Event event) {
         userService.participateInEvent(user, event);
-
     }
 
     /**
@@ -114,7 +113,6 @@ public class UserController {
     @PostMapping("/leaveEvent")
     public void leaveEvent(@RequestBody User user, @RequestBody Event event) {
         userService.leaveEvent(user, event);
-
     }
 
 }

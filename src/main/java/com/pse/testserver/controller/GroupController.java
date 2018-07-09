@@ -35,8 +35,7 @@ public class GroupController {
     @GetMapping("/groups")
     @ResponseBody
     public List<Group> getGroups(@RequestParam(value = "name", defaultValue = "") String name) {
-        groupService.getAllByName(name);
-        return null;
+        return groupService.getAllByName(name);
     }
 
     /**
@@ -68,9 +67,8 @@ public class GroupController {
      * @param editedGroup to be saved.
      */
     @PostMapping("/editGroup")
-    public boolean editGroup(@RequestBody Group editedGroup) {
+    public void editGroup(@RequestBody Group editedGroup) {
         groupService.editGroup(editedGroup);
-        return false;
     }
 
 }

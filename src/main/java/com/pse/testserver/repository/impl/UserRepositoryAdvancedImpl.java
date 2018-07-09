@@ -11,9 +11,7 @@ import java.util.List;
 @Repository
 public class UserRepositoryAdvancedImpl implements UserRepositoryAdvanced {
 
-    /**
-     * @see com.pse.testserver.repository.UserRepositoryAdvanced#findAllByName(java.lang.String)
-     */
+
     @Override
     public List<User> findAllByName(String name) {
         return null;

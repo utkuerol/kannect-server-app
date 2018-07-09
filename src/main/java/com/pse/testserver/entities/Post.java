@@ -3,6 +3,7 @@ package com.pse.testserver.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,11 +37,6 @@ public class Post implements Serializable {
     @JoinColumn(name = "creator_id")
     private User creator;
 
-    /**
-     * Number of likes of this post. Incremented when liked by users.
-     */
-    @Column(name = "number_of_likes")
-    private int number_of_likes;
 
     /**
      * Creation date of this post.
@@ -60,7 +56,10 @@ public class Post implements Serializable {
      * Comments, which have been created regarding this post.
      */
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Comment> comments;
+    private List<Comment> comments;
+
+    @ManyToMany(mappedBy = "likedPosts")
+    private List<User> likedUsers;
 
     /**
      * Gets creator.
@@ -116,23 +115,6 @@ public class Post implements Serializable {
         this.date = date;
     }
 
-    /**
-     * Gets comments.
-     *
-     * @return Value of comments.
-     */
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    /**
-     * Sets new comments.
-     *
-     * @param comments New value of comments.
-     */
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
 
     /**
      * Gets text.
@@ -176,15 +158,43 @@ public class Post implements Serializable {
      * @return Value of number_of_likes.
      */
     public int getNumber_of_likes() {
-        return number_of_likes;
+        return likedUsers.size();
+    }
+
+
+    /**
+     * Gets Comments, which have been created regarding this post..
+     *
+     * @return Value of Comments, which have been created regarding this post..
+     */
+    public List<Comment> getComments() {
+        return comments;
     }
 
     /**
-     * Sets new number_of_likes.
+     * Sets new likedUsers.
      *
-     * @param number_of_likes New value of number_of_likes.
+     * @param likedUsers New value of likedUsers.
      */
-    public void setNumber_of_likes(int number_of_likes) {
-        this.number_of_likes = number_of_likes;
+    public void setLikedUsers(List<User> likedUsers) {
+        this.likedUsers = likedUsers;
+    }
+
+    /**
+     * Sets new Comments, which have been created regarding this post..
+     *
+     * @param comments New value of Comments, which have been created regarding this post..
+     */
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    /**
+     * Gets likedUsers.
+     *
+     * @return Value of likedUsers.
+     */
+    public List<User> getLikedUsers() {
+        return likedUsers;
     }
 }

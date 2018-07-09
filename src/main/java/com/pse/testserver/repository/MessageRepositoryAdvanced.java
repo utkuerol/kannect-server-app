@@ -1,9 +1,8 @@
 package com.pse.testserver.repository;
 
-import com.pse.testserver.entities.Message;
-import com.pse.testserver.entities.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import sun.plugin2.message.Message;
 
 import java.util.List;
 

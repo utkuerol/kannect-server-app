@@ -22,9 +22,9 @@ public interface PostRepositoryAdvanced {
      * @param id id of the user
      * @return list of all posts of the given user
      */
-    @Query(value = "SELECT * from posts p where p.creator_id like id",
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
             nativeQuery = true)
-    List<Post> findAllByUser(@Param("id") long id);
+    List<Post> findAllOwnedByUser(@Param("id") long id);
 
     /**
      * find all posts of a group from the database.

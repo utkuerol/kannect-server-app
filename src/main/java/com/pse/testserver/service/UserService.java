@@ -3,6 +3,8 @@ package com.pse.testserver.service;
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
+import com.pse.testserver.repository.EventRepository;
+import com.pse.testserver.repository.GroupRepository;
 import com.pse.testserver.repository.UserRepository;
 import com.pse.testserver.repository.impl.UserRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,28 @@ import java.util.List;
 public class UserService {
 
     /**
-     * Injected PostRepository class dependency.
+     * Injected UserRepository class dependency.
      */
     @Autowired
     UserRepository userRepository;
 
     /**
-     * Injected PostRepositoryAdvancedImpl class dependency.
+     * Injected UserRepositoryAdvancedImpl class dependency.
      */
     @Autowired
     UserRepositoryAdvancedImpl userRepositoryADV;
+
+    /**
+     * Injected GroupRepository class dependency.
+     */
+    @Autowired
+    GroupRepository groupRepository;
+
+    /**
+     * Injected EventRepository class dependency.
+     */
+    @Autowired
+    EventRepository eventRepository;
 
     /**
      * Searchs and gives all users with the given name.
@@ -61,7 +75,10 @@ public class UserService {
      */
     @Transactional
     public void subscribeUser(User subscriber, User subscribed) {
-
+        subscriber.getSubscriptions().add(subscribed);
+        userRepository.save(subscriber);
+        subscribed.getSubscribers().add(subscriber);
+        userRepository.save(subscribed);
     }
 
     /**
@@ -72,7 +89,10 @@ public class UserService {
      */
     @Transactional
     public void unsubscribeUser(User subscriber, User subscribed) {
-
+        subscriber.getSubscriptions().remove(subscribed);
+        userRepository.save(subscriber);
+        subscribed.getSubscribers().remove(subscriber);
+        userRepository.save(subscribed);
     }
 
     /**
@@ -83,7 +103,10 @@ public class UserService {
      */
     @Transactional
     public void joinGroup(User user, Group group) {
-
+        user.getJoinedGroups().add(group);
+        userRepository.save(user);
+        group.getMembers().add(user);
+        groupRepository.save(group);
     }
 
     /**
@@ -94,6 +117,10 @@ public class UserService {
      */
     @Transactional
     public void leaveGroup(User user, Group group) {
+        user.getJoinedGroups().remove(group);
+        userRepository.save(user);
+        group.getMembers().remove(user);
+        groupRepository.save(group);
     }
 
     /**
@@ -104,6 +131,10 @@ public class UserService {
      */
     @Transactional
     public void participateInEvent(User user, Event event) {
+        user.getParticipatedEvents().add(event);
+        userRepository.save(user);
+        event.getParticipants().add(user);
+        eventRepository.save(event);
     }
 
     /**
@@ -114,5 +145,9 @@ public class UserService {
      */
     @Transactional
     public void leaveEvent(User user, Event event) {
+        user.getParticipatedEvents().remove(event);
+        userRepository.save(user);
+        event.getParticipants().remove(user);
+        eventRepository.save(event);
     }
 }

@@ -2,6 +2,7 @@ package com.pse.testserver.entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -63,8 +64,8 @@ public class Group {
     /**
      * Users, which have joined this group.
      */
-    @ManyToMany(mappedBy = "groups")
-    private Set<User> members;
+    @ManyToMany(mappedBy = "joinedGroups")
+    private List<User> members;
 
 
     /**
@@ -90,7 +91,7 @@ public class Group {
      *
      * @return Value of members.
      */
-    public Set<User> getMembers() {
+    public List<User> getMembers() {
         return members;
     }
 
@@ -99,7 +100,7 @@ public class Group {
      *
      * @param members New value of members.
      */
-    public void setMembers(Set<User> members) {
+    public void setMembers(List<User> members) {
         this.members = members;
     }
 
