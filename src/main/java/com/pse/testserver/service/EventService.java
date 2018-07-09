@@ -33,16 +33,6 @@ public class EventService {
     @Autowired
     private EventRepositoryAdvancedImpl eventRepositoryADV;
 
-    /**
-     * Looks for events, which include the given String in their names.
-     *
-     * @param name to look for events.
-     * @return list of wanted events.
-     */
-    @Transactional
-    public List<Event> getAllByName(String name) {
-        return eventRepositoryADV.findAllByName(name);
-    }
 
     /**
      * Looks for events, which take place on the given date
@@ -65,54 +55,12 @@ public class EventService {
     }
 
     /**
-     * Looks for users, which participate in the given event.
-     *
-     * @param event .
-     * @return list of users, which participate in the given event.
-     */
-    @Transactional
-    public List<User> getParticipatedUsers(Event event) {
-        //event.getUsers etc....
-        return null;
-    }
-
-    /**
-     * Gets all events
-     * @return list of events, chronologically sorted with the latest event being the first element.
-     */
-    @Transactional
-    public List<Event> getAllSortedByDate() {
-        return eventRepositoryADV.findAllSortedByDate();
-    }
-
-    /**
-     * Looks for events, which include the given String in their names and fall into the given
-     * category.
-     * @param name to look for.
-     * @param category under which the search will be performed.
-     * @return list of wanted events.
-     */
-    @Transactional
-    public List<Event> getAllByNameSortedByCategory(String name, Category category) {
-        return eventRepositoryADV.findAllByNameSortedByCategory(name, category);
-    }
-
-    /**
-     * Gets the event by the given id.
-     * @param id to look for.
-     * @return event with the given id.
-     */
-    @Transactional
-    public Event getById(long id) {
-        return eventRepository.findById(id);
-    }
-
-    /**
      * Saves an event to the system.
      * @param event to be saved.
      */
     @Transactional
     public void createEvent(Event event) {
+        eventRepository.save(event);
     }
 
     /**
@@ -121,6 +69,7 @@ public class EventService {
      */
     @Transactional
     public void deleteEvent(Event event) {
+        eventRepository.delete(event);
     }
 
     /**
@@ -129,6 +78,6 @@ public class EventService {
      */
     @Transactional
     public void editEvent(Event editedEvent) {
-
+        eventRepository.save(editedEvent);
     }
 }
