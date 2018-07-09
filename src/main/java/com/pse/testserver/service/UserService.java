@@ -27,11 +27,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    /**
-     * Injected UserRepositoryAdvancedImpl class dependency.
-     */
-    @Autowired
-    UserRepositoryAdvancedImpl userRepositoryADV;
 
     /**
      * Injected GroupRepository class dependency.
@@ -52,7 +47,7 @@ public class UserService {
      */
     @Transactional
     public List<User> getAllByName(String name) {
-        return userRepositoryADV.findAllByName(name);
+        return userRepository.findByName(name);
     }
 
     /**

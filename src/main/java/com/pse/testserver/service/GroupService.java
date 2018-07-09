@@ -20,8 +20,7 @@ public class GroupService {
     /**
      * Injected GroupRepositoryAdvancedImpl class dependency.
      */
-    @Autowired
-    private GroupRepositoryAdvancedImpl groupRepositoryADV;
+
 
     /**
      * Injected GroupRepository class dependency.
@@ -37,7 +36,7 @@ public class GroupService {
      */
     @Transactional
     public List<Group> getAllByName(String name) {
-        return groupRepositoryADV.findAllByName(name);
+        return groupRepository.findAllByName(name);
     }
 
 

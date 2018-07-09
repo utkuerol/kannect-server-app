@@ -4,7 +4,6 @@ import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepository;
-import com.pse.testserver.repository.impl.EventRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +29,7 @@ public class EventService {
     /**
      * Injected EventRepositoryAdvancedImpl class dependency.
      */
-    @Autowired
-    private EventRepositoryAdvancedImpl eventRepositoryADV;
+
 
 
     /**
@@ -41,7 +39,7 @@ public class EventService {
      */
     @Transactional
     public List<Event> getAllByDate(Date date) {
-        return eventRepositoryADV.findAllByDate(date);
+        return eventRepository.findAllByDate(date);
     }
 
     /**
@@ -51,7 +49,7 @@ public class EventService {
      */
     @Transactional
     public List<Event> getByNameSortedByDate(String name) {
-        return eventRepositoryADV.findByNameSortedByDate(name);
+        return eventRepository.findByNameSortedByDate(name);
     }
 
     /**

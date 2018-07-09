@@ -1,6 +1,7 @@
 package com.pse.testserver.service;
 
 import com.pse.testserver.entities.*;
+import com.pse.testserver.repository.CommentRepository;
 import com.pse.testserver.repository.PostRepository;
 import com.pse.testserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,6 @@ public class PostService {
     /**
      * Injected PostRepositoryAdvancedImpl class dependency.
      */
-    @Autowired
-    private PostRepositoryAdvancedImpl postRepositoryADV;
 
     @Autowired
     private UserRepository userRepository;
@@ -50,15 +49,15 @@ public class PostService {
         List<Post> personalFeed = new LinkedList<>();
 
         for (User subscription : user.getSubscriptions()) {
-            personalFeed.addAll(postRepositoryADV.findAllOwnedByUser(subscription.getId()));
+            personalFeed.addAll(postRepository.findAllOwnedByUser(subscription.getId()));
         }
 
         for (Group joinedGroup : user.getJoinedGroups()) {
-            personalFeed.addAll(postRepositoryADV.findAllByGroup(joinedGroup.getId()));
+            personalFeed.addAll(postRepository.findAllByGroup(joinedGroup.getId()));
         }
 
         for (Event participatedEvent : user.getParticipatedEvents()) {
-            personalFeed.addAll(postRepositoryADV.findAllByEvent(participatedEvent.getId()));
+            personalFeed.addAll(postRepository.findAllByEvent(participatedEvent.getId()));
         }
 
         personalFeed.sort(Comparator.comparing(Post::getDate));
@@ -72,7 +71,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByUser(User user) {
-        return postRepositoryADV.findAllOwnedByUser(user.getId());
+        return postRepository.findAllOwnedByUser(user.getId());
     }
 
     /**
@@ -82,7 +81,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByGroup(Group group) {
-        return postRepositoryADV.findAllByGroup(group.getId());
+        return postRepository.findAllByGroup(group.getId());
     }
 
     /**
@@ -92,7 +91,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByEvent(Event event) {
-        return postRepositoryADV.findAllByEvent(event.getId());
+        return postRepository.findAllByEvent(event.getId());
     }
 
     /**
