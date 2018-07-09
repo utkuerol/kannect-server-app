@@ -12,7 +12,7 @@ import java.util.List;
  * Advanced repository interface which includes find methods related to event entity.
  *
  */
-public interface EventRepositoryAdvanced{
+public interface EventRepositoryAdvanced {
     
     /**
      * Find all events from the database by date.

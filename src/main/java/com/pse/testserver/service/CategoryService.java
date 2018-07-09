@@ -31,24 +31,5 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    /**
-     * Method to look for a specific category with an id.
-     *
-     * @param id of the category to look for.
-     * @return category with the searched id.
-     */
-    @Transactional
-    public Category getById(long id) {
-        return categoryRepository.findById(id);
-    }
 
-    /**
-     * Method to look for categories, which include the given String in their names.
-     * @param name to look for categories.
-     * @return list of wanted categories.
-     */
-    @Transactional
-    public List<Category> getByName(String name) {
-        return categoryRepository.findByName(name);
-    }
 }

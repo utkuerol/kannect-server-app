@@ -25,16 +25,12 @@ public class CategoryController {
 
     /**
      * Get requests with the "/categories" suffix are mapped to this method.
-     * Gets categories, which include the given String in their names.
-     *
-     * @param name to look for categories. When no parameter is given, the default value will be set to
-     *             an empty String "". In this case a list of all categories will be returned.
      * @return list of categories.
      */
     @GetMapping("/categories")
     @ResponseBody
-    public List<Category> getCategories(@RequestParam(value = "name", defaultValue = "") String name) {
-        return categoryService.getByName(name);
+    public List<Category> getCategories() {
+        return categoryService.getAllCategories();
     }
 
 }

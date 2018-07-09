@@ -19,8 +19,6 @@ public class MessageRepositoryAdvancedImpl implements MessageRepositoryAdvanced 
         return null;
     }
 
-
     public List<Message> findAllSentMessagesSortedByDate(User sender) {
-        return null;
     }
 }
