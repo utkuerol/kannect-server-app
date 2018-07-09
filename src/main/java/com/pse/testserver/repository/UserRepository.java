@@ -23,10 +23,9 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * @param id unique id of the searched user
      * @return user with the defined id
      */
-    @Query(value = "SELECT * from users u where u.id like id",
-            nativeQuery = true)
-    User findById(@Param("id") long id);
-    
+    User findById(long id);
+
+
     /**
      * Find users from the database by name.
      *
@@ -35,6 +34,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      */
     @Query(value = "SELECT * from users u where u.name like name",
             nativeQuery = true)
-    List<User> findByName(@Param("name") String name);
+    public List<User> findByName(@Param("name") String name);
 
 }

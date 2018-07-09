@@ -1,10 +1,7 @@
 package com.pse.testserver.service;
 
-import com.pse.testserver.entities.Category;
 import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.GroupRepository;
-import com.pse.testserver.repository.impl.GroupRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

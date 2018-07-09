@@ -1,10 +1,8 @@
 package com.pse.testserver.service;
 
 import com.pse.testserver.entities.*;
-import com.pse.testserver.repository.CommentRepository;
 import com.pse.testserver.repository.PostRepository;
 import com.pse.testserver.repository.UserRepository;
-import com.pse.testserver.repository.impl.PostRepositoryAdvancedImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

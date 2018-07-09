@@ -19,8 +19,7 @@ public interface PostRepository extends CrudRepository<Post,String> {
      *
      * @return a list of all available posts
      */
-    @Query(value = "SELECT * from posts",
-            nativeQuery = true)
+
     List<Post> findAll();
 
     /**
@@ -29,9 +28,35 @@ public interface PostRepository extends CrudRepository<Post,String> {
      * @param id unique id of the searched post
      * @return post with the defined id
      */
-    @Query(value = "SELECT * from posts p where p.id like id",
-            nativeQuery = true)
-    Post findById(@Param("id") long id);
-    
+    Post findById(long id);
 
+    /**
+     * Find all posts of a user from the database.
+     *
+     * @param id id of the user
+     * @return list of all posts of the given user
+     */
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+            nativeQuery = true)
+    List<Post> findAllOwnedByUser(@Param("id") long id);
+
+    /**
+     * find all posts of a group from the database.
+     *
+     * @param id the id of the group
+     * @return list of all posts of the given group
+     */
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+            nativeQuery = true)
+    List<Post> findAllByGroup(@Param("id") long id);
+
+    /**
+     * Find all posts of an event from the database.
+     *
+     * @param id the id of the event
+     * @return list of all posts of the given event
+     */
+    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+            nativeQuery = true)
+    List<Post> findAllByEvent(@Param("id") long id);
 }

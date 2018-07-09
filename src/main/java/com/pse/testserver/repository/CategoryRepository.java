@@ -19,7 +19,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
      *
      * @return a list of all available categories
      */
-    @Query("Select * from categories")
+
     List<Category> findAll();
 
     /**
@@ -28,8 +28,8 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
      * @param id unique id of the searched category
      * @return category with the defined id
      */
-    @Query("Select * from categories c where c.id like id")
-    Category findById(@Param("id") long id);
+
+    Category findById(long id);
 
     /**
      * Find category from database by name.
