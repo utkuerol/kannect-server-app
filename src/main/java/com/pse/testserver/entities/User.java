@@ -370,4 +370,15 @@ public class User {
     public List<Post> getLikedPosts() {
         return likedPosts;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        User other = ((User) obj);
+
+        return id == ((User) obj).id;
+    }
 }

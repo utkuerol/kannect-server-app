@@ -50,6 +50,7 @@ CREATE TABLE `comments` (
   `text` longtext,
   `post_id` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
+  `creator_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
@@ -334,4 +335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-10 19:11:16
+-- Dump completed on 2018-07-10 20:13:27

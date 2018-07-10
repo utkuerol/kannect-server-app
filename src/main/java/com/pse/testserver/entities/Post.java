@@ -13,7 +13,7 @@ import java.util.Set;
  * it is owned by a user, a group or an event.
  */
 @Entity
-@Table(name = "post")
+@Table(name = "posts")
 public class Post implements Serializable {
 
     /**
