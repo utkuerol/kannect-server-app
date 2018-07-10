@@ -4,9 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	8.0.11
 
-USE kannect;
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -194,36 +191,6 @@ LOCK TABLES `groups` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `messages`
---
-
-DROP TABLE IF EXISTS `messages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `messages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` longtext,
-  `sender_id` int(11) DEFAULT NULL,
-  `receiver_id` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `receiver_id` (`receiver_id`),
-  KEY `sender_id` (`sender_id`),
-  CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `messages`
---
-
-LOCK TABLES `messages` WRITE;
-/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `post_likes`
 --
 
@@ -262,7 +229,6 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` longtext,
   `creator_id` int(11) DEFAULT NULL,
-  `number_of_likes` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `OWNED_BY` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -368,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-20 22:38:02
+-- Dump completed on 2018-07-10 19:11:16
