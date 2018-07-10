@@ -30,7 +30,7 @@ public class Event {
     /**
      * Date of the event.
      */
-    @Column(name = "name")
+    @Column(name = "date")
     private Date date;
 
     public Date getDate() {
@@ -77,7 +77,7 @@ public class Event {
     /**
      * Users, which participate in this event.
      */
-    @ManyToMany(mappedBy = "events")
+    @ManyToMany(mappedBy = "participatedEvents")
     private Set<User> participants;
 
     /**

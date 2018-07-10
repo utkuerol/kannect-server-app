@@ -1,5 +1,8 @@
 package com.pse.testserver.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +23,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
     
     /**
      * Name of this user.
@@ -47,6 +50,7 @@ public class User {
     @JoinTable(name = "user_subscriptions",
             inverseJoinColumns = {@JoinColumn(name = "subscribed_id")},
             joinColumns = {@JoinColumn(name = "subscriber_id")})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<User> subscriptions;
 
     /**
@@ -62,6 +66,7 @@ public class User {
     @JoinTable(name = "group_members",
             inverseJoinColumns = {@JoinColumn(name = "group_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Group> joinedGroups;
 
     /**
@@ -71,6 +76,7 @@ public class User {
     @JoinTable(name = "event_participants",
             inverseJoinColumns = {@JoinColumn(name = "event_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Event> participatedEvents;
 
     /**
@@ -80,6 +86,7 @@ public class User {
     @JoinTable(name = "post_likes",
             inverseJoinColumns = {@JoinColumn(name = "post_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Post> likedPosts;
 
     /**
@@ -107,214 +114,40 @@ public class User {
     private List<Comment> createdComments;
 
 
-
     /**
-     * Gets createdGroups.
+     * Sets new Comments, which this user has created..
      *
-     * @return Value of createdGroups.
-     */
-    public List<Group> getCreatedGroups() {
-        return createdGroups;
-    }
-
-    /**
-     * Sets new createdGroups.
-     *
-     * @param createdGroups New value of createdGroups.
-     */
-    public void setCreatedGroups(List<Group> createdGroups) {
-        this.createdGroups = createdGroups;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    /**
-     * Gets createdEvents.
-     *
-     * @return Value of createdEvents.
-     */
-    public List<Event> getCreatedEvents() {
-        return createdEvents;
-    }
-
-    /**
-     * Sets new createdEvents.
-     *
-     * @param createdEvents New value of createdEvents.
-     */
-    public void setCreatedEvents(List<Event> createdEvents) {
-        this.createdEvents = createdEvents;
-    }
-
-    /**
-     * Gets createdPosts.
-     *
-     * @return Value of createdPosts.
-     */
-    public List<Post> getCreatedPosts() {
-        return createdPosts;
-    }
-
-    /**
-     * Sets new createdPosts.
-     *
-     * @param createdPosts New value of createdPosts.
-     */
-    public void setCreatedPosts(List<Post> createdPosts) {
-        this.createdPosts = createdPosts;
-    }
-
-    /**
-     * Gets joinedGroups.
-     *
-     * @return Value of joinedGroups.
-     */
-    public List<Group> getJoinedGroups() {
-        return joinedGroups;
-    }
-
-    /**
-     * Sets new joinedGroups.
-     *
-     * @param joinedGroups New value of joinedGroups.
-     */
-    public void setJoinedGroups(List<Group> joinedGroups) {
-        this.joinedGroups = joinedGroups;
-    }
-
-    /**
-     * Gets createdComments.
-     *
-     * @return Value of createdComments.
-     */
-    public List<Comment> getCreatedComments() {
-        return createdComments;
-    }
-
-    /**
-     * Sets new createdComments.
-     *
-     * @param createdComments New value of createdComments.
+     * @param createdComments New value of Comments, which this user has created..
      */
     public void setCreatedComments(List<Comment> createdComments) {
         this.createdComments = createdComments;
     }
 
     /**
-     * Gets mail.
+     * Gets Events, which this user has created..
      *
-     * @return Value of mail.
+     * @return Value of Events, which this user has created..
      */
-    public String getEmail() {
-        return email;
+    public List<Event> getCreatedEvents() {
+        return createdEvents;
     }
 
     /**
-     * Sets new mail.
+     * Sets new Posts, which this user has created..
      *
-     * @param email New value of mail.
+     * @param createdPosts New value of Posts, which this user has created..
      */
-    public void setMail(String email) {
-        this.email = email;
+    public void setCreatedPosts(List<Post> createdPosts) {
+        this.createdPosts = createdPosts;
     }
 
     /**
-     * Gets participatedEvents.
+     * Sets new Groups, which this user has joined..
      *
-     * @return Value of participatedEvents.
+     * @param joinedGroups New value of Groups, which this user has joined..
      */
-    public List<Event> getParticipatedEvents() {
-        return participatedEvents;
-    }
-
-    /**
-     * Sets new participatedEvents.
-     *
-     * @param participatedEvents New value of participatedEvents.
-     */
-    public void setParticipatedEvents(List<Event> participatedEvents) {
-        this.participatedEvents = participatedEvents;
-    }
-
-    /**
-     * Gets subscribers.
-     *
-     * @return Value of subscribers.
-     */
-    public List<User> getSubscribers() {
-        return subscribers;
-    }
-
-    /**
-     * Sets new subscribers.
-     *
-     * @param subscribers New value of subscribers.
-     */
-    public void setSubscribers(List<User> subscribers) {
-        this.subscribers = subscribers;
-    }
-
-    /**
-     * Gets image_url.
-     *
-     * @return Value of image_url.
-     */
-    public String getImage_url() {
-        return imageUrl;
-    }
-
-    /**
-     * Sets new image_url.
-     *
-     * @param imageUrl New value of image_url.
-     */
-    public void setImage_url(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    /**
-     * Gets subscriptions.
-     *
-     * @return Value of subscriptions.
-     */
-    public List<User> getSubscriptions() {
-        return subscriptions;
-    }
-
-    /**
-     * Sets new subscriptions.
-     *
-     * @param subscriptions New value of subscriptions.
-     */
-    public void setSubscriptions(List<User> subscriptions) {
-        this.subscriptions = subscriptions;
-    }
-
-
-    /**
-     * Gets Url of the profile picture..
-     *
-     * @return Value of Url of the profile picture..
-     */
-    public String getImageUrl() {
-        return imageUrl;
+    public void setJoinedGroups(List<Group> joinedGroups) {
+        this.joinedGroups = joinedGroups;
     }
 
     /**
@@ -336,21 +169,30 @@ public class User {
     }
 
     /**
-     * Sets new Name of this user..
+     * Gets Posts, which this user has created..
      *
-     * @param name New value of Name of this user..
+     * @return Value of Posts, which this user has created..
      */
-    public void setName(String name) {
-        this.name = name;
+    public List<Post> getCreatedPosts() {
+        return createdPosts;
     }
 
     /**
-     * Sets new E-Mail address..
+     * Gets E-Mail address..
      *
-     * @param email New value of E-Mail address..
+     * @return Value of E-Mail address..
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Gets Groups, which this user has created..
+     *
+     * @return Value of Groups, which this user has created..
+     */
+    public List<Group> getCreatedGroups() {
+        return createdGroups;
     }
 
     /**
@@ -363,11 +205,146 @@ public class User {
     }
 
     /**
+     * Gets Users, which subscribe this user..
+     *
+     * @return Value of Users, which subscribe this user..
+     */
+    public List<User> getSubscribers() {
+        return subscribers;
+    }
+
+    /**
+     * Gets Groups, which this user has joined..
+     *
+     * @return Value of Groups, which this user has joined..
+     */
+    public List<Group> getJoinedGroups() {
+        return joinedGroups;
+    }
+
+    /**
+     * Sets new Incremental generated unique id..
+     *
+     * @param id New value of Incremental generated unique id..
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets Users, which this user subscribes..
+     *
+     * @return Value of Users, which this user subscribes..
+     */
+    public List<User> getSubscriptions() {
+        return subscriptions;
+    }
+
+    /**
+     * Gets Url of the profile picture..
+     *
+     * @return Value of Url of the profile picture..
+     */
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    /**
+     * Gets Events, in which this user has participated..
+     *
+     * @return Value of Events, in which this user has participated..
+     */
+    public List<Event> getParticipatedEvents() {
+        return participatedEvents;
+    }
+
+    /**
+     * Sets new Events, in which this user has participated..
+     *
+     * @param participatedEvents New value of Events, in which this user has participated..
+     */
+    public void setParticipatedEvents(List<Event> participatedEvents) {
+        this.participatedEvents = participatedEvents;
+    }
+
+    /**
+     * Sets new Users, which subscribe this user..
+     *
+     * @param subscribers New value of Users, which subscribe this user..
+     */
+    public void setSubscribers(List<User> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    /**
+     * Gets Incremental generated unique id..
+     *
+     * @return Value of Incremental generated unique id..
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets new Groups, which this user has created..
+     *
+     * @param createdGroups New value of Groups, which this user has created..
+     */
+    public void setCreatedGroups(List<Group> createdGroups) {
+        this.createdGroups = createdGroups;
+    }
+
+    /**
+     * Sets new Name of this user..
+     *
+     * @param name New value of Name of this user..
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * Gets Posts, which are liked by this user..
      *
      * @return Value of Posts, which are liked by this user..
      */
     public List<Post> getLikedPosts() {
         return likedPosts;
+    }
+
+    /**
+     * Sets new E-Mail address..
+     *
+     * @param email New value of E-Mail address..
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets Comments, which this user has created..
+     *
+     * @return Value of Comments, which this user has created..
+     */
+    public List<Comment> getCreatedComments() {
+        return createdComments;
+    }
+
+    /**
+     * Sets new Users, which this user subscribes..
+     *
+     * @param subscriptions New value of Users, which this user subscribes..
+     */
+    public void setSubscriptions(List<User> subscriptions) {
+        this.subscriptions = subscriptions;
+    }
+
+    /**
+     * Sets new Events, which this user has created..
+     *
+     * @param createdEvents New value of Events, which this user has created..
+     */
+    public void setCreatedEvents(List<Event> createdEvents) {
+        this.createdEvents = createdEvents;
     }
 }

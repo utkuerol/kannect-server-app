@@ -20,7 +20,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     /**
      * Name of the group.
@@ -69,146 +69,146 @@ public class Group {
 
 
     /**
-     * Gets category.
+     * Gets Users, which have joined this group..
      *
-     * @return Value of category.
-     */
-    public Category getCategory() {
-        return category;
-    }
-
-    /**
-     * Sets new category.
-     *
-     * @param category New value of category.
-     */
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    /**
-     * Gets members.
-     *
-     * @return Value of members.
+     * @return Value of Users, which have joined this group..
      */
     public List<User> getMembers() {
         return members;
     }
 
     /**
-     * Sets new members.
+     * Sets new Subcategory, into which this group falls..
      *
-     * @param members New value of members.
-     */
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return Value of name.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets new name.
-     *
-     * @param name New value of name.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets creator.
-     *
-     * @return Value of creator.
-     */
-    public User getCreator() {
-        return creator;
-    }
-
-    /**
-     * Sets new creator.
-     *
-     * @param creator New value of creator.
-     */
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    /**
-     * Gets subcategory.
-     *
-     * @return Value of subcategory.
-     */
-    public Subcategory getSubcategory() {
-        return subcategory;
-    }
-
-    /**
-     * Sets new subcategory.
-     *
-     * @param subcategory New value of subcategory.
+     * @param subcategory New value of Subcategory, into which this group falls..
      */
     public void setSubcategory(Subcategory subcategory) {
         this.subcategory = subcategory;
     }
 
     /**
-     * Gets image_url.
+     * Gets Description of the group, containing extra information intended to be given from the user..
      *
-     * @return Value of image_url.
-     */
-    public String getImage_url() {
-        return image_url;
-    }
-
-    /**
-     * Sets new image_url.
-     *
-     * @param image_url New value of image_url.
-     */
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    /**
-     * Gets description.
-     *
-     * @return Value of description.
+     * @return Value of Description of the group, containing extra information intended to be given from the user..
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Sets new description.
+     * Sets new User, which created this group..
      *
-     * @param description New value of description.
+     * @param creator New value of User, which created this group..
+     */
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    /**
+     * Sets new Description of the group, containing extra information intended to be given from the user..
+     *
+     * @param description New value of Description of the group, containing extra information intended to be given from the user..
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * Sets new Incremental generated unique id..
+     *
+     * @param id New value of Incremental generated unique id..
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets Incremental generated unique id..
+     *
+     * @return Value of Incremental generated unique id..
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets Url of the profile picture..
+     *
+     * @return Value of Url of the profile picture..
+     */
+    public String getImage_url() {
+        return image_url;
+    }
+
+    /**
+     * Sets new Users, which have joined this group..
+     *
+     * @param members New value of Users, which have joined this group..
+     */
+    public void setMembers(List<User> members) {
+        this.members = members;
+    }
+
+    /**
+     * Sets new Name of the group..
+     *
+     * @param name New value of Name of the group..
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets new Category, into which this group falls..
+     *
+     * @param category New value of Category, into which this group falls..
+     */
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    /**
+     * Sets new Url of the profile picture..
+     *
+     * @param image_url New value of Url of the profile picture..
+     */
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    /**
+     * Gets User, which created this group..
+     *
+     * @return Value of User, which created this group..
+     */
+    public User getCreator() {
+        return creator;
+    }
+
+    /**
+     * Gets Name of the group..
+     *
+     * @return Value of Name of the group..
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Gets Subcategory, into which this group falls..
+     *
+     * @return Value of Subcategory, into which this group falls..
+     */
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    /**
+     * Gets Category, into which this group falls..
+     *
+     * @return Value of Category, into which this group falls..
+     */
+    public Category getCategory() {
+        return category;
     }
 }

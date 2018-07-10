@@ -1,6 +1,7 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,7 +19,7 @@ public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     /**
      * Name of the subcategory.
@@ -37,102 +38,102 @@ public class Subcategory {
      * Events, which fall into this subcategory.
      */
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Event> events;
+    private List<Event> events;
 
     /**
      * Groups, which fall into this subcategory.
      */
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Group> groups;
+    private List<Group> groups;
 
 
     /**
-     * Gets category.
+     * Sets new Incremental generated unique id..
      *
-     * @return Value of category.
-     */
-    public Category getCategory() {
-        return category;
-    }
-
-    /**
-     * Sets new category.
-     *
-     * @param category New value of category.
-     */
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    /**
-     * Gets events.
-     *
-     * @return Value of events.
-     */
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    /**
-     * Sets new events.
-     *
-     * @param events New value of events.
-     */
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
-
-    /**
-     * Gets groups.
-     *
-     * @return Value of groups.
-     */
-    public Set<Group> getGroups() {
-        return groups;
-    }
-
-    /**
-     * Sets new groups.
-     *
-     * @param groups New value of groups.
-     */
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
+     * @param id New value of Incremental generated unique id..
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Gets name.
+     * Sets new Groups, which fall into this subcategory..
      *
-     * @return Value of name.
+     * @param groups New value of Groups, which fall into this subcategory..
      */
-    public String getName() {
-        return name;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     /**
-     * Sets new name.
+     * Sets new Parent category of this subcategory..
      *
-     * @param name New value of name.
+     * @param category New value of Parent category of this subcategory..
+     */
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    /**
+     * Gets Parent category of this subcategory..
+     *
+     * @return Value of Parent category of this subcategory..
+     */
+    public Category getCategory() {
+        return category;
+    }
+
+    /**
+     * Gets Groups, which fall into this subcategory..
+     *
+     * @return Value of Groups, which fall into this subcategory..
+     */
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    /**
+     * Sets new Name of the subcategory..
+     *
+     * @param name New value of Name of the subcategory..
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Gets Events, which fall into this subcategory..
+     *
+     * @return Value of Events, which fall into this subcategory..
+     */
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Sets new Events, which fall into this subcategory..
+     *
+     * @param events New value of Events, which fall into this subcategory..
+     */
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    /**
+     * Gets Incremental generated unique id..
+     *
+     * @return Value of Incremental generated unique id..
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets Name of the subcategory..
+     *
+     * @return Value of Name of the subcategory..
+     */
+    public String getName() {
+        return name;
     }
 }

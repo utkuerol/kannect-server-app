@@ -18,7 +18,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     /**
      * Name of the category.
@@ -63,23 +63,7 @@ public class Category {
         this.groups = groups;
     }
 
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public long getId() {
-        return id;
-    }
 
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
 
     /**
      * Gets name.

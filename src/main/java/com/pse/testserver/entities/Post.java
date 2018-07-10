@@ -13,7 +13,7 @@ import java.util.Set;
  * it is owned by a user, a group or an event.
  */
 @Entity
-@Table(name = "post")
+@Table(name = "posts")
 public class Post implements Serializable {
 
     /**
@@ -22,7 +22,7 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     /**
      * User-created text to be displayed in the post.
@@ -139,7 +139,7 @@ public class Post implements Serializable {
      *
      * @return Value of id.
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -148,7 +148,7 @@ public class Post implements Serializable {
      *
      * @param id New value of id.
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
