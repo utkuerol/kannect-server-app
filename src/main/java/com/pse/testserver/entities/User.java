@@ -347,4 +347,15 @@ public class User {
     public void setCreatedEvents(List<Event> createdEvents) {
         this.createdEvents = createdEvents;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        User other = ((User) obj);
+
+        return id == ((User) obj).id;
+    }
 }
