@@ -11,7 +11,7 @@ import java.util.List;
  * Simple interface which includes find methods related to post entity.
  * To perform these operations, methods of the spring framework are to be used.
  */
-public interface PostRepository extends CrudRepository<Post,String> {
+public interface PostRepository extends CrudRepository<Post,Integer> {
 
 
     /**

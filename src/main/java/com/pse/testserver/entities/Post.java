@@ -27,7 +27,7 @@ public class Post implements Serializable {
     /**
      * User-created text to be displayed in the post.
      */
-    @Column(name = "text")
+    @Column(name = "text", columnDefinition = "LONGTEXT")
     private String text;
 
     /**

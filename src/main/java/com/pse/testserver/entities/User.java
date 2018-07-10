@@ -28,7 +28,7 @@ public class User {
     /**
      * Name of this user.
      */
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
 
     /**

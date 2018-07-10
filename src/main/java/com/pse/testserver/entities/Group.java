@@ -25,13 +25,13 @@ public class Group {
     /**
      * Name of the group.
      */
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
 
     /**
      * Description of the group, containing extra information intended to be given from the user.
      */
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
 
     /**

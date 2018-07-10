@@ -37,7 +37,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
      * @param name word to be searched in all categories names
      * @return list of all categories containing the string name
      */
-    @Query("Select * from categories c where c.name like name")
+    @Query(value = "Select * from categories c where c.name like name", nativeQuery = true)
     List<Category> findByName(@Param("name") String name);
 
 }

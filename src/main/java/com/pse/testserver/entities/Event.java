@@ -24,7 +24,7 @@ public class Event {
     /**
      * Name of the event.
      */
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
     
     /**
@@ -44,7 +44,7 @@ public class Event {
     /**
      * Description of the event, containing extra information intended to be given from the user.
      */
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
 
     /**

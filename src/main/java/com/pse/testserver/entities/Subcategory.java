@@ -24,7 +24,7 @@ public class Subcategory {
     /**
      * Name of the subcategory.
      */
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
 
     /**

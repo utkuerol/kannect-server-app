@@ -23,7 +23,7 @@ public class Category {
     /**
      * Name of the category.
      */
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
 
     /**
