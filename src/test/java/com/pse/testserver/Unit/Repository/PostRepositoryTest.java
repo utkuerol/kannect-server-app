@@ -1,17 +1,16 @@
 package com.pse.testserver.Unit.Repository;
 
 
-import com.pse.testserver.AppConfig;
 import com.pse.testserver.entities.Post;
-import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.PostRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
@@ -19,10 +18,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class})
-@Transactional
-@Rollback
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
 public class PostRepositoryTest {
 
     @Autowired
@@ -56,7 +54,8 @@ public class PostRepositoryTest {
         foundPosts.add(post1);
         foundPosts.add(post2);
 
-        //assertTrue(foundUsersByName.equals(trueFoundUsersByName));
+        assertTrue(foundPosts.equals(foundPostsByOwnedBy));
     }
+
 
 }

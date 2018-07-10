@@ -136,4 +136,15 @@ public class Subcategory {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Subcategory other = ((Subcategory) obj);
+
+        return id == other.id;
+    }
 }

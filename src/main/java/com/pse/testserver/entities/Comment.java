@@ -137,4 +137,15 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Comment other = ((Comment) obj);
+
+        return id == other.id;
+    }
 }

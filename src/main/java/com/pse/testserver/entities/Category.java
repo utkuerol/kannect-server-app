@@ -118,4 +118,15 @@ public class Category {
     public void setEvents(Set<Event> events) {
         this.events = events;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Category other = ((Category) obj);
+
+        return id == other.id;
+    }
 }

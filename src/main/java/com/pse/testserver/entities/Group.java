@@ -211,4 +211,16 @@ public class Group {
     public Category getCategory() {
         return category;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Group other = ((Group) obj);
+
+        return id == other.id;
+    }
 }

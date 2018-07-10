@@ -197,4 +197,17 @@ public class Post implements Serializable {
     public List<User> getLikedUsers() {
         return likedUsers;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Post other = ((Post) obj);
+
+        return id == other.id;
+    }
+
 }

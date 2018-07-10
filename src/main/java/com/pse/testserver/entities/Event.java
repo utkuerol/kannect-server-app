@@ -223,4 +223,15 @@ public class Event {
     public void setSubcategory(Subcategory subcategory) {
         this.subcategory = subcategory;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        Event other = ((Event) obj);
+
+        return id == other.id;
+    }
 }

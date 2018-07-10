@@ -356,6 +356,6 @@ public class User {
 
         User other = ((User) obj);
 
-        return id == ((User) obj).id;
+        return id == other.id;
     }
 }
