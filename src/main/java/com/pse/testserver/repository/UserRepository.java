@@ -32,7 +32,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * @param name name of the searched User
      * @return list of all Users with the same given name
      */
-    @Query(value = "SELECT * from users u where u.name like name",
+    @Query(value = "SELECT * FROM users WHERE users.name LIKE %:name%",
             nativeQuery = true)
     public List<User> findByName(@Param("name") String name);
 

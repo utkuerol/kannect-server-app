@@ -36,7 +36,7 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
      * @param id id of the user
      * @return list of all posts of the given user
      */
-    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+    @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
             nativeQuery = true)
     List<Post> findAllOwnedByUser(@Param("id") long id);
 
@@ -46,7 +46,7 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
      * @param id the id of the group
      * @return list of all posts of the given group
      */
-    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+    @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
             nativeQuery = true)
     List<Post> findAllByGroup(@Param("id") long id);
 
@@ -56,7 +56,7 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
      * @param id the id of the event
      * @return list of all posts of the given event
      */
-    @Query(value = "SELECT * from posts p where p.OWNED_BY like id",
+    @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
             nativeQuery = true)
     List<Post> findAllByEvent(@Param("id") long id);
 }

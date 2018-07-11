@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,12 +20,15 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@DataJpaTest
 public class UserRepositoryTest {
 
+    @Autowired
+    TestEntityManager entityManager;
 
     @Autowired
     UserRepository userRepository;
@@ -33,27 +38,24 @@ public class UserRepositoryTest {
     User user3;
 
     @Before
-    public void setUp() {
+    public void setup() {
         user1 = new User();
         user2 = new User();
         user3 = new User();
         user1.setName("true");
         user2.setName("truee");
         user3.setName("false");
-        userRepository.save(user1);
-        userRepository.save(user2);
-        userRepository.save(user3);
     }
 
     @Test
-    public void findByName() {
-        List<User> foundUsersByName = userRepository.findByName("true");
-        List<User> trueFoundUsersByName = new LinkedList<>();
-        trueFoundUsersByName.add(user1);
-        trueFoundUsersByName.add(user2);
-        trueFoundUsersByName.add(user3);
+    public void testFindByName() {
+        User user1Saved = entityManager.persist(user1);
+        User user2Saved = entityManager.persist(user2);
+        User user3Saved = entityManager.persist(user3);
 
-        assertTrue(foundUsersByName.equals(trueFoundUsersByName));
+        assertTrue(userRepository.findByName("true").contains(user1Saved));
+        assertTrue(userRepository.findByName("true").contains(user2Saved));
+        assertFalse(userRepository.findByName("true").contains(user3Saved));
     }
 
 

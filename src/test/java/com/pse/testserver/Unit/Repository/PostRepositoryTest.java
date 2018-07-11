@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -16,12 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-
+@DataJpaTest
 public class PostRepositoryTest {
+
+    @Autowired
+    TestEntityManager entityManager;
 
     @Autowired
     PostRepository postRepository;
@@ -31,30 +36,24 @@ public class PostRepositoryTest {
     Post post3;
 
     @Before
-    public void setUp() {
+    public void setup() {
         post1 = new Post();
         post2 = new Post();
         post3 = new Post();
-        post1.setText("Hallo");
-        post2.setText("Hey");
-        post3.setText("Sallammm");
-        post1.setOwned_by(877777);
-        post2.setOwned_by(877777);
-        post3.setOwned_by(789456);
-        postRepository.save(post1);
-        postRepository.save(post2);
-        postRepository.save(post3);
+        post1.setOwned_by(1);
+        post2.setOwned_by(2);
+        post3.setOwned_by(3);
     }
 
     @Test
-    public void Test1() {
+    public void testFindAllOwnedByUser() {
+        Post post1Saved = entityManager.persist(post1);
+        Post post2Saved = entityManager.persist(post2);
+        Post post3Saved = entityManager.persist(post3);
 
-        List<Post> foundPostsByOwnedBy = postRepository.findAllOwnedByUser(877777);
-        List<Post> foundPosts = new LinkedList<>();
-        foundPosts.add(post1);
-        foundPosts.add(post2);
-
-        assertTrue(foundPosts.equals(foundPostsByOwnedBy));
+        assertTrue(postRepository.findAllOwnedByUser(1).contains(post1Saved));
+        assertTrue(postRepository.findAllOwnedByUser(2).contains(post2Saved));
+        assertFalse(postRepository.findAllOwnedByUser(1).contains(post3Saved));
     }
 
 
