@@ -38,25 +38,7 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
      */
     @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
             nativeQuery = true)
-    List<Post> findAllOwnedByUser(@Param("id") long id);
+    List<Post> findAllOwnedById(@Param("id") long id);
 
-    /**
-     * find all posts of a group from the database.
-     *
-     * @param id the id of the group
-     * @return list of all posts of the given group
-     */
-    @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
-            nativeQuery = true)
-    List<Post> findAllByGroup(@Param("id") long id);
 
-    /**
-     * Find all posts of an event from the database.
-     *
-     * @param id the id of the event
-     * @return list of all posts of the given event
-     */
-    @Query(value = "SELECT * from posts p where p.OWNED_BY = :id",
-            nativeQuery = true)
-    List<Post> findAllByEvent(@Param("id") long id);
 }

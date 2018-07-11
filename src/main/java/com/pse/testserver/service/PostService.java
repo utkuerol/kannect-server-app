@@ -49,7 +49,7 @@ public class PostService {
         List<Post> personalFeed = new LinkedList<>();
 
         for (User subscription : user.getSubscriptions()) {
-            personalFeed.addAll(postRepository.findAllOwnedByUser(subscription.getId()));
+            personalFeed.addAll(postRepository.findAllOwnedById(subscription.getId()));
         }
 
         for (Group joinedGroup : user.getJoinedGroups()) {
@@ -71,7 +71,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByUser(User user) {
-        return postRepository.findAllOwnedByUser(user.getId());
+        return postRepository.findAllOwnedById(user.getId());
     }
 
     /**

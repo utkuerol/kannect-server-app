@@ -34,6 +34,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      */
     @Query(value = "SELECT * FROM users WHERE users.name LIKE %:name%",
             nativeQuery = true)
-    public List<User> findByName(@Param("name") String name);
+    List<User> findByName(@Param("name") String name);
 
 }

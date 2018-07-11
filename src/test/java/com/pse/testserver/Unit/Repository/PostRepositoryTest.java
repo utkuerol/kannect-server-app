@@ -3,20 +3,14 @@ package com.pse.testserver.Unit.Repository;
 
 import com.pse.testserver.entities.Post;
 import com.pse.testserver.repository.PostRepository;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -46,14 +40,19 @@ public class PostRepositoryTest {
     }
 
     @Test
-    public void testFindAllOwnedByUser() {
+    public void testFindAllOwnedById() {
         Post post1Saved = entityManager.persist(post1);
         Post post2Saved = entityManager.persist(post2);
         Post post3Saved = entityManager.persist(post3);
 
-        assertTrue(postRepository.findAllOwnedByUser(1).contains(post1Saved));
-        assertTrue(postRepository.findAllOwnedByUser(2).contains(post2Saved));
-        assertFalse(postRepository.findAllOwnedByUser(1).contains(post3Saved));
+        assertTrue(postRepository.findAllOwnedById(1).contains(post1Saved));
+        assertTrue(postRepository.findAllOwnedById(2).contains(post2Saved));
+        assertFalse(postRepository.findAllOwnedById(1).contains(post3Saved));
+    }
+
+    @After
+    public void tearDown() {
+        entityManager.clear();
     }
 
 
