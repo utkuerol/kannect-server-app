@@ -37,7 +37,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param name word to be searched in all groups names
      * @return list of all groups containing the string name
      */
-    @Query(value = "Select * from groups g where g.name like name", nativeQuery = true)
+    @Query(value = "Select * from groups g where g.name like %:name%", nativeQuery = true)
     List<Group> findAllByName(@Param("name") String name);
 
     /**
@@ -46,7 +46,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param category category of groups searched
      * @return list of all groups that belong to the given category
      */
-    @Query(value = "Select * from groups g where g.category_id like category", nativeQuery = true)
+    @Query(value = "Select * from groups g where g.category_id like :category", nativeQuery = true)
     List<Group> findAllByCategory(@Param("category") long category);
 
     /**
@@ -56,7 +56,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param category category of groups searched
      * @return list of all groups that belong to the given category
      */
-    @Query(value = "Select * from groups g where g.name like name and g.category_id like category", nativeQuery = true)
+    @Query(value = "Select * from groups g where g.name like %:name% AND g.category_id like :category", nativeQuery = true)
     List<Group> findAllByNameSortedByCategory(@Param("name") String name, @Param("category") long category);
 
 }
