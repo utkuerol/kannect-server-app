@@ -53,11 +53,11 @@ public class PostService {
         }
 
         for (Group joinedGroup : user.getJoinedGroups()) {
-            personalFeed.addAll(postRepository.findAllByGroup(joinedGroup.getId()));
+            personalFeed.addAll(postRepository.findAllOwnedById(joinedGroup.getId()));
         }
 
         for (Event participatedEvent : user.getParticipatedEvents()) {
-            personalFeed.addAll(postRepository.findAllByEvent(participatedEvent.getId()));
+            personalFeed.addAll(postRepository.findAllOwnedById(participatedEvent.getId()));
         }
 
         personalFeed.sort(Comparator.comparing(Post::getDate));
@@ -81,7 +81,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByGroup(Group group) {
-        return postRepository.findAllByGroup(group.getId());
+        return postRepository.findAllOwnedById(group.getId());
     }
 
     /**
@@ -91,7 +91,7 @@ public class PostService {
      */
     @Transactional
     public List<Post> getAllByEvent(Event event) {
-        return postRepository.findAllByEvent(event.getId());
+        return postRepository.findAllOwnedById(event.getId());
     }
 
     /**
