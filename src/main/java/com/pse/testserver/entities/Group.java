@@ -3,7 +3,6 @@ package com.pse.testserver.entities;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Entity class for the persisted group data from the "groups" table.
@@ -11,7 +10,7 @@ import java.util.Set;
  * creator, profile picture url and members.
  */
 @Entity
-@Table(name = "groups")
+@Table(name = "[groups]")
 public class Group {
 
     /**

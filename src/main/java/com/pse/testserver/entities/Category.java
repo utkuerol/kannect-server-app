@@ -1,7 +1,8 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Entity class for the persisted category data from the "categories" table.
@@ -11,6 +12,12 @@ import java.util.Set;
 @Entity
 @Table(name = "categories")
 public class Category {
+
+    /**
+     * Subcategories, which fall into this category.
+     */
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Subcategory> subcategories;
 
     /**
      * Incremental generated unique id.
@@ -25,99 +32,23 @@ public class Category {
      */
     @Column(name = "name", columnDefinition = "LONGTEXT")
     private String name;
-
-    /**
-     * Subcategories, which fall into this category.
-     */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Subcategory> subcategories;
-
     /**
      * Events, which fall into this category.
      */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Event> events;
-
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Event> events;
     /**
      * Groups, which fall into this category.
      */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Group> groups;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Group> groups;
 
-
-    /**
-     * Gets groups.
-     *
-     * @return Value of groups.
-     */
-    public Set<Group> getGroups() {
-        return groups;
+    public Category() {
+        groups = new LinkedList<>();
+        subcategories = new LinkedList<>();
+        events = new LinkedList<>();
     }
 
-    /**
-     * Sets new groups.
-     *
-     * @param groups New value of groups.
-     */
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }
-
-
-
-    /**
-     * Gets name.
-     *
-     * @return Value of name.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets new name.
-     *
-     * @param name New value of name.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets subcategories.
-     *
-     * @return Value of subcategories.
-     */
-    public Set<Subcategory> getSubcategories() {
-        return subcategories;
-    }
-
-    /**
-     * Sets new subcategories.
-     *
-     * @param subcategories New value of subcategories.
-     */
-    public void setSubcategories(Set<Subcategory> subcategories) {
-        this.subcategories = subcategories;
-    }
-
-    /**
-     * Gets events.
-     *
-     * @return Value of events.
-     */
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    /**
-     * Sets new events.
-     *
-     * @param events New value of events.
-     */
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -128,5 +59,95 @@ public class Category {
         Category other = ((Category) obj);
 
         return id == other.id;
+    }
+
+    /**
+     * Gets Groups, which fall into this category..
+     *
+     * @return Value of Groups, which fall into this category..
+     */
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    /**
+     * Sets new Groups, which fall into this category..
+     *
+     * @param groups New value of Groups, which fall into this category..
+     */
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    /**
+     * Gets Events, which fall into this category..
+     *
+     * @return Value of Events, which fall into this category..
+     */
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Sets new Events, which fall into this category..
+     *
+     * @param events New value of Events, which fall into this category..
+     */
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    /**
+     * Gets Incremental generated unique id..
+     *
+     * @return Value of Incremental generated unique id..
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets new Incremental generated unique id..
+     *
+     * @param id New value of Incremental generated unique id..
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets Name of the category..
+     *
+     * @return Value of Name of the category..
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets new Name of the category..
+     *
+     * @param name New value of Name of the category..
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets Subcategories, which fall into this category..
+     *
+     * @return Value of Subcategories, which fall into this category..
+     */
+    public List<Subcategory> getSubcategories() {
+        return subcategories;
+    }
+
+    /**
+     * Sets new Subcategories, which fall into this category..
+     *
+     * @param subcategories New value of Subcategories, which fall into this category..
+     */
+    public void setSubcategories(List<Subcategory> subcategories) {
+        this.subcategories = subcategories;
     }
 }

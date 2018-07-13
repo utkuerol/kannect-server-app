@@ -4,7 +4,6 @@ import com.pse.testserver.entities.Category;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
      * @param name word to be searched in all categories names
      * @return list of all categories containing the string name
      */
-    @Query(value = "Select * from categories c where c.name LIKE %:name%", nativeQuery = true)
+    @Query(value = "SELECT * FROM categories WHERE categories.name LIKE %:name%", nativeQuery = true)
     List<Category> findByName(@Param("name") String name);
 
 }

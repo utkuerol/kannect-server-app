@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class PostRepositoryTest {
+public class PostRepositoryUnitTest {
 
     @Autowired
     TestEntityManager entityManager;
@@ -40,7 +40,7 @@ public class PostRepositoryTest {
     }
 
     @Test
-    public void testFindAllOwnedById() {
+    public void findAllOwnedByIdTest() {
         Post post1Saved = entityManager.persist(post1);
         Post post2Saved = entityManager.persist(post2);
         Post post3Saved = entityManager.persist(post3);
