@@ -1,6 +1,8 @@
 package com.pse.testserver.controller;
 
-import com.pse.testserver.entities.*;
+import com.pse.testserver.entities.Comment;
+import com.pse.testserver.entities.Post;
+import com.pse.testserver.entities.User;
 import com.pse.testserver.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,51 +30,51 @@ public class PostController {
      * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
      * in chronological order, with the latest created post being the first item.
      *
-     * @param user whose personal feed is to be fetched.
+     * @param userId whose personal feed is to be fetched.
      * @return list of posts.
      */
     @GetMapping("/personalFeed")
     @ResponseBody
-    public List<Post> getPersonalFeed(@RequestBody User user) {
-        return postService.getPersonalFeed(user);
+    public List<Post> getPersonalFeed(@RequestParam(value = "userId") int userId) {
+        return postService.getPersonalFeed(userId);
     }
 
     /**
      * Get requests with the "/groupFeed" suffix are mapped to this method.
      * Gets all posts, which are owned by the given group.
      *
-     * @param group whose posts are to be fetched.
+     * @param groupId whose posts are to be fetched.
      * @return list of posts.
      */
     @GetMapping("/groupFeed")
     @ResponseBody
-    public List<Post> getGroupFeed(@RequestBody Group group) {
-        return postService.getAllByGroup(group);
+    public List<Post> getGroupFeed(@RequestParam(value = "groupId") int groupId) {
+        return postService.getAllByGroup(groupId);
     }
 
     /**
      * Get requests with the "/eventFeed" suffix are mapped to this method.
      * Gets all posts, which are owned by the given event.
-     * @param event whose posts are to be fetched.
+     * @param eventId whose posts are to be fetched.
      * @return list of posts.
      */
     @GetMapping("/eventFeed")
     @ResponseBody
-    public List<Post> getEventFeed(@RequestBody Event event) {
-        return postService.getAllByEvent(event);
+    public List<Post> getEventFeed(@RequestParam(value = "eventId") int eventId) {
+        return postService.getAllByEvent(eventId);
     }
 
     /**
      * Get requests with the "/userProfile" suffix are mapped to this method.
      * Gets all posts, which are owned by the given user.
      *
-     * @param user whose posts are to be fetched.
+     * @param userId whose posts are to be fetched.
      * @return list of posts.
      */
     @GetMapping("/userProfile")
     @ResponseBody
-    public List<Post> getUsersProfile(@RequestBody User user) {
-        return postService.getAllByUser(user);
+    public List<Post> getUsersProfile(@RequestParam(value = "userId") int userId) {
+        return postService.getAllByUser(userId);
     }
 
     /**

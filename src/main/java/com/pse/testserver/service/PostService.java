@@ -41,12 +41,14 @@ public class PostService {
      * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
      * in chronological order, with the latest created post being the first item.
      *
-     * @param user whose personal feed is to be fetched.
+     * @param userId whose personal feed is to be fetched.
      * @return list of posts.
      */
     @Transactional
-    public List<Post> getPersonalFeed(User user) {
+    public List<Post> getPersonalFeed(int userId) {
         List<Post> personalFeed = new LinkedList<>();
+
+        User user = userRepository.findById(userId);
 
         for (User subscription : user.getSubscriptions()) {
             personalFeed.addAll(postRepository.findAllOwnedById(subscription.getId()));
@@ -66,32 +68,32 @@ public class PostService {
 
     /**
      * Gets all posts, which are owned by the given user.
-     * @param user whose posts are to be fetched.
+     * @param userId whose posts are to be fetched.
      * @return list of posts.
      */
     @Transactional
-    public List<Post> getAllByUser(User user) {
-        return postRepository.findAllOwnedById(user.getId());
+    public List<Post> getAllByUser(int userId) {
+        return postRepository.findAllOwnedById(userId);
     }
 
     /**
      * Gets all posts, which are owned by the given group and sorts them chronologically.
-     * @param group whose posts are to be fetched.
+     * @param groupId whose posts are to be fetched.
      * @return list of posts.
      */
     @Transactional
-    public List<Post> getAllByGroup(Group group) {
-        return postRepository.findAllOwnedById(group.getId());
+    public List<Post> getAllByGroup(int groupId) {
+        return postRepository.findAllOwnedById(groupId);
     }
 
     /**
      * Gets all posts, which are owned by the given event and sorts them chronologically.
-     * @param event whose posts are to be fetched.
+     * @param eventId whose posts are to be fetched.
      * @return list of posts.
      */
     @Transactional
-    public List<Post> getAllByEvent(Event event) {
-        return postRepository.findAllOwnedById(event.getId());
+    public List<Post> getAllByEvent(int eventId) {
+        return postRepository.findAllOwnedById(eventId);
     }
 
     /**

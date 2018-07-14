@@ -1,8 +1,8 @@
 package com.pse.testserver.entities;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Entity class for the persisted subcategory data from the "subcategories" table.
@@ -12,6 +12,11 @@ import java.util.Set;
 @Entity
 @Table(name = "subcategories")
 public class Subcategory {
+
+    public Subcategory() {
+        this.events = new LinkedList<>();
+        this.groups = new LinkedList<>();
+    }
 
     /**
      * Incremental generated unique id.

@@ -3,8 +3,8 @@ package com.pse.testserver.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Entity class for the persisted post data from the "posts" table.
@@ -15,6 +15,11 @@ import java.util.Set;
 @Entity
 @Table(name = "posts")
 public class Post implements Serializable {
+
+    public Post() {
+        this.comments = new LinkedList<>();
+        this.likedUsers = new LinkedList<>();
+    }
 
     /**
      * Incremental generated unique id.

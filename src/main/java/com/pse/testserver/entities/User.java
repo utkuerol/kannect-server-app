@@ -4,8 +4,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Entity class for the persisted user data from the "users" table.
@@ -16,6 +16,18 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+
+    public User() {
+        this.subscriptions = new LinkedList<>();
+        this.subscribers = new LinkedList<>();
+        this.joinedGroups = new LinkedList<>();
+        this.participatedEvents = new LinkedList<>();
+        this.likedPosts = new LinkedList<>();
+        this.createdPosts = new LinkedList<>();
+        this.createdGroups = new LinkedList<>();
+        this.createdEvents = new LinkedList<>();
+        this.createdComments = new LinkedList<>();
+    }
 
     /**
      * Incremental generated unique id.

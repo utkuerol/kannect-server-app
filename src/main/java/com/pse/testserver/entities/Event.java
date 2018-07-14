@@ -2,7 +2,8 @@ package com.pse.testserver.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Entity class for the persisted event data from the "events" table.
@@ -12,6 +13,12 @@ import java.util.Set;
 @Entity
 @Table(name = "events")
 public class Event {
+
+    /**
+     * Users, which participate in this event.
+     */
+    @ManyToMany(mappedBy = "participatedEvents")
+    private List<User> participants;
 
     /**
      * Incremental generated unique id.
@@ -74,11 +81,9 @@ public class Event {
     @Column(name = "image_url")
     private String image_url;
 
-    /**
-     * Users, which participate in this event.
-     */
-    @ManyToMany(mappedBy = "participatedEvents")
-    private Set<User> participants;
+    public Event() {
+        this.participants = new LinkedList<>();
+    }
 
     /**
      * Gets category.
@@ -121,7 +126,7 @@ public class Event {
      *
      * @return Value of participants.
      */
-    public Set<User> getParticipants() {
+    public List<User> getParticipants() {
         return participants;
     }
 
@@ -130,7 +135,7 @@ public class Event {
      *
      * @param participants New value of participants.
      */
-    public void setParticipants(Set<User> participants) {
+    public void setParticipants(List<User> participants) {
         this.participants = participants;
     }
 

@@ -2,6 +2,7 @@ package com.pse.testserver.entities;
 
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,6 +13,10 @@ import java.util.List;
 @Entity
 @Table(name = "[groups]")
 public class Group {
+
+    public Group() {
+        this.members = new LinkedList<>();
+    }
 
     /**
      * Incremental generated unique id.
