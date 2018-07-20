@@ -38,6 +38,15 @@ public class UserController {
         return userService.getAllByName(name);
     }
 
+
+
+    @GetMapping("/getUserByMail")
+    public User getLoginUser(@RequestParam(value = "userName", defaultValue = "") String userName ,
+                             @RequestParam(value = "userMail", defaultValue = "") String userMail ,
+                             @RequestParam(value = "userPicture", defaultValue = "") String userPicture ,
+                             @RequestParam(value = "userID", defaultValue = "") String userID ) {
+        return userService.getUserByMail( userName , userMail ,  userPicture ,  userID);
+    }
     /**
      * Post requests with the "/subscribeUser" suffix are mapped to this method.
      * Adds the subscriber user to the subscribed user's list of subscribers and the subscribed user to

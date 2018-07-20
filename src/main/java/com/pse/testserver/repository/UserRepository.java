@@ -36,4 +36,9 @@ public interface UserRepository extends CrudRepository<User, Integer> {
             nativeQuery = true)
     List<User> findByName(@Param("name") String name);
 
+
+
+    @Query(value = "SELECT * FROM users WHERE users.mail LIKE %:mail%",
+            nativeQuery = true)
+    User findByMail(@Param("mail") String mail);
 }

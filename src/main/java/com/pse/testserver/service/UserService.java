@@ -9,6 +9,7 @@ import com.pse.testserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -143,5 +144,25 @@ public class UserService {
         userRepository.save(user);
         event.getParticipants().remove(user);
         eventRepository.save(event);
+    }
+
+
+
+
+    @Transactional
+    public User getUserByMail(String userName , String userMail , String userPicture , String userID) {
+        User user = userRepository.findByMail(userMail);
+        if(user.getEmail().equals(userMail)){
+            return user;
+        }
+        else {
+            user = new User();
+            user.setId(Integer.parseInt(userID));
+            user.setImageUrl(userPicture);
+            user.setEmail(userMail);
+            user.setName(userName);
+            userRepository.save(user);
+            return user;
+        }
     }
 }
