@@ -40,12 +40,20 @@ public class UserController {
 
 
 
-    @GetMapping("/getUserByMail")
-    public User getLoginUser(@RequestParam(value = "userName", defaultValue = "") String userName ,
-                             @RequestParam(value = "userMail", defaultValue = "") String userMail ,
-                             @RequestParam(value = "userPicture", defaultValue = "") String userPicture ,
-                             @RequestParam(value = "userID", defaultValue = "") String userID ) {
-        return userService.getUserByMail( userName , userMail ,  userPicture ,  userID);
+    @GetMapping("/userByMail")
+    public User getUserByMail(String userMail){
+        return userService.getUserByMail(userMail);
+    }
+
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    @PostMapping("/createUser")
+    public void createUser(@RequestBody User user){
+        userService.createUser(user);
     }
     /**
      * Post requests with the "/subscribeUser" suffix are mapped to this method.

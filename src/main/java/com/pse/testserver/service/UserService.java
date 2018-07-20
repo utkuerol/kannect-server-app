@@ -150,19 +150,13 @@ public class UserService {
 
 
     @Transactional
-    public User getUserByMail(String userName , String userMail , String userPicture , String userID) {
-        User user = userRepository.findByMail(userMail);
-        if(user.getEmail().equals(userMail)){
-            return user;
-        }
-        else {
-            user = new User();
-            user.setId(Integer.parseInt(userID));
-            user.setImageUrl(userPicture);
-            user.setEmail(userMail);
-            user.setName(userName);
-            userRepository.save(user);
-            return user;
-        }
+    public User getUserByMail(String userMail) {
+        return userRepository.findByMail(userMail);
+    }
+
+
+    @Transactional
+    public void createUser(User user) {
+        userRepository.save(user);
     }
 }
