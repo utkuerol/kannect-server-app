@@ -41,10 +41,15 @@ public class UserController {
 
 
     @GetMapping("/userByMail")
-    public User getUserByMail(String userMail){
+    public User getUserByMail(@RequestParam(value = "userMail") String userMail) {
         return userService.getUserByMail(userMail);
     }
 
+
+    @GetMapping("/userById")
+    public User getUserById(@RequestParam(value = "userId") long id) {
+        return userService.getUserById(id);
+    }
 
     /**
      *
