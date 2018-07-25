@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 import java.util.List;
 
 
@@ -23,7 +22,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * @param id unique id of the searched user
      * @return user with the defined id
      */
-    User findById(long id);
+    User findById(int id);
 
 
     /**

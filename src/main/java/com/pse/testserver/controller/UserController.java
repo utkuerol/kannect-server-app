@@ -42,12 +42,13 @@ public class UserController {
 
     @GetMapping("/userByMail")
     public User getUserByMail(@RequestParam(value = "userMail") String userMail) {
+        System.out.println("on controller" + userMail);
         return userService.getUserByMail(userMail);
     }
 
 
     @GetMapping("/userById")
-    public User getUserById(@RequestParam(value = "userId") long id) {
+    public User getUserById(@RequestParam(value = "userId") int id) {
         return userService.getUserById(id);
     }
 

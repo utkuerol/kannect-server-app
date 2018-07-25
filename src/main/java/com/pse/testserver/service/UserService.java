@@ -56,7 +56,7 @@ public class UserService {
      * @return found user.
      */
     @Transactional
-    public User getById(long id) {
+    public User getById(int id) {
         return userRepository.findById(id);
     }
 
@@ -148,6 +148,7 @@ public class UserService {
 
     @Transactional
     public User getUserByMail(String userMail) {
+        System.out.println("on service" + userMail);
         return userRepository.findByMail(userMail);
     }
 
@@ -158,7 +159,8 @@ public class UserService {
     }
 
     @Transactional
-    public User getUserById(long id) {
+    public User getUserById(int id) {
+        System.out.println("get user by id" + "id");
         return userRepository.findById(id);
     }
 
