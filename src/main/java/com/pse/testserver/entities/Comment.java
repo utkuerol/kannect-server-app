@@ -1,8 +1,6 @@
 package com.pse.testserver.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -34,7 +32,6 @@ public class Comment {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    @JsonBackReference
     private Post post;
 
     /**
@@ -48,7 +45,6 @@ public class Comment {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference
     private User creator;
 
 

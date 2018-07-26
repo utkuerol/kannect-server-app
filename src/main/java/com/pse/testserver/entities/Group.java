@@ -1,8 +1,6 @@
 package com.pse.testserver.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +43,6 @@ public class Group {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference
     private User creator;
 
     /**
@@ -53,7 +50,6 @@ public class Group {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    @JsonBackReference
     private Category category;
 
     /**
