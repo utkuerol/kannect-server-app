@@ -23,6 +23,7 @@ public class CategoryRepositoryUnitTest {
     @Autowired
     CategoryRepository categoryRepository;
 
+
     Category category1;
     Category category2;
     Category category3;
@@ -48,6 +49,7 @@ public class CategoryRepositoryUnitTest {
         assertTrue(categoryRepository.findByName("Bank").contains(category3Saved));
 
     }
+
 
     @After
     public void tearDown() {
