@@ -29,6 +29,7 @@ public class User implements Serializable {
         this.createdGroups = new LinkedList<>();
         this.createdEvents = new LinkedList<>();
         this.createdComments = new LinkedList<>();
+
     }
 
     /**
