@@ -1,6 +1,7 @@
 package com.pse.testserver.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -39,13 +40,14 @@ public class Subcategory {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    @JsonBackReference
+    @JsonBackReference(value = "subcategorycategory")
     private Category category;
 
     /**
      * Events, which fall into this subcategory.
      */
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "eventsubcategory")
     private List<Event> events;
 
     /**

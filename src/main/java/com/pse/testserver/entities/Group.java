@@ -45,7 +45,7 @@ public class Group {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference
+    @JsonBackReference(value = "groupuser")
     private User creator;
 
     /**
@@ -53,7 +53,7 @@ public class Group {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    @JsonBackReference
+    @JsonBackReference(value = "groupcategory")
     private Category category;
 
     /**

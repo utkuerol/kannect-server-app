@@ -34,7 +34,7 @@ public class Comment {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    @JsonBackReference
+    @JsonBackReference(value = "commentpost")
     private Post post;
 
     /**
@@ -48,7 +48,7 @@ public class Comment {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference
+    @JsonBackReference(value = "commentuser")
     private User creator;
 
 

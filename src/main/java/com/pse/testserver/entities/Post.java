@@ -42,7 +42,7 @@ public class Post implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference
+    @JsonBackReference(value = "postuser")
     private User creator;
 
 

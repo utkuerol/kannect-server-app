@@ -108,28 +108,28 @@ public class User implements Serializable {
      * Posts, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "postuser")
     private List<Post> createdPosts;
 
     /**
      * Groups, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "groupuser")
     private List<Group> createdGroups;
 
     /**
      * Events, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "eventuser")
     private List<Event> createdEvents;
 
     /**
      * Comments, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "commentuser")
     private List<Comment> createdComments;
 
 
