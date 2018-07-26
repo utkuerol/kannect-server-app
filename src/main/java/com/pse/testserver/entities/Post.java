@@ -1,5 +1,7 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -40,6 +42,7 @@ public class Post implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
+    @JsonBackReference
     private User creator;
 
 
@@ -49,11 +52,7 @@ public class Post implements Serializable {
     @Column(name = "date")
     private Date date;
 
-    /**
-     * Gives information on whether this post is owned by a user, a group or an event.
-     * This information is needed to determine where to display the post on the client-side.
-     */
-    //TODO how does this work? enum?
+
     @Column(name = "OWNED_BY")
     private int owned_by;
 

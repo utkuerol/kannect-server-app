@@ -1,5 +1,7 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Category {
      * Subcategories, which fall into this category.
      */
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @JsonManagedReference
     private List<Subcategory> subcategories;
 
     /**

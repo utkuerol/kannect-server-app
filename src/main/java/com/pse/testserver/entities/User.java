@@ -1,5 +1,6 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -106,24 +107,28 @@ public class User implements Serializable {
      * Posts, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Post> createdPosts;
 
     /**
      * Groups, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Group> createdGroups;
 
     /**
      * Events, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Event> createdEvents;
 
     /**
      * Comments, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Comment> createdComments;
 
 
