@@ -1,6 +1,7 @@
 package com.pse.testserver.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -50,6 +51,7 @@ public class Post implements Serializable {
      * Creation date of this post.
      */
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
     private Date date;
 
 
