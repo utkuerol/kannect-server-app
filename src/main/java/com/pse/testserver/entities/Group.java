@@ -61,6 +61,7 @@ public class Group {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subcategory_id")
+    @JsonBackReference(value = "groupsubcategory")
     private Subcategory subcategory;
 
     /**

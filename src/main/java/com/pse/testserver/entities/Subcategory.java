@@ -54,6 +54,7 @@ public class Subcategory {
      * Groups, which fall into this subcategory.
      */
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "groupsubcategory")
     private List<Group> groups;
 
 

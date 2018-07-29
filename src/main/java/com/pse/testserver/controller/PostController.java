@@ -104,7 +104,7 @@ public class PostController {
      * @param user which likes the post.
      */
     @PostMapping("/likePost")
-    public void likePost(@RequestBody Post post, User user) {
+    public void likePost(@RequestPart(value = "post") Post post, @RequestPart(value = "user") User user) {
         postService.likePost(post, user);
     }
 
@@ -115,7 +115,7 @@ public class PostController {
      * @param user which unlikes the post.
      */
     @PostMapping("/unlikePost")
-    public void unlikePost(@RequestBody Post post, User user) {
+    public void unlikePost(@RequestPart(value = "post") Post post, @RequestPart(value = "user") User user) {
         postService.unlikePost(post, user);
     }
 

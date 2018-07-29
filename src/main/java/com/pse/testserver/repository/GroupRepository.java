@@ -27,7 +27,7 @@ public interface GroupRepository extends CrudRepository<Group, Integer> {
      * @param id unique id of the searched group
      * @return group with the defined id
      */
-    Group findById(long id);
+    Group findById(int id);
 
 
     /**

@@ -29,7 +29,7 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
      * @return category with the defined id
      */
 
-    Category findById(long id);
+    Category findById(int id);
 
     /**
      * Find category from database by name.

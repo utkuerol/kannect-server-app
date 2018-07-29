@@ -37,6 +37,7 @@ public class PostService {
     @Autowired
     private CommentRepository commentRepository;
 
+
     /**
      * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
      * in chronological order, with the latest created post being the first item.
@@ -65,6 +66,7 @@ public class PostService {
         personalFeed.sort(Comparator.comparing(Post::getDate));
         return personalFeed;
     }
+
 
     /**
      * Gets all posts, which are owned by the given user.
@@ -130,10 +132,14 @@ public class PostService {
      */
     @Transactional
     public void likePost(Post post, User user) {
-        post.getLikedUsers().add(user);
-        postRepository.save(post);
-        user.getLikedPosts().add(post);
+        List<Post> posts = user.getLikedPosts();
+        List<User> users = post.getLikedUsers();
+        posts.add(post);
+        users.add(user);
+        post.setLikedUsers(users);
+        user.setLikedPosts(posts);
         userRepository.save(user);
+        postRepository.save(post);
     }
 
     /**
@@ -143,10 +149,11 @@ public class PostService {
      */
     @Transactional
     public void unlikePost(Post post, User user) {
-        post.getLikedUsers().remove(user);
-        postRepository.save(post);
         user.getLikedPosts().remove(post);
         userRepository.save(user);
+        post.getLikedUsers().remove(user);
+        postRepository.save(post);
+
     }
 
     /**

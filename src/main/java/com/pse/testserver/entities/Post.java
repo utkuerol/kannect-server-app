@@ -1,6 +1,5 @@
 package com.pse.testserver.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -43,7 +42,6 @@ public class Post implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonBackReference(value = "postuser")
     private User creator;
 
 
@@ -66,6 +64,7 @@ public class Post implements Serializable {
 
     @ManyToMany(mappedBy = "likedPosts")
     private List<User> likedUsers;
+
 
     /**
      * Gets creator.
