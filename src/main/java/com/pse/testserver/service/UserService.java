@@ -160,7 +160,6 @@ public class UserService {
 
     @Transactional
     public User getUserById(int id) {
-        System.out.println("get user by id" + "id");
         return userRepository.findById(id);
     }
 

@@ -63,10 +63,11 @@ public class EventService {
 
     /**
      * Deletes an event from the system.
-     * @param event to be deleted.
+     * @param eventId to be deleted.
      */
     @Transactional
-    public void deleteEvent(Event event) {
+    public void deleteEvent(int eventId) {
+        Event event = eventRepository.findById(eventId);
         eventRepository.delete(event);
     }
 

@@ -133,10 +133,10 @@ public class PostController {
      * Delete requests with the "/deletePost" suffix are mapped to this method.
      * Deletes a post object from the system.
      *
-     * @param post to be deleted.
+     * @param postId to be deleted.
      */
     @DeleteMapping("/deletePost")
-    public void deletePost(@RequestBody Post post) {
-        postService.deletePost(post);
+    public void deletePost(@RequestParam(value = "postId") int postId) {
+        postService.deletePost(postId);
     }
 }
