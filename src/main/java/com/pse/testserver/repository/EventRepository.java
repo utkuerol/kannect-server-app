@@ -20,7 +20,7 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
      * @param id unique id of the searched event
      * @return event with the defined id
      */
-    Event findById(long id);
+    Event findById(int id);
 
     /**
      * Find all events from the database by date.

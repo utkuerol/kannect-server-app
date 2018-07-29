@@ -1,6 +1,7 @@
 package com.pse.testserver.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -19,17 +20,7 @@ import java.util.List;
 @Table(name = "users")
 public class User implements Serializable {
 
-    public User() {
-        this.subscriptions = new LinkedList<>();
-        this.subscribers = new LinkedList<>();
-        this.joinedGroups = new LinkedList<>();
-        this.participatedEvents = new LinkedList<>();
-        this.likedPosts = new LinkedList<>();
-        this.createdPosts = new LinkedList<>();
-        this.createdGroups = new LinkedList<>();
-        this.createdEvents = new LinkedList<>();
-        this.createdComments = new LinkedList<>();
-    }
+
 
     /**
      * Incremental generated unique id.
@@ -65,14 +56,12 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "subscribed_id")},
             joinColumns = {@JoinColumn(name = "subscriber_id")})
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonIgnore
     private List<User> subscriptions;
 
     /**
      * Users, which subscribe this user.
      */
     @ManyToMany(mappedBy = "subscriptions")
-    @JsonIgnore
     private List<User> subscribers;
 
     /**
@@ -83,7 +72,6 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "group_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonIgnore
     private List<Group> joinedGroups;
 
     /**
@@ -94,7 +82,6 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "event_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonIgnore
     private List<Event> participatedEvents;
 
     /**
@@ -105,36 +92,50 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "post_id")},
             joinColumns = {@JoinColumn(name = "user_id")})
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonIgnore
+    @JsonBackReference
     private List<Post> likedPosts;
 
     /**
      * Posts, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonBackReference(value = "postuser")
     private List<Post> createdPosts;
 
     /**
      * Groups, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference(value = "groupuser")
     private List<Group> createdGroups;
 
     /**
      * Events, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference(value = "eventuser")
     private List<Event> createdEvents;
 
     /**
      * Comments, which this user has created.
      */
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference(value = "commentuser")
     private List<Comment> createdComments;
+
+
+    public User() {
+        this.subscriptions = new LinkedList<>();
+        this.subscribers = new LinkedList<>();
+        this.joinedGroups = new LinkedList<>();
+        this.participatedEvents = new LinkedList<>();
+        this.likedPosts = new LinkedList<>();
+        this.createdPosts = new LinkedList<>();
+        this.createdGroups = new LinkedList<>();
+        this.createdEvents = new LinkedList<>();
+        this.createdComments = new LinkedList<>();
+
+    }
 
 
     /**

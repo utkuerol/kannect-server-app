@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.pse</groupId>
-	<artifactId>test-server</artifactId>
+    <artifactId>kannect-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <packaging>war</packaging>
 
-	<name>test-server</name>
-	<description>Demo project for Spring Boot</description>
+    <name>kannect-server</name>
+    <description>Spring Boot Server Application for KAnnect</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

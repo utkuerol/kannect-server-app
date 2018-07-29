@@ -28,7 +28,7 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
      * @param id unique id of the searched post
      * @return post with the defined id
      */
-    Post findById(long id);
+    Post findById(int id);
 
     /**
      * Find all posts of a user from the database.

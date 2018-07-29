@@ -42,7 +42,6 @@ public class UserController {
 
     @GetMapping("/userByMail")
     public User getUserByMail(@RequestParam(value = "userMail") String userMail) {
-        System.out.println("on controller" + userMail);
         return userService.getUserByMail(userMail);
     }
 
@@ -70,8 +69,8 @@ public class UserController {
      * @param subscribed user, which gets subscribed.
      */
     @PostMapping("/subscribeUser")
-    public void subscribeUser(@RequestBody User subscriber,
-                              @RequestBody User subscribed) {
+    public void subscribeUser(@RequestPart(value = "subscriber") User subscriber,
+                              @RequestPart(value = "subscribed") User subscribed) {
         userService.subscribeUser(subscriber, subscribed);
     }
 
@@ -84,8 +83,8 @@ public class UserController {
      * @param subscribed user, which gets unsubscribed.
      */
     @PostMapping("/unsubscribeUser")
-    public void unsubscribeUser(@RequestBody User subscriber,
-                                @RequestBody User subscribed) {
+    public void unsubscribeUser(@RequestPart(value = "subscriber") User subscriber,
+                                @RequestPart(value = "subscribed") User subscribed) {
         userService.unsubscribeUser(subscriber, subscribed);
     }
 
@@ -98,7 +97,7 @@ public class UserController {
      * @param group to be joined.
      */
     @PostMapping("/joinGroup")
-    public void joinGroup(@RequestBody User user, @RequestBody Group group) {
+    public void joinGroup(@RequestPart(value = "user") User user, @RequestPart(value = "group") Group group) {
         userService.joinGroup(user, group);
     }
 
@@ -110,7 +109,7 @@ public class UserController {
      * @param group to be left.
      */
     @PostMapping("/leaveGroup")
-    public void leaveGroup(@RequestBody User user, @RequestBody Group group) {
+    public void leaveGroup(@RequestPart("user") User user, @RequestPart(value = "group") Group group) {
         userService.leaveGroup(user, group);
     }
 
@@ -122,7 +121,7 @@ public class UserController {
      * @param event to be participated in.
      */
     @PostMapping("/participateInEvent")
-    public void participateInEvent(@RequestBody User user, @RequestBody Event event) {
+    public void participateInEvent(@RequestPart(value = "user") User user, @RequestPart(value = "event") Event event) {
         userService.participateInEvent(user, event);
     }
 
@@ -134,7 +133,7 @@ public class UserController {
      * @param event to be left.
      */
     @PostMapping("/leaveEvent")
-    public void leaveEvent(@RequestBody User user, @RequestBody Event event) {
+    public void leaveEvent(@RequestPart(value = "user") User user, @RequestPart(value = "event") Event event) {
         userService.leaveEvent(user, event);
     }
 

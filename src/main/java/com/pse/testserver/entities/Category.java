@@ -1,6 +1,6 @@
 package com.pse.testserver.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -19,7 +19,7 @@ public class Category {
      * Subcategories, which fall into this category.
      */
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference(value = "subcategorycategory")
     private List<Subcategory> subcategories;
 
     /**
@@ -39,13 +39,12 @@ public class Category {
      * Events, which fall into this category.
      */
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference(value = "eventcategory")
     private List<Event> events;
     /**
      * Groups, which fall into this category.
      */
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
-    @JsonIgnore
     private List<Group> groups;
 
     public Category() {

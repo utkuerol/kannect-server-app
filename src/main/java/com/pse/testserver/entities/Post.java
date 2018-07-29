@@ -1,5 +1,7 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -47,6 +49,7 @@ public class Post implements Serializable {
      * Creation date of this post.
      */
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
     private Date date;
 
 
@@ -61,6 +64,7 @@ public class Post implements Serializable {
 
     @ManyToMany(mappedBy = "likedPosts")
     private List<User> likedUsers;
+
 
     /**
      * Gets creator.

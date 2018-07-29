@@ -1,5 +1,8 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.LinkedList;
@@ -38,6 +41,7 @@ public class Event {
      * Date of the event.
      */
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
     private Date date;
 
     public Date getDate() {
@@ -59,6 +63,7 @@ public class Event {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
+    @JsonBackReference(value = "eventuser")
     private User creator;
 
     /**
@@ -66,6 +71,7 @@ public class Event {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonBackReference(value = "eventcategory")
     private Category category;
 
     /**
@@ -73,6 +79,7 @@ public class Event {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subcategory_id")
+    @JsonBackReference(value = "eventsubcategory")
     private Subcategory subcategory;
 
     /**
