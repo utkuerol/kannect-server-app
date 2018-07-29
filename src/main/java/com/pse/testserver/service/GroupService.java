@@ -51,10 +51,11 @@ public class GroupService {
 
     /**
      * Method to delete a group from the system.
-     * @param group to be deleted.
+     * @param groupId to be deleted.
      */
     @Transactional
-    public void deleteGroup(Group group) {
+    public void deleteGroup(int groupId) {
+        Group group = groupRepository.findById(groupId);
         groupRepository.delete(group);
     }
 

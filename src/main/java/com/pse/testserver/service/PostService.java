@@ -109,10 +109,11 @@ public class PostService {
 
     /**
      * Deletes a post object from the system.
-     * @param post to be deleted.
+     * @param postId to be deleted.
      */
     @Transactional
-    public void deletePost(Post post) {
+    public void deletePost(int postId) {
+        Post post = postRepository.findById(postId);
         postRepository.delete(post);
     }
 

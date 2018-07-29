@@ -53,11 +53,11 @@ public class GroupController {
      * Delete requests with the "/deleteGroup" suffix are mapped to this method.
      * Deletes a group from the system.
      *
-     * @param group to be deleted.
+     * @param groupId to be deleted.
      */
     @DeleteMapping("/deleteGroup")
-    public void deleteGroup(@RequestBody Group group) {
-        groupService.deleteGroup(group);
+    public void deleteGroup(@RequestParam(value = "groupId") int groupId) {
+        groupService.deleteGroup(groupId);
     }
 
 

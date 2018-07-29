@@ -51,11 +51,11 @@ public class EventController {
      * Delete requests with the "/deleteEvent" suffix are mapped to this method.
      * Deletes an event from the system.
      *
-     * @param event to be deleted.
+     * @param eventId to be deleted.
      */
     @DeleteMapping("/deleteEvent")
-    public void deleteEvent(@RequestBody Event event) {
-        eventService.deleteEvent(event);
+    public void deleteEvent(@RequestParam(value = "eventId") int eventId) {
+        eventService.deleteEvent(eventId);
     }
 
     /**
