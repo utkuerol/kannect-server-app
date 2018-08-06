@@ -1,5 +1,6 @@
 package com.pse.testserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -16,12 +17,14 @@ import java.util.List;
  */
 @Entity
 @Table(name = "posts")
+@Embeddable
 public class Post implements Serializable {
 
-    public Post() {
-        this.comments = new LinkedList<>();
-        this.likedUsers = new LinkedList<>();
-    }
+    /**
+     * Comments, which have been created regarding this post.
+     */
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     /**
      * Incremental generated unique id.
@@ -55,15 +58,16 @@ public class Post implements Serializable {
 
     @Column(name = "OWNED_BY")
     private int owned_by;
+    @OneToMany(mappedBy = "likedPost")
+    @JsonBackReference(value = "postlikepost")
+    private List<PostLike> postLikes;
+    @Transient
+    private List<User> likedUsers = new LinkedList<>();
 
-    /**
-     * Comments, which have been created regarding this post.
-     */
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
-
-    @ManyToMany(mappedBy = "likedPosts")
-    private List<User> likedUsers;
+    public Post() {
+        this.comments = new LinkedList<>();
+        this.postLikes = new LinkedList<>();
+    }
 
 
     /**
@@ -163,7 +167,7 @@ public class Post implements Serializable {
      * @return Value of number_of_likes.
      */
     public int getNumber_of_likes() {
-        return likedUsers.size();
+        return postLikes.size();
     }
 
 
@@ -177,12 +181,12 @@ public class Post implements Serializable {
     }
 
     /**
-     * Sets new likedUsers.
+     * Gets postLikes.
      *
-     * @param likedUsers New value of likedUsers.
+     * @return Value of postLikes.
      */
-    public void setLikedUsers(List<User> likedUsers) {
-        this.likedUsers = likedUsers;
+    public List<PostLike> getPostLikes() {
+        return postLikes;
     }
 
     /**
@@ -195,24 +199,39 @@ public class Post implements Serializable {
     }
 
     /**
+     * Sets new postLikes.
+     *
+     * @param postLikes New value of postLikes.
+     */
+    public void setPostLikes(List<PostLike> postLikes) {
+        this.postLikes = postLikes;
+    }
+
+    /**
      * Gets likedUsers.
      *
      * @return Value of likedUsers.
      */
     public List<User> getLikedUsers() {
+        List<User> likedUsers = new LinkedList<>();
+        for (PostLike postLike : postLikes) {
+            likedUsers.add(postLike.getLikedUser());
+        }
         return likedUsers;
     }
 
+    /**
+     * Sets new likedUsers.
+     *
+     * @param likedUsers New value of likedUsers.
+     */
+    public void setLikedUsers(List<User> likedUsers) {
+        this.likedUsers = likedUsers;
+    }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        Post other = ((Post) obj);
-
-        return id == other.id;
+        return true;
     }
 
 }

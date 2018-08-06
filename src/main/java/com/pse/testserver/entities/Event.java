@@ -89,7 +89,7 @@ public class Event {
     private String image_url;
 
     public Event() {
-        this.participants = new LinkedList<>();
+        this.participants = new LinkedList<User>();
     }
 
     /**

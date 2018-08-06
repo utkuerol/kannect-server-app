@@ -2,6 +2,7 @@ package com.pse.testserver.service;
 
 import com.pse.testserver.entities.*;
 import com.pse.testserver.repository.CommentRepository;
+import com.pse.testserver.repository.PostLikeRepository;
 import com.pse.testserver.repository.PostRepository;
 import com.pse.testserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class PostService {
     @Autowired
     private CommentRepository commentRepository;
 
+    @Autowired
+    private PostLikeRepository postLikeRepository;
 
     /**
      * Gets all posts owned by users, groups and events, which are subscribed/joined/participated by the given user
@@ -133,14 +136,12 @@ public class PostService {
      */
     @Transactional
     public void likePost(Post post, User user) {
-        List<Post> posts = user.getLikedPosts();
-        List<User> users = post.getLikedUsers();
-        posts.add(post);
-        users.add(user);
-        post.setLikedUsers(users);
-        user.setLikedPosts(posts);
-        userRepository.save(user);
-        postRepository.save(post);
+        if (!postRepository.findById(post.getId()).getLikedUsers().contains(user)) {
+            PostLike postLike = new PostLike();
+            postLike.setLikedPost(post);
+            postLike.setLikedUser(user);
+            postLikeRepository.save(postLike);
+        }
     }
 
     /**
@@ -150,11 +151,8 @@ public class PostService {
      */
     @Transactional
     public void unlikePost(Post post, User user) {
-        user.getLikedPosts().remove(post);
-        userRepository.save(user);
-        post.getLikedUsers().remove(user);
-        postRepository.save(post);
-
+        PostLike postLike = postLikeRepository.findAllByUserAndPostId(user.getId(), post.getId());
+        postLikeRepository.delete(postLike);
     }
 
     /**

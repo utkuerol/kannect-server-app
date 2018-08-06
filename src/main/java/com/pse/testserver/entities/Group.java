@@ -17,7 +17,7 @@ import java.util.List;
 public class Group {
 
     public Group() {
-        this.members = new LinkedList<>();
+        this.members = new LinkedList<User>();
     }
 
     /**

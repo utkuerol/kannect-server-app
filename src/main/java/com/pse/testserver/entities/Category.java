@@ -18,7 +18,7 @@ public class Category {
     /**
      * Subcategories, which fall into this category.
      */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
     @JsonManagedReference(value = "subcategorycategory")
     private List<Subcategory> subcategories;
 
@@ -38,13 +38,13 @@ public class Category {
     /**
      * Events, which fall into this category.
      */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
     @JsonManagedReference(value = "eventcategory")
     private List<Event> events;
     /**
      * Groups, which fall into this category.
      */
-    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
     private List<Group> groups;
 
     public Category() {

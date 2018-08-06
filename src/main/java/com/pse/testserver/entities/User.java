@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
+@Embeddable
 public class User implements Serializable {
 
 
@@ -87,39 +88,35 @@ public class User implements Serializable {
     /**
      * Posts, which are liked by this user.
      */
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "post_likes",
-            inverseJoinColumns = {@JoinColumn(name = "post_id")},
-            joinColumns = {@JoinColumn(name = "user_id")})
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonBackReference
-    private List<Post> likedPosts;
+    @OneToMany(mappedBy = "likedUser")
+    @JsonBackReference(value = "postlikeuser")
+    private List<PostLike> likedPosts;
 
     /**
      * Posts, which this user has created.
      */
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     @JsonBackReference(value = "postuser")
     private List<Post> createdPosts;
 
     /**
      * Groups, which this user has created.
      */
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "groupuser")
     private List<Group> createdGroups;
 
     /**
      * Events, which this user has created.
      */
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "eventuser")
     private List<Event> createdEvents;
 
     /**
      * Comments, which this user has created.
      */
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "commentuser")
     private List<Comment> createdComments;
 
@@ -220,12 +217,12 @@ public class User implements Serializable {
     }
 
     /**
-     * Sets new Posts, which are liked by this user..
+     * Gets Posts, which are liked by this user..
      *
-     * @param likedPosts New value of Posts, which are liked by this user..
+     * @return Value of Posts, which are liked by this user..
      */
-    public void setLikedPosts(List<Post> likedPosts) {
-        this.likedPosts = likedPosts;
+    public List<PostLike> getLikedPosts() {
+        return likedPosts;
     }
 
     /**
@@ -328,12 +325,12 @@ public class User implements Serializable {
     }
 
     /**
-     * Gets Posts, which are liked by this user..
+     * Sets new Posts, which are liked by this user..
      *
-     * @return Value of Posts, which are liked by this user..
+     * @param likedPosts New value of Posts, which are liked by this user..
      */
-    public List<Post> getLikedPosts() {
-        return likedPosts;
+    public void setLikedPosts(List<PostLike> likedPosts) {
+        this.likedPosts = likedPosts;
     }
 
     /**
@@ -380,6 +377,8 @@ public class User implements Serializable {
 
         User other = ((User) obj);
 
-        return id == other.id;
+        return id == other.getId();
     }
+
+
 }

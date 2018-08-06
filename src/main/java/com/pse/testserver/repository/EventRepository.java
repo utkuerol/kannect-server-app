@@ -48,7 +48,7 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
      * @return list of all events containing the string name with the specified category
      */
     @Query(value = "Select * from events e where e.name like %:name% and e.category_id like :category", nativeQuery = true)
-    List<Event> findAllByNameSortedByCategory(@Param("name") String name, @Param("category") long category);
+    List<Event> findAllByNameSortedByCategory(@Param("name") String name, @Param("category") int category);
 
 
     /**

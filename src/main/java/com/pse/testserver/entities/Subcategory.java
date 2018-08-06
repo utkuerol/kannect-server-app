@@ -46,14 +46,14 @@ public class Subcategory {
     /**
      * Events, which fall into this subcategory.
      */
-    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "eventsubcategory")
     private List<Event> events;
 
     /**
      * Groups, which fall into this subcategory.
      */
-    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "groupsubcategory")
     private List<Group> groups;
 
