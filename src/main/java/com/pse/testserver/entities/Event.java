@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Entity class for the persisted event data from the "events" table.
  * Represents an event, providing access to the event's unique id, name, description, category, subcategory,
- * creator, profile picture url and participants .
+ * creator, profile picture url and eventParticipants .
  */
 @Entity
 @Table(name = "events")
@@ -20,7 +20,11 @@ public class Event {
     /**
      * Users, which participate in this event.
      */
-    @ManyToMany(mappedBy = "participatedEvents")
+    @OneToMany(mappedBy = "event")
+    @JsonBackReference(value = "eventparticipantsevent")
+    private List<EventParticipant> eventParticipants;
+
+    @Transient
     private List<User> participants;
 
     /**
@@ -89,7 +93,7 @@ public class Event {
     private String image_url;
 
     public Event() {
-        this.participants = new LinkedList<User>();
+        this.eventParticipants = new LinkedList<>();
     }
 
     /**
@@ -129,21 +133,21 @@ public class Event {
     }
 
     /**
-     * Gets participants.
+     * Gets eventParticipants.
      *
-     * @return Value of participants.
+     * @return Value of eventParticipants.
      */
-    public List<User> getParticipants() {
-        return participants;
+    public List<EventParticipant> getEventParticipants() {
+        return eventParticipants;
     }
 
     /**
-     * Sets new participants.
+     * Sets new eventParticipants.
      *
-     * @param participants New value of participants.
+     * @param eventParticipants New value of eventParticipants.
      */
-    public void setParticipants(List<User> participants) {
-        this.participants = participants;
+    public void setEventParticipants(List<EventParticipant> eventParticipants) {
+        this.eventParticipants = eventParticipants;
     }
 
     /**
@@ -236,6 +240,8 @@ public class Event {
         this.subcategory = subcategory;
     }
 
+
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -245,5 +251,27 @@ public class Event {
         Event other = ((Event) obj);
 
         return id == other.id;
+    }
+
+    /**
+     * Gets participants.
+     *
+     * @return Value of participants.
+     */
+    public List<User> getParticipants() {
+        List<User> participants = new LinkedList<>();
+        for (EventParticipant eventParticipant : eventParticipants) {
+            participants.add(eventParticipant.getUser());
+        }
+        return participants;
+    }
+
+    /**
+     * Sets new participants.
+     *
+     * @param participants New value of participants.
+     */
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
     }
 }

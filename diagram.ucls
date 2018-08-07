@@ -236,7 +236,7 @@
     <bendpoint x="122" y="956"/>    
     <bendpoint x="122" y="493"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="64" name="participatedEvents">        
+      <attribute id="64" name="eventParticipants">
         <position height="18" width="97" x="-4" y="439"/>      
       </attribute>      
       <multiplicity id="65" minimum="0" maximum="2147483647"/>    
@@ -256,7 +256,7 @@
     <bendpoint x="80" y="493"/>    
     <bendpoint x="80" y="956"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="70" name="participants"/>      
+      <attribute id="70" name="eventParticipants"/>
       <multiplicity id="71" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    

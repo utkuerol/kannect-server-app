@@ -1,6 +1,7 @@
 package com.pse.testserver.Unit.Service;
 
 import com.pse.testserver.entities.Event;
+import com.pse.testserver.entities.EventParticipant;
 import com.pse.testserver.entities.Group;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepository;
@@ -77,18 +78,18 @@ public class UserServiceUnitTest {
     public void participateInEventTest() {
         event = new Event();
         userService.participateInEvent(user1, event);
-        Assert.assertTrue(user1.getParticipatedEvents().contains(event)
-                && event.getParticipants().contains(user1));
+        Assert.assertTrue(user1.getEventParticipants().contains(event)
+                && event.getEventParticipants().contains(user1));
     }
 
     @Test
     public void leaveEventTest() {
-        event = new Event();
-        event.getParticipants().add(user1);
-        user1.getParticipatedEvents().add(event);
+        EventParticipant eventParticipant = new EventParticipant();
+        eventParticipant.setEvent(event);
+        eventParticipant.setUser(user1);
         userService.leaveEvent(user1, event);
-        Assert.assertFalse(user1.getParticipatedEvents().contains(event)
-                && event.getParticipants().contains(user1));
+        Assert.assertFalse(user1.getEventParticipants().contains(event)
+                && event.getEventParticipants().contains(user1));
     }
 
     @TestConfiguration

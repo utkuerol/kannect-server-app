@@ -52,17 +52,13 @@ public class User implements Serializable {
     /**
      * Users, which this user subscribes.
      */
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_subscriptions",
-            inverseJoinColumns = {@JoinColumn(name = "subscribed_id")},
-            joinColumns = {@JoinColumn(name = "subscriber_id")})
-    @Fetch(value = FetchMode.SUBSELECT)
+    @Transient
     private List<User> subscriptions;
 
     /**
      * Users, which subscribe this user.
      */
-    @ManyToMany(mappedBy = "subscriptions")
+    @Transient
     private List<User> subscribers;
 
 
@@ -95,11 +91,11 @@ public class User implements Serializable {
     /**
      * Events, in which this user has participated.
      */
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "event_participants",
-            inverseJoinColumns = {@JoinColumn(name = "event_id")},
-            joinColumns = {@JoinColumn(name = "user_id")})
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "eventparticipantuser")
+    private List<EventParticipant> eventParticipants;
+
+    @Transient
     private List<Event> participatedEvents;
 
     /**
@@ -247,6 +243,10 @@ public class User implements Serializable {
      * @return Value of Users, which subscribe this user..
      */
     public List<User> getSubscribers() {
+        List<User> subscribers = new LinkedList<>();
+        for (UserSubscription userSubscription : userSubscribers) {
+            subscribers.add(userSubscription.getSubscriber());
+        }
         return subscribers;
     }
 
@@ -266,6 +266,10 @@ public class User implements Serializable {
      * @return Value of Users, which this user subscribes..
      */
     public List<User> getSubscriptions() {
+        List<User> subscriptions = new LinkedList<>();
+        for (UserSubscription userSubscription : userSubscriptions) {
+            subscriptions.add(userSubscription.getSubscribed());
+        }
         return subscriptions;
     }
 
@@ -283,17 +287,17 @@ public class User implements Serializable {
      *
      * @return Value of Events, in which this user has participated..
      */
-    public List<Event> getParticipatedEvents() {
-        return participatedEvents;
+    public List<EventParticipant> getEventParticipants() {
+        return eventParticipants;
     }
 
     /**
      * Sets new Events, in which this user has participated..
      *
-     * @param participatedEvents New value of Events, in which this user has participated..
+     * @param eventParticipants New value of Events, in which this user has participated..
      */
-    public void setParticipatedEvents(List<Event> participatedEvents) {
-        this.participatedEvents = participatedEvents;
+    public void setEventParticipants(List<EventParticipant> eventParticipants) {
+        this.eventParticipants = eventParticipants;
     }
 
     /**
@@ -389,4 +393,61 @@ public class User implements Serializable {
     }
 
 
+    /**
+     * Gets participatedEvents.
+     *
+     * @return Value of participatedEvents.
+     */
+    public List<Event> getParticipatedEvents() {
+        List<Event> participatedEvents = new LinkedList<>();
+        for (EventParticipant event : eventParticipants) {
+            participatedEvents.add(event.getEvent());
+        }
+        return participatedEvents;
+    }
+
+    /**
+     * Sets new participatedEvents.
+     *
+     * @param participatedEvents New value of participatedEvents.
+     */
+    public void setParticipatedEvents(List<Event> participatedEvents) {
+        this.participatedEvents = participatedEvents;
+    }
+
+    /**
+     * Gets userSubscribers.
+     *
+     * @return Value of userSubscribers.
+     */
+    public List<UserSubscription> getUserSubscribers() {
+        return userSubscribers;
+    }
+
+    /**
+     * Sets new userSubscriptions.
+     *
+     * @param userSubscriptions New value of userSubscriptions.
+     */
+    public void setUserSubscriptions(List<UserSubscription> userSubscriptions) {
+        this.userSubscriptions = userSubscriptions;
+    }
+
+    /**
+     * Sets new userSubscribers.
+     *
+     * @param userSubscribers New value of userSubscribers.
+     */
+    public void setUserSubscribers(List<UserSubscription> userSubscribers) {
+        this.userSubscribers = userSubscribers;
+    }
+
+    /**
+     * Gets userSubscriptions.
+     *
+     * @return Value of userSubscriptions.
+     */
+    public List<UserSubscription> getUserSubscriptions() {
+        return userSubscriptions;
+    }
 }

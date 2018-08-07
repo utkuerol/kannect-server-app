@@ -151,7 +151,7 @@ public class PostService {
      */
     @Transactional
     public void unlikePost(Post post, User user) {
-        PostLike postLike = postLikeRepository.findAllByUserAndPostId(user.getId(), post.getId());
+        PostLike postLike = postLikeRepository.findByUserAndPostId(user.getId(), post.getId());
         postLikeRepository.delete(postLike);
     }
 

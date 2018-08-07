@@ -44,8 +44,13 @@ public class PostServiceUnitTest {
     private List<Post> mockPostsOfParticipatedEvent = new LinkedList<>();
     private List<Post> mockPersonalFeed = new LinkedList<>();
 
+    private EventParticipant eventParticipant1;
+
+
     @Before
     public void setup() {
+
+
         user1 = new User();
         user2 = new User();
         user3 = new User();
@@ -63,9 +68,9 @@ public class PostServiceUnitTest {
         user1.getSubscriptions().add(user3);
         user3.getSubscribers().add(user1);
         user1.getJoinedGroups().add(group);
-        user1.getParticipatedEvents().add(event);
+        eventParticipant1.setUser(user1);
+        eventParticipant1.setEvent(event);
         group.getMembers().add(user1);
-        event.getParticipants().add(user1);
 
         post1 = new Post();
         post2 = new Post();
@@ -125,14 +130,15 @@ public class PostServiceUnitTest {
                 && user1.getLikedPosts().contains(post1));
     }
 
-   /* @Test
+   @Test
     public void unlikePostTest() {
-        post1.getPostLikes().add(user1);
-        user1.getLikedPosts().add(post1);
+        PostLike postLike = new PostLike();
+        postLike.setLikedUser(user1);
+        postLike.setLikedPost(post1);
         postService.unlikePost(post1, user1);
         Assert.assertFalse(post1.getPostLikes().contains(user1)
                 && user1.getLikedPosts().contains(post1));
-    }*/
+    }
 
     @Test
     public void commentPostTest() {

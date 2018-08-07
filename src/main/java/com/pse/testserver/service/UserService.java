@@ -2,10 +2,8 @@ package com.pse.testserver.service;
 
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
-import com.pse.testserver.entities.GroupMember;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepository;
-import com.pse.testserver.repository.GroupMemberRepository;
 import com.pse.testserver.repository.GroupRepository;
 import com.pse.testserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +47,12 @@ public class UserService {
     @Autowired
     EventRepository eventRepository;
 
+    @Autowired
+    EventParticipantRepository eventParticipantRepository;
+
+    @Autowired
+    UserSubscriptionRepository userSubscriptionRepository;
+
     /**
      * Searchs and gives all users with the given name.
      * @param name to search for. Empty String parameter gets all users.
@@ -78,10 +82,12 @@ public class UserService {
      */
     @Transactional
     public void subscribeUser(User subscriber, User subscribed) {
-        subscriber.getSubscriptions().add(subscribed);
-        userRepository.save(subscriber);
-        subscribed.getSubscribers().add(subscriber);
-        userRepository.save(subscribed);
+        if (!userRepository.findById(subscribed.getId()).getSubscribers().contains(subscriber)) {
+            UserSubscription userSubscription = new UserSubscription();
+            userSubscription.setSubscribed(subscribed);
+            userSubscription.setSubscriber(subscriber);
+            userSubscriptionRepository.save(userSubscription);
+        }
     }
 
     /**
@@ -92,10 +98,11 @@ public class UserService {
      */
     @Transactional
     public void unsubscribeUser(User subscriber, User subscribed) {
-        subscriber.getSubscriptions().remove(subscribed);
-        userRepository.save(subscriber);
-        subscribed.getSubscribers().remove(subscriber);
-        userRepository.save(subscribed);
+        if (userRepository.findById(subscribed.getId()).getSubscribers().contains(subscriber)) {
+            UserSubscription userSubscription = userSubscriptionRepository
+                    .findBySubscriberAndSubscribedId(subscriber.getId(), subscribed.getId());
+            userSubscriptionRepository.delete(userSubscription);
+        }
     }
 
     /**
@@ -136,10 +143,13 @@ public class UserService {
      */
     @Transactional
     public void participateInEvent(User user, Event event) {
-        user.getParticipatedEvents().add(event);
-        userRepository.save(user);
-        event.getParticipants().add(user);
-        eventRepository.save(event);
+        if (!eventRepository.findById(event.getId()).getParticipants().contains(user)) {
+            EventParticipant eventParticipant = new EventParticipant();
+            eventParticipant.setUser(user);
+            eventParticipant.setEvent(event);
+            eventParticipantRepository.save(eventParticipant);
+        }
+
     }
 
     /**
@@ -150,10 +160,10 @@ public class UserService {
      */
     @Transactional
     public void leaveEvent(User user, Event event) {
-        user.getParticipatedEvents().remove(event);
-        userRepository.save(user);
-        event.getParticipants().remove(user);
-        eventRepository.save(event);
+        if (eventRepository.findById(event.getId()).getParticipants().contains(user)) {
+            EventParticipant eventParticipant = eventParticipantRepository.findByUserAndEventId(user.getId(), event.getId());
+            eventParticipantRepository.delete(eventParticipant);
+        }
     }
 
 
