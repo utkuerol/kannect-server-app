@@ -58,6 +58,8 @@ public class Post implements Serializable {
 
     @Column(name = "OWNED_BY")
     private int owned_by;
+
+
     @OneToMany(mappedBy = "likedPost")
     @JsonBackReference(value = "postlikepost")
     private List<PostLike> postLikes;

@@ -65,15 +65,32 @@ public class User implements Serializable {
     @ManyToMany(mappedBy = "subscriptions")
     private List<User> subscribers;
 
+
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "groupsJoinedByUser")
+    private List<GroupMember> groupMembers;
+
     /**
      * Groups, which this user has joined.
      */
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "group_members",
-            inverseJoinColumns = {@JoinColumn(name = "group_id")},
-            joinColumns = {@JoinColumn(name = "user_id")})
-    @Fetch(value = FetchMode.SUBSELECT)
+    @Transient
     private List<Group> joinedGroups;
+
+
+    public User() {
+        this.subscriptions = new LinkedList<>();
+        this.subscribers = new LinkedList<>();
+        this.joinedGroups = new LinkedList<>();
+        this.participatedEvents = new LinkedList<>();
+        this.likedPosts = new LinkedList<>();
+        this.createdPosts = new LinkedList<>();
+        this.createdGroups = new LinkedList<>();
+        this.createdEvents = new LinkedList<>();
+        this.createdComments = new LinkedList<>();
+        this.groupMembers = new LinkedList<>();
+
+    }
+
 
     /**
      * Events, in which this user has participated.
@@ -120,18 +137,17 @@ public class User implements Serializable {
     @JsonManagedReference(value = "commentuser")
     private List<Comment> createdComments;
 
-
-    public User() {
-        this.subscriptions = new LinkedList<>();
-        this.subscribers = new LinkedList<>();
-        this.joinedGroups = new LinkedList<>();
-        this.participatedEvents = new LinkedList<>();
-        this.likedPosts = new LinkedList<>();
-        this.createdPosts = new LinkedList<>();
-        this.createdGroups = new LinkedList<>();
-        this.createdEvents = new LinkedList<>();
-        this.createdComments = new LinkedList<>();
-
+    /**
+     * Gets Groups, which this user has joined..
+     *
+     * @return Value of Groups, which this user has joined..
+     */
+    public List<Group> getJoinedGroups() {
+        List<Group> joinedGrps = new LinkedList<>();
+        for (GroupMember groupMember : groupMembers) {
+            joinedGroups.add(groupMember.getGroup());
+        }
+        return joinedGroups;
     }
 
 
@@ -234,14 +250,6 @@ public class User implements Serializable {
         return subscribers;
     }
 
-    /**
-     * Gets Groups, which this user has joined..
-     *
-     * @return Value of Groups, which this user has joined..
-     */
-    public List<Group> getJoinedGroups() {
-        return joinedGroups;
-    }
 
     /**
      * Sets new Incremental generated unique id..

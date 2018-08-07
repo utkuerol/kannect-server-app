@@ -16,9 +16,14 @@ import java.util.List;
 @Table(name = "[groups]")
 public class Group {
 
-    public Group() {
-        this.members = new LinkedList<User>();
-    }
+    /**
+     * Users, which have joined this group.
+     */
+
+
+    @OneToMany(mappedBy = "group")
+    @JsonBackReference(value = "userJoinGroup")
+    private List<GroupMember> groupMembers;
 
     /**
      * Incremental generated unique id.
@@ -69,13 +74,13 @@ public class Group {
      */
     @Column(name = "image_url")
     private String image_url;
-
-    /**
-     * Users, which have joined this group.
-     */
-    @ManyToMany(mappedBy = "joinedGroups")
+    @Transient
     private List<User> members;
 
+    public Group() {
+        this.members = new LinkedList<User>();
+        this.groupMembers = new LinkedList<GroupMember>();
+    }
 
     /**
      * Gets Users, which have joined this group..
@@ -83,7 +88,22 @@ public class Group {
      * @return Value of Users, which have joined this group..
      */
     public List<User> getMembers() {
-        return members;
+        List<User> joinedUsers = new LinkedList<>();
+        for (GroupMember groupMember : groupMembers) {
+            joinedUsers.add(groupMember.getUser());
+        }
+        return joinedUsers;
+
+    }
+
+
+    /**
+     * Sets new Users, which have joined this group..
+     *
+     * @param members New value of Users, which have joined this group..
+     */
+    public void setMembers(List<User> members) {
+        this.members = members;
     }
 
     /**
@@ -149,14 +169,6 @@ public class Group {
         return image_url;
     }
 
-    /**
-     * Sets new Users, which have joined this group..
-     *
-     * @param members New value of Users, which have joined this group..
-     */
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
 
     /**
      * Sets new Name of the group..

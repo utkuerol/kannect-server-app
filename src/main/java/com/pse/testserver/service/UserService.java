@@ -2,8 +2,10 @@ package com.pse.testserver.service;
 
 import com.pse.testserver.entities.Event;
 import com.pse.testserver.entities.Group;
+import com.pse.testserver.entities.GroupMember;
 import com.pse.testserver.entities.User;
 import com.pse.testserver.repository.EventRepository;
+import com.pse.testserver.repository.GroupMemberRepository;
 import com.pse.testserver.repository.GroupRepository;
 import com.pse.testserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,13 @@ public class UserService {
      */
     @Autowired
     UserRepository userRepository;
+
+
+    /**
+     * Injected GroupMemberRepository class dependency.
+     */
+    @Autowired
+    GroupMemberRepository groupMemberRepository;
 
 
     /**
@@ -97,10 +106,14 @@ public class UserService {
      */
     @Transactional
     public void joinGroup(User user, Group group) {
-        user.getJoinedGroups().add(group);
-        userRepository.save(user);
-        group.getMembers().add(user);
-        groupRepository.save(group);
+
+        if (!groupRepository.findById(group.getId()).getMembers().contains(user)) {
+            GroupMember gm = new GroupMember();
+            gm.setGroup(group);
+            gm.setUser(user);
+            groupMemberRepository.save(gm);
+
+        }
     }
 
     /**
@@ -111,10 +124,8 @@ public class UserService {
      */
     @Transactional
     public void leaveGroup(User user, Group group) {
-        user.getJoinedGroups().remove(group);
-        userRepository.save(user);
-        group.getMembers().remove(user);
-        groupRepository.save(group);
+        GroupMember gm = groupMemberRepository.findAllByUserAndGroupId(user.getId(), group.getId());
+        groupMemberRepository.delete(gm);
     }
 
     /**
