@@ -2,8 +2,6 @@ package com.pse.testserver.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,6 +46,14 @@ public class User implements Serializable {
      */
     @Column(name = "image_url")
     private String imageUrl;
+
+    @OneToMany(mappedBy = "subscriber")
+    @JsonBackReference(value = "usersubscriberuser")
+    private List<UserSubscription> userSubscribers;
+
+    @OneToMany(mappedBy = "subscribed")
+    @JsonBackReference(value = "usersubscribeduser")
+    private List<UserSubscription> userSubscriptions;
 
     /**
      * Users, which this user subscribes.
