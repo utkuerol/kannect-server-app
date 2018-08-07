@@ -130,7 +130,7 @@ public class PostServiceUnitTest {
                 && user1.getLikedPosts().contains(post1));
     }
 
-   @Test
+    @Test
     public void unlikePostTest() {
         PostLike postLike = new PostLike();
         postLike.setLikedUser(user1);

@@ -32,6 +32,15 @@ public class UserSubscription implements Serializable {
     }
 
     /**
+     * Sets new subscribed.
+     *
+     * @param subscribed New value of subscribed.
+     */
+    public void setSubscribed(User subscribed) {
+        this.subscribed = subscribed;
+    }
+
+    /**
      * Gets subscriber.
      *
      * @return Value of subscriber.
@@ -41,12 +50,12 @@ public class UserSubscription implements Serializable {
     }
 
     /**
-     * Sets new id.
+     * Sets new subscriber.
      *
-     * @param id New value of id.
+     * @param subscriber New value of subscriber.
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setSubscriber(User subscriber) {
+        this.subscriber = subscriber;
     }
 
     /**
@@ -59,20 +68,11 @@ public class UserSubscription implements Serializable {
     }
 
     /**
-     * Sets new subscribed.
+     * Sets new id.
      *
-     * @param subscribed New value of subscribed.
+     * @param id New value of id.
      */
-    public void setSubscribed(User subscribed) {
-        this.subscribed = subscribed;
-    }
-
-    /**
-     * Sets new subscriber.
-     *
-     * @param subscriber New value of subscriber.
-     */
-    public void setSubscriber(User subscriber) {
-        this.subscriber = subscriber;
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -241,7 +241,6 @@ public class Event {
     }
 
 
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

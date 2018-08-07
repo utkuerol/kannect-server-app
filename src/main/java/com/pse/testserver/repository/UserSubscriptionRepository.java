@@ -1,6 +1,5 @@
 package com.pse.testserver.repository;
 
-import com.pse.testserver.entities.PostLike;
 import com.pse.testserver.entities.UserSubscription;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

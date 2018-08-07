@@ -20,25 +20,6 @@ public class EventParticipant implements Serializable {
     @JoinColumn(name = "event_id")
     private Event event;
 
-
-    /**
-     * Sets new event.
-     *
-     * @param event New value of event.
-     */
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
     /**
      * Gets user.
      *
@@ -67,11 +48,29 @@ public class EventParticipant implements Serializable {
     }
 
     /**
+     * Sets new event.
+     *
+     * @param event New value of event.
+     */
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    /**
      * Gets id.
      *
      * @return Value of id.
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Sets new id.
+     *
+     * @param id New value of id.
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }
