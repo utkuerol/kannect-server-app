@@ -25,6 +25,7 @@ public class Event {
     private List<EventParticipant> eventParticipants;
 
     @Transient
+    @JsonBackReference(value = "participants")
     private List<User> participants;
 
     /**

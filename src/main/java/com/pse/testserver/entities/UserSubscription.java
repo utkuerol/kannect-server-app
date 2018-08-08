@@ -1,6 +1,8 @@
 package com.pse.testserver.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,10 +17,12 @@ public class UserSubscription implements Serializable {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "subscriber_id")
+    @JsonBackReference(value = "subscriber")
     private User subscriber;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "subscribed_id")
+    @JsonBackReference(value = "subscribed")
     private User subscribed;
 
 

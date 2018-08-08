@@ -76,6 +76,7 @@ public class Group {
     private String image_url;
 
     @Transient
+    @JsonBackReference(value = "members")
     private List<User> members;
 
     public Group() {

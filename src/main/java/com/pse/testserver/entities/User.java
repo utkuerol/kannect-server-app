@@ -48,11 +48,9 @@ public class User implements Serializable {
     private String imageUrl;
 
     @OneToMany(mappedBy = "subscribed")
-    @JsonBackReference(value = "usersubscriberuser")
     private List<UserSubscription> userSubscribers;
 
     @OneToMany(mappedBy = "subscriber")
-    @JsonBackReference(value = "usersubscribeduser")
     private List<UserSubscription> userSubscriptions;
 
     /**
@@ -78,7 +76,6 @@ public class User implements Serializable {
      * Groups, which this user has joined.
      */
     @Transient
-    @JsonBackReference(value = "members")
     private List<Group> joinedGroups;
 
 
@@ -91,7 +88,6 @@ public class User implements Serializable {
     private List<EventParticipant> eventParticipants;
 
     @Transient
-    @JsonBackReference(value = "participants")
     private List<Event> participatedEvents;
 
     /**
