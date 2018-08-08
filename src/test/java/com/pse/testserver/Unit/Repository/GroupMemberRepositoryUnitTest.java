@@ -89,6 +89,7 @@ public class GroupMemberRepositoryUnitTest {
         groupMember3.setUser(savedUser3);
         groupMember3.setGroup(savedGroup3);
 
+
         savedGroupMember1 = entityManager.persist(groupMember1);
         savedGroupMember2 = entityManager.persist(groupMember2);
         savedGroupMember3 = entityManager.persist(groupMember3);
