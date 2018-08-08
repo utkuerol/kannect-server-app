@@ -138,6 +138,7 @@ public class User implements Serializable {
         this.groupMembers = new LinkedList<>();
         this.userSubscriptions = new LinkedList<>();
         this.userSubscribers = new LinkedList<>();
+        this.eventParticipants = new LinkedList<>();
     }
 
 
