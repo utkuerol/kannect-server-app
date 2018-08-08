@@ -58,8 +58,8 @@ public class GroupMemberRepositoryUnitTest {
         user2 = new User();
         user3 = new User();
         user1.setName("true");
-        user1.setName("truee");
-        user1.setName("false");
+        user2.setName("truee");
+        user3.setName("false");
 
         group1 = new Group();
         group2 = new Group();
