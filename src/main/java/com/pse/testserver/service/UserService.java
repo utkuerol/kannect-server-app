@@ -78,7 +78,7 @@ public class UserService {
      */
     @Transactional
     public void subscribeUser(User subscriber, User subscribed) {
-        if (!userRepository.findById(subscribed.getId()).getSubscribers().contains(subscriber)) {
+        if (!userRepository.findById(subscribed.getId()).getSubscriptions().contains(subscribed)) {
             UserSubscription userSubscription = new UserSubscription();
             userSubscription.setSubscribed(subscribed);
             userSubscription.setSubscriber(subscriber);
@@ -94,9 +94,9 @@ public class UserService {
      */
     @Transactional
     public void unsubscribeUser(User subscriber, User subscribed) {
-        if (userRepository.findById(subscribed.getId()).getSubscribers().contains(subscriber)) {
             UserSubscription userSubscription = userSubscriptionRepository
                     .findBySubscriberAndSubscribedId(subscriber.getId(), subscribed.getId());
+        if (userSubscription != null) {
             userSubscriptionRepository.delete(userSubscription);
         }
     }
@@ -128,7 +128,9 @@ public class UserService {
     @Transactional
     public void leaveGroup(User user, Group group) {
         GroupMember gm = groupMemberRepository.findAllByUserAndGroupId(user.getId(), group.getId());
-        groupMemberRepository.delete(gm);
+        if (gm != null) {
+            groupMemberRepository.delete(gm);
+        }
     }
 
     /**
@@ -156,8 +158,8 @@ public class UserService {
      */
     @Transactional
     public void leaveEvent(User user, Event event) {
-        if (eventRepository.findById(event.getId()).getParticipants().contains(user)) {
             EventParticipant eventParticipant = eventParticipantRepository.findByUserAndEventId(user.getId(), event.getId());
+        if (eventParticipant != null) {
             eventParticipantRepository.delete(eventParticipant);
         }
     }

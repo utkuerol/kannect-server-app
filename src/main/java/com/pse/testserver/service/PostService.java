@@ -53,7 +53,6 @@ public class PostService {
         List<Post> personalFeed = new LinkedList<>();
 
         User user = userRepository.findById(userId);
-
         for (User subscription : user.getSubscriptions()) {
             personalFeed.addAll(postRepository.findAllOwnedById(subscription.getId()));
         }
@@ -152,7 +151,10 @@ public class PostService {
     @Transactional
     public void unlikePost(Post post, User user) {
         PostLike postLike = postLikeRepository.findByUserAndPostId(user.getId(), post.getId());
-        postLikeRepository.delete(postLike);
+        if (postLike != null) {
+            postLikeRepository.delete(postLike);
+        }
+
     }
 
     /**

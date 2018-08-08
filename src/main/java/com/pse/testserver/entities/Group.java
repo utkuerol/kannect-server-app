@@ -22,7 +22,7 @@ public class Group {
 
 
     @OneToMany(mappedBy = "group")
-    @JsonBackReference(value = "userJoinGroup")
+    @JsonBackReference(value = "groupmembersgroup")
     private List<GroupMember> groupMembers;
 
     /**
@@ -74,6 +74,7 @@ public class Group {
      */
     @Column(name = "image_url")
     private String image_url;
+
     @Transient
     private List<User> members;
 

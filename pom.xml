@@ -6,7 +6,7 @@
 	<groupId>com.pse</groupId>
     <artifactId>kannect-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>kannect-server</name>
     <description>Spring Boot Server Application for KAnnect</description>

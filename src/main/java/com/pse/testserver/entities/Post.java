@@ -63,6 +63,7 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "likedPost")
     @JsonBackReference(value = "postlikepost")
     private List<PostLike> postLikes;
+
     @Transient
     private List<User> likedUsers = new LinkedList<>();
 

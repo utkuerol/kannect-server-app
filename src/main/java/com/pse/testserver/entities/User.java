@@ -47,11 +47,11 @@ public class User implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToMany(mappedBy = "subscriber")
+    @OneToMany(mappedBy = "subscribed")
     @JsonBackReference(value = "usersubscriberuser")
     private List<UserSubscription> userSubscribers;
 
-    @OneToMany(mappedBy = "subscribed")
+    @OneToMany(mappedBy = "subscriber")
     @JsonBackReference(value = "usersubscribeduser")
     private List<UserSubscription> userSubscriptions;
 
@@ -59,39 +59,28 @@ public class User implements Serializable {
      * Users, which this user subscribes.
      */
     @Transient
+    @JsonBackReference(value = "subscriptions")
     private List<User> subscriptions;
 
     /**
      * Users, which subscribe this user.
      */
     @Transient
+    @JsonBackReference(value = "subscribers")
     private List<User> subscribers;
 
 
     @OneToMany(mappedBy = "user")
-    @JsonBackReference(value = "groupsJoinedByUser")
+    @JsonBackReference(value = "groupmembersuser")
     private List<GroupMember> groupMembers;
 
     /**
      * Groups, which this user has joined.
      */
     @Transient
+    @JsonBackReference(value = "members")
     private List<Group> joinedGroups;
 
-
-    public User() {
-        this.subscriptions = new LinkedList<>();
-        this.subscribers = new LinkedList<>();
-        this.joinedGroups = new LinkedList<>();
-        this.participatedEvents = new LinkedList<>();
-        this.likedPosts = new LinkedList<>();
-        this.createdPosts = new LinkedList<>();
-        this.createdGroups = new LinkedList<>();
-        this.createdEvents = new LinkedList<>();
-        this.createdComments = new LinkedList<>();
-        this.groupMembers = new LinkedList<>();
-
-    }
 
 
     /**
@@ -102,6 +91,7 @@ public class User implements Serializable {
     private List<EventParticipant> eventParticipants;
 
     @Transient
+    @JsonBackReference(value = "participants")
     private List<Event> participatedEvents;
 
     /**
@@ -139,13 +129,28 @@ public class User implements Serializable {
     @JsonManagedReference(value = "commentuser")
     private List<Comment> createdComments;
 
+    public User() {
+        this.subscriptions = new LinkedList<>();
+        this.subscribers = new LinkedList<>();
+        this.joinedGroups = new LinkedList<>();
+        this.participatedEvents = new LinkedList<>();
+        this.likedPosts = new LinkedList<>();
+        this.createdPosts = new LinkedList<>();
+        this.createdGroups = new LinkedList<>();
+        this.createdEvents = new LinkedList<>();
+        this.createdComments = new LinkedList<>();
+        this.groupMembers = new LinkedList<>();
+
+    }
+
+
     /**
      * Gets Groups, which this user has joined..
      *
      * @return Value of Groups, which this user has joined..
      */
     public List<Group> getJoinedGroups() {
-        List<Group> joinedGrps = new LinkedList<>();
+        List<Group> joinedGroups = new LinkedList<>();
         for (GroupMember groupMember : groupMembers) {
             joinedGroups.add(groupMember.getGroup());
         }
@@ -251,7 +256,9 @@ public class User implements Serializable {
     public List<User> getSubscribers() {
         List<User> subscribers = new LinkedList<>();
         for (UserSubscription userSubscription : userSubscribers) {
-            subscribers.add(userSubscription.getSubscriber());
+            if (userSubscription.getSubscribed().getId() == this.getId()) {
+                subscribers.add(userSubscription.getSubscriber());
+            }
         }
         return subscribers;
     }
@@ -274,7 +281,9 @@ public class User implements Serializable {
     public List<User> getSubscriptions() {
         List<User> subscriptions = new LinkedList<>();
         for (UserSubscription userSubscription : userSubscriptions) {
-            subscriptions.add(userSubscription.getSubscribed());
+            if (userSubscription.getSubscriber().getId() == this.getId()) {
+                subscriptions.add(userSubscription.getSubscribed());
+            }
         }
         return subscriptions;
     }
