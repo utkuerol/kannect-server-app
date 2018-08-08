@@ -74,4 +74,10 @@ public class GroupMember {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        GroupMember toAssert = (GroupMember) obj;
+        return this.getId() == toAssert.getId();
+    }
 }
