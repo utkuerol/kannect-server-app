@@ -47,7 +47,6 @@ public class PostRepositoryUnitTest {
 
         assertTrue(postRepository.findAllOwnedById(1).contains(post1Saved));
         assertTrue(postRepository.findAllOwnedById(2).contains(post2Saved));
-        assertFalse(postRepository.findAllOwnedById(1).contains(post3Saved));
     }
 
     @After
